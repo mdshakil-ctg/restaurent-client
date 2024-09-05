@@ -1,0 +1,39 @@
+[
+    {
+      "id": 1,
+      "name": "Roast Duck Breast",
+      "details": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+      "price": 14.5
+    },
+    {
+      "id": 2,
+      "name": "Grilled Salmon",
+      "details": "Salmon fillet served with lemon butter sauce and roasted vegetables",
+      "price": 18.0
+    },
+    {
+      "id": 3,
+      "name": "Spaghetti Carbonara",
+      "details": "Classic Italian pasta dish with pancetta, egg, Parmesan, and black pepper",
+      "price": 12.0
+    },
+    {
+      "id": 4,
+      "name": "Caesar Salad",
+      "details": "Romaine lettuce, Parmesan cheese, croutons, and Caesar dressing with grilled chicken",
+      "price": 10.5
+    },
+    {
+      "id": 5,
+      "name": "Beef Steak",
+      "details": "Grilled sirloin steak with peppercorn sauce, served with mashed potatoes and green beans",
+      "price": 22.0
+    },
+    {
+      "id": 6,
+      "name": "Margarita Pizza",
+      "details": "Classic pizza with fresh tomatoes, mozzarella cheese, and basil",
+      "price": 9.0
+    }
+  ]
+  
