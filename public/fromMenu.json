@@ -2,37 +2,43 @@
     {
       "id": 1,
       "name": "Roast Duck Breast",
-      "details": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
-      "price": 14.5
+      "recipe": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+      "price": 14.5,
+      "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg"
     },
     {
       "id": 2,
       "name": "Grilled Salmon",
-      "details": "Salmon fillet served with lemon butter sauce and roasted vegetables",
-      "price": 18.0
+      "recipe": "Salmon fillet served with lemon butter sauce and roasted vegetables",
+      "price": 18.0,
+      "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg"
     },
     {
       "id": 3,
       "name": "Spaghetti Carbonara",
-      "details": "Classic Italian pasta dish with pancetta, egg, Parmesan, and black pepper",
-      "price": 12.0
+      "recipe": "Classic Italian pasta dish with pancetta, egg, Parmesan, and black pepper",
+      "price": 12.0,
+      "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg"
     },
     {
       "id": 4,
       "name": "Caesar Salad",
-      "details": "Romaine lettuce, Parmesan cheese, croutons, and Caesar dressing with grilled chicken",
+      "recipe": "Romaine lettuce, Parmesan cheese, croutons, and Caesar dressing with grilled chicken",
+      "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg",
       "price": 10.5
     },
     {
       "id": 5,
       "name": "Beef Steak",
-      "details": "Grilled sirloin steak with peppercorn sauce, served with mashed potatoes and green beans",
+      "recipe": "Grilled sirloin steak with peppercorn sauce, served with mashed potatoes and green beans",
+      "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg",
       "price": 22.0
     },
     {
       "id": 6,
       "name": "Margarita Pizza",
-      "details": "Classic pizza with fresh tomatoes, mozzarella cheese, and basil",
+      "recipe": "Classic pizza with fresh tomatoes, mozzarella cheese, and basil",
+      "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg",
       "price": 9.0
     }
   ]

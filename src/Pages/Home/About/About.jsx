@@ -1,6 +1,5 @@
 import React from "react";
 import "./About.css";
-import chefImg from "../../../assets/home/chef-service.jpg";
 
 const About = () => {
   return (
