@@ -1,8 +1,15 @@
-import React from "react";
+import { useEffect } from "react";
 
-const MenuCard = ({data}) => {
-  console.log(data)
-    const {name, recipe, price, image} = data;
+
+const MenuCard = ({data, setMenuTitle}) => {
+    const {name, recipe, price, image, category} = data;
+    // setMenuTitle && setMenuTitle(category);
+    useEffect( () =>{
+      if(setMenuTitle){
+        setMenuTitle(category)
+      }
+    },[setMenuTitle,category])
+    
   return (
     <div className="flex items-center">
       <figure className="flex-shrink-0">

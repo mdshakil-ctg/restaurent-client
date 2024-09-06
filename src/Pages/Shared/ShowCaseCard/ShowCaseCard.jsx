@@ -1,7 +1,6 @@
 import "./ShowCaseCard.css"
 
 const ShowCaseCard = ({imgUrl, details, name}) => {
-  console.log(imgUrl)
 
     const divStyle = {
         backgroundImage: `url(${imgUrl})`,
@@ -14,7 +13,7 @@ const ShowCaseCard = ({imgUrl, details, name}) => {
     return (
         <div style={divStyle} className="background-section max-w-screen-md md:max-w-screen-xl mx-auto mb-24">
       <div className="overlay">
-        <h1>{name}</h1>
+        <h1 className="">{name}</h1>
         <p>
           {details}
         </p>

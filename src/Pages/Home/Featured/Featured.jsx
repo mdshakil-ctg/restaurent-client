@@ -1,6 +1,5 @@
-import React from "react";
+
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
-import Button from "../../Shared/Button/Button";
 import featuredImd from '../../../assets/home/featured.jpg'
 import './Featured.css'
 const Featured = () => {

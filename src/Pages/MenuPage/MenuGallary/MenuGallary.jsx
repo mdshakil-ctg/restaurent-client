@@ -1,5 +1,3 @@
-import React from 'react';
-import { UseCardDataApi } from '../../../Hooks/CardDataApi/UseCardDataApi';
 import ShowCaseCard from '../../Shared/ShowCaseCard/ShowCaseCard';
 import dessert from '../../../assets/menu/dessert-bg.jpeg'
 import pizza from '../../../assets/menu/pizza-bg.jpg'
@@ -7,16 +5,18 @@ import salad from '../../../assets/menu/salad-bg.jpg'
 import soup from '../../../assets/menu/soup-bg.jpg'
 import drinks from '../../../assets/menu/menu-bg.png'
 import MenuCards from '../../Shared/MenuCards/MenuCards';
+import { useMenuFilterData } from '../../../Hooks/useMenuFilterData';
+// import { useParams } from 'react-router-dom';
 
 const MenuGallary = () => {
-    const datas = UseCardDataApi('menu.json')
-    const dessertsData = datas.filter(data => data.category ==='dessert');
-    const pizzasData = datas.filter(data => data.category ==='pizza');
-    const saladsData = datas.filter(data => data.category ==='salad');
-    const soupsData = datas.filter(data => data.category ==='soup');
-    const drinksData = datas.filter(data => data.category ==='drinks');
+    const dessertsData = useMenuFilterData('dessert');
+    const pizzasData = useMenuFilterData('pizza');
+    const saladsData = useMenuFilterData('salad');
+    const soupsData = useMenuFilterData('soup');
+    const drinksData = useMenuFilterData('drinks');
+    // const params = useParams()
+    // console.log({params})
 
-    console.log(dessertsData)
     return (
         <div>
             {/* dessert section */}

@@ -9,7 +9,7 @@ import { UseCardDataApi } from "../../../Hooks/CardDataApi/UseCardDataApi";
 import { FaQuoteLeft } from "react-icons/fa";
 
 const Testimonial = () => {
-  const datas = UseCardDataApi("/reviews.json");
+  const datas = UseCardDataApi('reviews');
 
   return (
     <section className="md:mb-20">

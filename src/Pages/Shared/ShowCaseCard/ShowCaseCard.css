@@ -35,15 +35,19 @@
   
 
   .overlay h1 {
-    font-size: 2rem;
+    font-size: 50px;           
     margin-bottom: 10px;
+    line-height: 40px;
     font-weight: 600;
     position: relative;
     z-index: 2;
+    font-family: "Cinzel", serif;
   }
   
   .overlay p {
-    font-size: 1rem;
+    font-size: 14px;
+    opacity: 80%;
+    font-weight: 600;
     position: relative;
     z-index: 2;
   }

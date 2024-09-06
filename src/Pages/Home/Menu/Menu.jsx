@@ -5,7 +5,7 @@ import { UseCardDataApi } from "../../../Hooks/CardDataApi/UseCardDataApi";
 
 const Menu = () => {
   
-const datas = UseCardDataApi('/fromMenu.json');
+const datas = UseCardDataApi('category');
 
   return (
     <div className="max-w-screen-lg mx-auto mb-10">
@@ -14,8 +14,8 @@ const datas = UseCardDataApi('/fromMenu.json');
         subTitle="Check it out"
       ></SectionTitle>
       <div className="grid md:grid-cols-2 ">
-        {datas.map((data) => (
-          <MenuCard key={data.id} data={data}></MenuCard>
+        {datas.slice(0,6).map((data) => (
+          <MenuCard key={data._id} data={data}></MenuCard>
         ))}
       </div>
       <div className="text-center">

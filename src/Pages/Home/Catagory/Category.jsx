@@ -1,4 +1,3 @@
-import React from 'react';
 import SectionTitle from '../../Shared/SectionTitle/SectionTitle';
 import OnlineMenu from './OnlineMenu';
 

@@ -3,13 +3,15 @@ import {
   } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home/Home";
-import Menu from "../Pages/Home/Menu/Menu";
 import MenuPage from "../Pages/MenuPage/MenuPage/MenuPage";
+import Shop from "../Pages/Shop/Shop/Shop";
+import ErrorElement from "../components/ErrorElement";
 
   export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <ErrorElement></ErrorElement>,
       children:[
         {
             path:'/',
@@ -18,6 +20,10 @@ import MenuPage from "../Pages/MenuPage/MenuPage/MenuPage";
         {
           path: '/menu',
           element: <MenuPage></MenuPage>
+        },
+        {
+          path: '/shop/:category',
+          element: <Shop></Shop>
         }
       ]
     },
