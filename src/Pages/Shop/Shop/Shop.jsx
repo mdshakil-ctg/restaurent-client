@@ -9,13 +9,13 @@ import { useParams } from "react-router-dom";
 
 const Shop = () => {
 
-  const [activeTabs, setActiveTabs] = useState(null);
+  const params = useParams()
+  const [activeTabs, setActiveTabs] = useState(params.category);
 
   console.log(activeTabs)
 
 
 
-  const params = useParams()
   const items = ['salad', 'pizza', 'soup', 'dessert', 'drinks'];
   const initialIndex = items.indexOf(params.category)
 
@@ -38,11 +38,11 @@ const Shop = () => {
           <TabList 
           className='flex flex-row justify-center items-center bg-[#2B2A28] border-b-[12px] border-b-[#EB4E01] text-white font-semibold text-xl mb-16 '
           onClick={(e) => setActiveTabs(e.target.innerHTML)}>
-            <Tab className={`${activeTabs == 'SALAD' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'}  py-10 px-6 transition duration-500 ease-out cursor-pointer`}>SALAD</Tab>
-            <Tab className={`${activeTabs == 'PIZZA' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6  transition duration-500 ease-out cursor-pointer`}>PIZZA</Tab>
-            <Tab className={`${activeTabs == 'SOUPS' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer`}>SOUPS</Tab>
-            <Tab className={`${activeTabs == 'DESSERT' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer`}>DESSERT</Tab>
-            <Tab className={`${activeTabs == 'DRINKS' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer`}>DRINKS</Tab>
+            <Tab className={`${activeTabs == 'salad' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'}  py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}>salad</Tab>
+            <Tab className={`${activeTabs == 'pizza' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6  transition duration-500 ease-out cursor-pointer uppercase`}>pizza</Tab>
+            <Tab className={`${activeTabs == 'soup' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}>soup</Tab>
+            <Tab className={`${activeTabs == 'dessert' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}>dessert</Tab>
+            <Tab className={`${activeTabs == 'drinks' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}>drinks</Tab>
           </TabList>
           <TabPanel>
             <ShopTabData datas={saladsData}></ShopTabData>

@@ -6,6 +6,7 @@ import Home from "../Pages/Home/Home/Home";
 import MenuPage from "../Pages/MenuPage/MenuPage/MenuPage";
 import Shop from "../Pages/Shop/Shop/Shop";
 import ErrorElement from "../components/ErrorElement";
+import ContactUs from "../Pages/ContactUs/ContactUs";
 
   export const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ import ErrorElement from "../components/ErrorElement";
         {
           path: '/shop/:category',
           element: <Shop></Shop>
+        },
+        {
+          path: '/contact',
+          element: <ContactUs></ContactUs>
         }
       ]
     },
