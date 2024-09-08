@@ -15,7 +15,7 @@ console.log(menuTitle)
           )}
         </div>
         <div className="text-center">
-          <Link to={`/shop/${menuTitle}`}><Button info={buttonInfo} ></Button></Link>
+          <Link to={`/shop/${menuTitle?menuTitle:'soup'}`}><Button info={buttonInfo} ></Button></Link>
         </div>
       </div>
     );

@@ -1,8 +1,12 @@
-import React from 'react';
+import './Button.css'
 
 const Button = ({info}) => {
     return (
-       <button className='bg-transparent border-black border-b-2 py-3 px-4 rounded hover:bg-[#bb8506da] uppercase'>{info}</button>
+       <div className='flex justify-center items-center mt-5'>
+       <button className="button-16" role="button">
+  <span className="text">{info}</span>
+</button>
+       </div>
     );
 };
 
