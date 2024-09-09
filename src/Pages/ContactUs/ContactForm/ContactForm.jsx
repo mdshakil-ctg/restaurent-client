@@ -7,7 +7,7 @@ import { FaMapLocationDot } from "react-icons/fa6";
 
 const ContactForm = () => {
     return (
-        <div className="grid grid-cols-12 relative shadow-2xl my-32 border-t-4 border-t-green-300">
+        <div className="grid grid-cols-12 max-w-screen-lg mx-auto relative shadow-2xl my-32 border-t-4 border-t-green-300">
                 <div className="col-span-10 p-16">
                     <div className="space-y-3">
                         <h3 className="text-4xl font-bold ">Contact Us</h3>

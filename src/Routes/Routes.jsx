@@ -7,6 +7,7 @@ import MenuPage from "../Pages/MenuPage/MenuPage/MenuPage";
 import Shop from "../Pages/Shop/Shop/Shop";
 import ErrorElement from "../components/ErrorElement";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import SignUp from "../Pages/SignUp/SignUp";
 
   export const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ import ContactUs from "../Pages/ContactUs/ContactUs";
         {
           path: '/contact',
           element: <ContactUs></ContactUs>
+        },
+        {
+          path: '/signup',
+          element:<SignUp></SignUp>
         }
       ]
     },
