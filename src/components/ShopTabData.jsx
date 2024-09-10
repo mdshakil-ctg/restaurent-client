@@ -3,14 +3,14 @@ import ShopCard from "./../components/ShopCard";
 import { useParams } from "react-router-dom";
 
 const ShopTabData = ({ datas }) => {
-    console.log({datas})
+    ({datas})
     const params = useParams();
-    console.log({params})
+    ({params})
   const count = parseInt(datas.length);
   const [itemsPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(count / itemsPerPage);
-  console.log({currentPage})
+  ({currentPage})
 
   const indexOfLastItem = currentPage * itemsPerPage;
 const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -25,7 +25,7 @@ for (let i = 1; i <= totalPages; i++) {
 //   const pages = [...Array(totalPages).keys()];
 
   const handleNextOption = () => {
-    console.log('hitting')
+    ('hitting')
     if (currentPage < pages.length) {
       setCurrentPage(currentPage + 1);
     }

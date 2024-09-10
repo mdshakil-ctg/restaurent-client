@@ -1,40 +1,152 @@
-import './SignUp.css'
+import { useContext, useState } from "react";
+import SetTitle from "../../components/SetTitle";
 import { BsFacebook, BsGoogle } from "react-icons/bs";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { useForm } from "react-hook-form";
+import { ModalContext } from "../../Providers/ModalProvider";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "./SignUp.css";
 
 const SignUp = () => {
-    return (
-        <div className='bg-black h-screen'>
-          <div className='signup-body'>
+  const [isChecked, setIsChecked] = useState(false);
+  const {
+    createUser,
+    updateUser,
+    loading,
+    setLoading,
+    googleSingup,
+    facebookSingup,
+  } = useContext(AuthContext);
+  const [error, setError] = useState("");
+
+  const { isModalOpen, closeModal, openModal } = useContext(ModalContext);
+  console.log("openmodal", isModalOpen, closeModal);
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleForm = (data) => {
+    console.log(errors, data);
+    createUser(data.email, data.password)
+      .then(() => {
+        const userData = {
+          name: data.name,
+          email: data.email,
+        };
+        updateUser(userData).then(() => {
+          axios
+            .post("http://localhost:5000/userUpdate", userData)
+            .then((res) => {
+              setLoading(false);
+              if (res.data.acknowledged) {
+                openModal();
+                navigate("/");
+              }
+            })
+            .catch((err) => console.error(err));
+        });
+      })
+      .catch((error) => setError(error.message));
+  };
+
+  const handleGoogleSignUp = () => {
+    googleSingup()
+      .then((result) => console.error(result))
+      .catch((err) => console.error(err));
+  };
+
+  const handleFbSignUp = () => {
+    facebookSingup()
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
+  };
+
+  const handleCheckboxChange = (e) => {
+    setIsChecked(e.target.checked);
+  };
+
+  return (
+    <div className="bg-black h-screen">
+      <SetTitle title={"Sign up"}></SetTitle>
+
+      <div className="signup-body">
         <div className="background">
-        <div className="shape"></div>
-        <div className="shape"></div>
+          <div className="shape"></div>
+          <div className="shape"></div>
+        </div>
+        <form onSubmit={handleSubmit(handleForm)}>
+          <h3>Sing Up Here</h3>
+          {error && <span>{error}</span>}
+          <label htmlFor="username">Full Name</label>
+          <input
+            {...register("name", { required: true })}
+            type="text"
+            placeholder="Your Full Name"
+            id="username"
+          />
+          {errors.name && (
+            <span className="text-yellow-400 text-xs">Name is required</span>
+          )}
+
+          <label htmlFor="email">User ID</label>
+          <input
+            {...register("email", { required: true })}
+            type="email"
+            placeholder="Email or Phone"
+            id="email"
+          />
+          {errors.email && (
+            <span className="text-yellow-400 text-xs">Email required</span>
+          )}
+
+          <label htmlFor="password">Password</label>
+          <input
+            {...register("password", { minLength: 6 })}
+            type="password"
+            placeholder="Your Password"
+            id="password"
+          />
+          {errors?.password && (
+            <span className="text-yellow-400 text-xs">
+              password must be 6 characters long.
+            </span>
+          )}
+
+          <div className="terms">
+            <label className="terms-label" htmlFor="terms">
+              accept our Terms and conditions
+            </label>
+            <input
+              onChange={handleCheckboxChange}
+              type="checkbox"
+              name="terms"
+              id="terms"
+            />
+          </div>
+
+          <button disabled={!isChecked} className="btn-reg">
+            {loading ? (
+              <progress className="progress w-56"></progress>
+            ) : (
+              "Register"
+            )}
+          </button>
+          <div className="social">
+            <div onClick={handleGoogleSignUp} className="go">
+              <BsGoogle /> Google
+            </div>
+            <div onClick={handleFbSignUp} className="fb">
+              <BsFacebook /> Facebook
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-    <form>
-        <h3>Sing Up Here</h3>
-
-        <label htmlFor="username">Full Name</label>
-        <input type="text" placeholder="Your Full Name" id="username"/>
-
-        <label htmlFor="email">User ID</label>
-        <input type="email" placeholder="Email or Phone" id="email"/>
-
-        <label htmlFor="password">Password</label>
-        <input type="password" placeholder="Your Password" id="password"/>
-
-        <div className='terms'>
-        <label className='terms-label' htmlFor='terms'>accept our Terms and conditions</label>
-        <input  type="checkbox" name="terms" id="terms" />
-        </div>
-
-        <button>Register</button>
-        <div className="social">
-          <div className="go"><BsGoogle/> Google</div>
-          <div className="fb"><BsFacebook /> Facebook</div>
-        </div>
-    </form>
-        </div>
-        </div>
-    );
+  );
 };
 
 export default SignUp;

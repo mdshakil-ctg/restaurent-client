@@ -6,13 +6,14 @@ import { useState } from "react";
 import ShopTabData from "../../../components/ShopTabData";
 // import "react-tabs/style/react-tabs.css";
 import { useParams } from "react-router-dom";
+import SetTitle from "../../../components/SetTitle";
 
 const Shop = () => {
 
   const params = useParams()
   const [activeTabs, setActiveTabs] = useState(params.category);
 
-  console.log(activeTabs)
+  (activeTabs)
 
 
 
@@ -28,6 +29,7 @@ const Shop = () => {
 
   return (
     <div className="mb-20">
+      <SetTitle title={'Shop'}></SetTitle>
       <ShowCaseCard
         imgUrl={shopBanner}
         details="WOULD YOU LIKE TO TRY A DISH?"

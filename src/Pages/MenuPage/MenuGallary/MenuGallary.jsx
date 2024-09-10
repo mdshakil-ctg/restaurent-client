@@ -15,7 +15,7 @@ const MenuGallary = () => {
     const soupsData = useMenuFilterData('soup');
     const drinksData = useMenuFilterData('drinks');
     // const params = useParams()
-    // console.log({params})
+    // ({params})
 
     return (
         <div>

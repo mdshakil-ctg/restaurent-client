@@ -6,10 +6,19 @@ import Callus from '../CallUs/Callus';
 import ChefRecommend from '../ChefRecommend/ChefRecommend';
 import Featured from '../Featured/Featured';
 import Testimonial from '../Testimonial/Testimonial';
+import SetTitle from '../../../components/SetTitle';
+// import ModalTest from '../../Shared/Modal/ModalTest';
+import Modal from '../../Shared/Modal/Modal';
+import { useContext } from 'react';
+import { ModalContext } from '../../../Providers/ModalProvider';
 
 const Home = () => {
+
+    const { isModalOpen, closeModal } = useContext(ModalContext);
     return (
         <div>
+            <SetTitle title={'Home'}></SetTitle>
+            <Modal className="z-50" isOpen={isModalOpen} onClose={closeModal}></Modal>
             <Banner></Banner>
             <Category></Category>
             <About></About>
@@ -18,6 +27,7 @@ const Home = () => {
             <ChefRecommend></ChefRecommend>
             <Featured></Featured>
             <Testimonial></Testimonial>
+            {/* <ModalTest></ModalTest> */}
         </div>
     );
 };

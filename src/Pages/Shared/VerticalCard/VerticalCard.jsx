@@ -2,7 +2,7 @@
 
 const VerticalCard = ({data}) => {
     const {name, image, details, recipe} = data;
-    console.log(data);
+    (data);
   return (
     <div className="card glass">
       <figure>

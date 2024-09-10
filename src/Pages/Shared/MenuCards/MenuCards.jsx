@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const MenuCards = ({datas, buttonInfo='see details'}) => {
 
   const [menuTitle, setMenuTitle] = useState('');
-console.log(menuTitle)
+(menuTitle)
     return (
         <div className="max-w-screen-lg mx-auto mb-10">
         <div className="grid md:grid-cols-2 ">
