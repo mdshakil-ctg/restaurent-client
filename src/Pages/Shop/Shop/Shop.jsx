@@ -2,18 +2,20 @@ import ShowCaseCard from "../../Shared/ShowCaseCard/ShowCaseCard";
 import shopBanner from "../../../assets/shop/banner2.jpg";
 import { useMenuFilterData } from "../../../Hooks/useMenuFilterData";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import { useState } from "react";
+import {  useState } from "react";
 import ShopTabData from "../../../components/ShopTabData";
 // import "react-tabs/style/react-tabs.css";
 import { useParams } from "react-router-dom";
 import SetTitle from "../../../components/SetTitle";
+// import Modal from "../../Shared/Modal/Modal";
+// import { ModalContext } from "../../../Providers/ModalProvider";
 
 const Shop = () => {
 
   const params = useParams()
   const [activeTabs, setActiveTabs] = useState(params.category);
-
-  (activeTabs)
+  // const { isModalOpen, closeModal } = useContext(ModalContext);
+  
 
 
 
@@ -29,6 +31,7 @@ const Shop = () => {
 
   return (
     <div className="mb-20">
+       {/* <Modal className="z-50" isOpen={isModalOpen} onClose={closeModal}></Modal> */}
       <SetTitle title={'Shop'}></SetTitle>
       <ShowCaseCard
         imgUrl={shopBanner}

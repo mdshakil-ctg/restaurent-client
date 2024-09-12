@@ -91,7 +91,7 @@ input {
   cursor: not-allowed;
 }
 .social {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
 }
 .social div {
@@ -130,6 +130,7 @@ input {
   flex-direction: row-reverse;
   justify-content: flex-end;
   align-items: center;
+  margin-top: 5px;
 }
 
 .terms .terms-label {
@@ -140,9 +141,7 @@ input {
   color: #a88f8f;
 }
 
-.terms-label:hover {
-  text-decoration: underline;
-}
+
 
 input[type="checkbox"] {
   width: 15px;

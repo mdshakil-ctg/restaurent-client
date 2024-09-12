@@ -4,7 +4,7 @@ import { BsFacebook, BsGoogle } from "react-icons/bs";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import { ModalContext } from "../../Providers/ModalProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignUp.css";
 
@@ -18,10 +18,9 @@ const SignUp = () => {
     googleSingup,
     facebookSingup,
   } = useContext(AuthContext);
-  const [error, setError] = useState("");
-
-  const { isModalOpen, closeModal, openModal } = useContext(ModalContext);
-  console.log("openmodal", isModalOpen, closeModal);
+  const [error, setError] = useState('')
+  const { openModal, SetModalMessage, modalMessage } = useContext(ModalContext);
+ 
   const navigate = useNavigate();
   const {
     register,
@@ -30,27 +29,32 @@ const SignUp = () => {
   } = useForm();
 
   const handleForm = (data) => {
-    console.log(errors, data);
+    console.log(modalMessage);
     createUser(data.email, data.password)
       .then(() => {
         const userData = {
           name: data.name,
           email: data.email,
         };
+        const modalData = {
+          name: data.name,
+          type: 'registration',
+          message: 'succesfully done'
+        }
         updateUser(userData).then(() => {
-          axios
-            .post("http://localhost:5000/userUpdate", userData)
+          axios.post("http://localhost:5000/userUpdate", userData)
             .then((res) => {
               setLoading(false);
               if (res.data.acknowledged) {
                 openModal();
+                SetModalMessage(modalData)
                 navigate("/");
               }
             })
-            .catch((err) => console.error(err));
+            .catch(() => {});
         });
       })
-      .catch((error) => setError(error.message));
+      .catch((error) =>  setError(error.message));
   };
 
   const handleGoogleSignUp = () => {
@@ -118,7 +122,7 @@ const SignUp = () => {
 
           <div className="terms">
             <label className="terms-label" htmlFor="terms">
-              accept our Terms and conditions
+             I agree with Bistro <span className="hover:underline">Terms and conditions</span>, and <span className="hover:underline">Privacy Polices</span>
             </label>
             <input
               onChange={handleCheckboxChange}
@@ -135,6 +139,9 @@ const SignUp = () => {
               "Register"
             )}
           </button>
+          <div className="mt-3 ml-2 text-sm">
+            <span>Already have an account? <Link className="hover:text-yellow-300" to='/login'>Log In Here!</Link></span>
+          </div>
           <div className="social">
             <div onClick={handleGoogleSignUp} className="go">
               <BsGoogle /> Google

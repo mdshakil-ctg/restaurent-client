@@ -5,17 +5,25 @@ import { router } from "./Routes/Routes.jsx";
 import { RouterProvider } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./Providers/AuthProvider.jsx";
-import ModalProvider from "./Providers/ModalProvider.jsx";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+import { ModalProvider } from "./components/Modal/ModalProvider.jsx";
+
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <HelmetProvider>
       <AuthProvider>
-        <ModalProvider>
-          <div className="max-w-screen-xl mx-auto">
-            <RouterProvider router={router} />
-          </div>
-        </ModalProvider>
+        <QueryClientProvider client={queryClient}>
+          <ModalProvider>
+            <div className="max-w-screen-xl mx-auto">
+              <RouterProvider router={router} />
+            </div>
+          </ModalProvider>
+        </QueryClientProvider>
       </AuthProvider>
     </HelmetProvider>
   </StrictMode>
