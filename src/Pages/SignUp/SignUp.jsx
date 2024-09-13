@@ -3,7 +3,7 @@ import SetTitle from "../../components/SetTitle";
 import { BsFacebook, BsGoogle } from "react-icons/bs";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
-import { ModalContext } from "../../Providers/ModalProvider";
+// import { ModalContext } from "../../Providers/ModalProvider";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./SignUp.css";
@@ -19,7 +19,7 @@ const SignUp = () => {
     facebookSingup,
   } = useContext(AuthContext);
   const [error, setError] = useState('')
-  const { openModal, SetModalMessage, modalMessage } = useContext(ModalContext);
+  // const { openModal, SetModalMessage, modalMessage } = useContext(ModalContext);
  
   const navigate = useNavigate();
   const {
@@ -29,25 +29,25 @@ const SignUp = () => {
   } = useForm();
 
   const handleForm = (data) => {
-    console.log(modalMessage);
+    // console.log(modalMessage);
     createUser(data.email, data.password)
       .then(() => {
         const userData = {
           name: data.name,
           email: data.email,
         };
-        const modalData = {
-          name: data.name,
-          type: 'registration',
-          message: 'succesfully done'
-        }
+        // const modalData = {
+        //   name: data.name,
+        //   type: 'registration',
+        //   message: 'succesfully done'
+        // }
         updateUser(userData).then(() => {
           axios.post("http://localhost:5000/userUpdate", userData)
             .then((res) => {
               setLoading(false);
               if (res.data.acknowledged) {
-                openModal();
-                SetModalMessage(modalData)
+                // openModal();
+                // SetModalMessage(modalData)
                 navigate("/");
               }
             })

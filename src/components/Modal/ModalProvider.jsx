@@ -4,9 +4,7 @@ import Modal from './Modal';
 
 export const ModalContext = createContext();
 
-// export const useModal = () => {
-//   return useContext(ModalContext);
-// };
+
 
 export const ModalProvider = ({ children }) => {
   const [modalData, setModalData] = useState({
@@ -16,10 +14,14 @@ export const ModalProvider = ({ children }) => {
     type: '',
     onConfirm: null,
     autoCloseTime: null,
+    color:'',
+    icon: ''
   });
-
+  
+console.log(modalData.onConfirm);
   const openModal = (data) => setModalData({ ...data, isOpen: true });
   const closeModal = () => setModalData({ ...modalData, isOpen: false });
+  
 
   return (
     <ModalContext.Provider value={{ openModal, closeModal }}>

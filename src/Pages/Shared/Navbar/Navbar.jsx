@@ -52,7 +52,7 @@ const Navbar = () => {
       )}
 
       <li>
-        <NavLink to="/dashboard/myCart">
+        <NavLink to="/dashboard">
         
        <span className="relative z-30"> <FaCartArrowDown className="text-2xl"/></span>
        <div className="badge badge-warning badge-sm absolute top-0 right-0 z-40">{cart?.length}</div>

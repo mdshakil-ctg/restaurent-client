@@ -30,7 +30,7 @@ const ShopCard = ({ data }) => {
         image,
         price,
         email: user.email
-      })
+      }, {withCredentials:true})
       .then(res => {
         console.log(res);
         if(res.data.insertedId){
