@@ -49,17 +49,16 @@ const AuthProvider = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
             const userInfo = {email: currentUser?.email}
             if(currentUser){
-                // console.log("under on auth",currentUser)
                 setUser(currentUser);
                 axiosPublic.post('/jwt', userInfo, {withCredentials:true})
-                .then(res => console.log(res))
+                .then(() => {})
             }
             setLoading(false);
             setUser(currentUser);
         })
         return () => unsubscribe();
         
-    },[auth])
+    },[auth,axiosPublic])
 
     const authInfo = {
         user,

@@ -12,7 +12,7 @@ const MyCart = () => {
   const totalPrice = cart.reduce((acc, currentvalue) => {
     return acc + currentvalue.price;
   }, 0);
-//   console.log(cart);
+
   
   const handleCartDelete = (id) =>{
     openModal({

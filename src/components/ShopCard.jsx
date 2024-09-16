@@ -15,14 +15,9 @@ const ShopCard = ({ data }) => {
   const navigate = useNavigate();
   const location = useLocation()
   const {user} = useContext(AuthContext)
-  console.log(user);
+
   const handleAddtoCart = () => {
-    console.log('clicked')
-    // const modalData = {
-    //   name:name,
-    //   type:'Add To Cart',
-    //   message:'Succesfully done!'
-    // }
+  
     if(user && user?.email){
       axiosSecure.post(`/carts`, {
         menuId: _id,
@@ -32,7 +27,7 @@ const ShopCard = ({ data }) => {
         email: user.email
       }, {withCredentials:true})
       .then(res => {
-        console.log(res);
+     
         if(res.data.insertedId){
           openModal({
             title:'Success!',
@@ -40,9 +35,7 @@ const ShopCard = ({ data }) => {
             type: 'success',
             autoCloseTime: 5000,
           })
-          // openModal()
-          // SetModalMessage(modalData)
-          // refetch();
+         
         }
       })
      
@@ -52,7 +45,7 @@ const ShopCard = ({ data }) => {
     }
   }
 
-// console.log(data)
+
   return (
     <div className="card bg-base-100 shadow-xl">
   <figure>

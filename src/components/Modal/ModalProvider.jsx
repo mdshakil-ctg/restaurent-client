@@ -17,8 +17,7 @@ export const ModalProvider = ({ children }) => {
     color:'',
     icon: ''
   });
-  
-console.log(modalData.onConfirm);
+
   const openModal = (data) => setModalData({ ...data, isOpen: true });
   const closeModal = () => setModalData({ ...modalData, isOpen: false });
   

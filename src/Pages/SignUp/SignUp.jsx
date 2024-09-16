@@ -1,26 +1,21 @@
 import { useContext, useState } from "react";
 import SetTitle from "../../components/SetTitle";
-import { BsFacebook, BsGoogle } from "react-icons/bs";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 // import { ModalContext } from "../../Providers/ModalProvider";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import "./SignUp.css";
+import DatabaseUserCreate from "../../Hooks/DatabaseUserCreate";
+import useModal from './../../Hooks/useModal';
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
+
 
 const SignUp = () => {
+  const {openModal} = useModal()
   const [isChecked, setIsChecked] = useState(false);
-  const {
-    createUser,
-    updateUser,
-    loading,
-    setLoading,
-    googleSingup,
-    facebookSingup,
-  } = useContext(AuthContext);
-  const [error, setError] = useState('')
-  // const { openModal, SetModalMessage, modalMessage } = useContext(ModalContext);
- 
+  const {createUser,loading,setLoading} = useContext(AuthContext);
+  const location = useLocation();
   const navigate = useNavigate();
   const {
     register,
@@ -29,45 +24,35 @@ const SignUp = () => {
   } = useForm();
 
   const handleForm = (data) => {
-    // console.log(modalMessage);
     createUser(data.email, data.password)
       .then(() => {
-        const userData = {
-          name: data.name,
-          email: data.email,
-        };
-        // const modalData = {
-        //   name: data.name,
-        //   type: 'registration',
-        //   message: 'succesfully done'
-        // }
-        updateUser(userData).then(() => {
-          axios.post("http://localhost:5000/userUpdate", userData)
-            .then((res) => {
-              setLoading(false);
-              if (res.data.acknowledged) {
-                // openModal();
-                // SetModalMessage(modalData)
-                navigate("/");
-              }
-            })
-            .catch(() => {});
-        });
+        const userInfo = {name:data.name, email:data.email}
+      
+      DatabaseUserCreate(userInfo)
+      .then(res => {
+        if(res?.data?.insertedId){
+          openModal({
+            title: `Welcome ${data.name}`,
+            message: 'Please check your email for exclusive offers!',
+            autoCloseTime: 5000
+          })
+        }
+        
       })
-      .catch((error) =>  setError(error.message));
+      navigate(location?.state?.from || '/')
+      })
+      .catch((error) =>  {
+        setLoading(false)
+        if(error.message.includes('email-already-in-use')){
+          openModal({
+            title: `${data.email}this email is already taken. Please confirm any other email for Register.`,
+            autoCloseTime: 7000
+          })
+        }
+      });
   };
 
-  const handleGoogleSignUp = () => {
-    googleSingup()
-      .then((result) => console.error(result))
-      .catch((err) => console.error(err));
-  };
-
-  const handleFbSignUp = () => {
-    facebookSingup()
-      .then((res) => console.log(res))
-      .catch((err) => console.error(err));
-  };
+  
 
   const handleCheckboxChange = (e) => {
     setIsChecked(e.target.checked);
@@ -84,7 +69,6 @@ const SignUp = () => {
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
           <h3>Sing Up Here</h3>
-          {error && <span>{error}</span>}
           <label htmlFor="username">Full Name</label>
           <input
             {...register("name", { required: true })}
@@ -142,14 +126,7 @@ const SignUp = () => {
           <div className="mt-3 ml-2 text-sm">
             <span>Already have an account? <Link className="hover:text-yellow-300" to='/login'>Log In Here!</Link></span>
           </div>
-          <div className="social">
-            <div onClick={handleGoogleSignUp} className="go">
-              <BsGoogle /> Google
-            </div>
-            <div onClick={handleFbSignUp} className="fb">
-              <BsFacebook /> Facebook
-            </div>
-          </div>
+          <SocialLogin></SocialLogin>
         </form>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { router } from "./Routes/Routes.jsx";
@@ -14,7 +14,7 @@ import { ModalProvider } from "./components/Modal/ModalProvider.jsx";
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  
     <HelmetProvider>
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
@@ -26,5 +26,5 @@ createRoot(document.getElementById("root")).render(
         </QueryClientProvider>
       </AuthProvider>
     </HelmetProvider>
-  </StrictMode>
+  
 );

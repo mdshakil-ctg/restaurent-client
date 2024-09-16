@@ -2,29 +2,24 @@ import { useContext, useEffect, useState } from "react";
 import SetTitle from "../../components/SetTitle";
 import { AuthContext } from "../../Providers/AuthProvider";
 // import { ModalContext } from "../../Providers/ModalProvider";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate} from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { BsFacebook, BsGoogle } from "react-icons/bs";
 import { loadCaptchaEnginge, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 // import useModal from "../../Hooks/useModal";
 
 
 const Login = () => {
   const {
     loading,
-    setLoading,
     LoginUser,
-    googleSingup,
-    facebookSingup,
+   
   } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [isDisable, setIsDisable] = useState(false);
 
-  // const { openModal, SetModalMessage } = useContext(ModalContext);
-  // const {openModal} = useModal();
-  const navigate = useNavigate();
   const location = useLocation();
-   console.log(location)
+  const navigate = useNavigate();
 
   
   useEffect(()=>{
@@ -41,18 +36,10 @@ const Login = () => {
     
     const email = data.email;
     const password = data.password;
-    // const modalData = {
-    //   name : data.email,
-    //   type: 'Login',
-    //   message: 'successfully done'
-    // }
+    
     LoginUser(email, password)
     .then(() => {
-      // openModal()
-      // SetModalMessage(modalData)
-      // navigate(location?.state?.from || '/')
-
-
+     navigate(location?.state?.from || '/')
     })
     .catch(err => setError(err))
     
@@ -72,21 +59,8 @@ const  ValidateCaptchaField = (e) =>{
     }
 }
 
-  const handleGoogleSignUp = () => {
-    googleSingup()
-      .then(() => {
-        navigate(location?.state?.from || '/')
-        setLoading(false)})
-      .catch((err) => console.error(err));
-  };
-
-  const handleFbSignUp = () => {
-    facebookSingup()
-      .then(() => {
-        navigate(location?.state?.from || '/')
-        setLoading(false)})
-      .catch((err) => console.error(err));
-  };
+  
+ 
 
   
 
@@ -149,20 +123,7 @@ const  ValidateCaptchaField = (e) =>{
           <div className="mt-3 ml-2 text-sm">
             <span>New to our site? <Link className="hover:text-yellow-300" to='/signup'>Please SingUp First!</Link></span>
           </div>
-          <div className="social">
-            <div onClick={handleGoogleSignUp} className="go">
-              {loading ? <span className="loading loading-dots loading-md"></span> :
-             <> <BsGoogle /> Google</>
-              }
-              
-              
-            </div>
-            <div onClick={handleFbSignUp} className="fb">
-            {loading ? <span className="loading loading-dots loading-md"></span> :
-             <> <BsFacebook /> Facebook</>
-              }
-            </div>
-          </div>
+         <SocialLogin></SocialLogin>
         </form>
       </div>
     </div>

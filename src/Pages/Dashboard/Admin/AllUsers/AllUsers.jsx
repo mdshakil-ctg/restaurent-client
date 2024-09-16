@@ -3,40 +3,42 @@ import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { FaTrash, FaUsers } from "react-icons/fa";
 import useModal from "../../../../Hooks/useModal";
+// import { useContext } from "react";
+// import { AuthContext } from './../../../../Providers/AuthProvider';
 
 
 
 
 const AllUsers = () => {
-    const {openModal,closeModal} = useModal()
+    const {openModal={}, closeModal} = useModal()
 
-    // const axiosPublic = useAxiosPublic();
+    // const {user} = useContext(AuthContext);
     const axiosSecure = useAxiosSecure()
 
     const {data : users = [], refetch} = useQuery({
         queryKey: ['users'],
         queryFn : async() =>{
-         const res = await axiosSecure.get('/users',{withCredentials: true})
+         const res = await axiosSecure.get(`/users`)
             return res.data
         }
     })
     
 
-    const handleMakeAdmin = (id) =>{
+    const handleMakeAdmin = (user) =>{
         openModal({
             title: 'Warning!!!',
             message:'Are you sure to make this user admin?',
             type: 'confirm',
-            onConfirm: ()=>handleConfirmAdmin(id)
+            onConfirm: ()=>handleConfirmAdmin(user)
         })
-        const handleConfirmAdmin = (id) =>{
+        const handleConfirmAdmin = (user) =>{
             closeModal()
-            axiosSecure.patch(`/user/admin/${id}`)
+            axiosSecure.patch(`/user/admin/${user._id}`)
             .then(res => {
                 if(res.data.modifiedCount > 0){
                     openModal({
                         title: 'success!',
-                        message:'User is admin now',
+                        message:`${user.name} is admin now`,
                         autoCloseTime: 3000,
                     })
                     refetch()
@@ -45,22 +47,22 @@ const AllUsers = () => {
           }
     }
 
-    const handleDeleteUser = (id) =>{
+    const handleDeleteUser = (user) =>{
       
         openModal({
             title: 'Warning!!!',
-            message:'Are you sure to delete this user?',
+            message:`Are you sure to delete ${user.name} from Database?`,
             type: 'confirm',
-            onConfirm: ()=>handleConfirmDelete(id)
+            onConfirm: ()=>handleConfirmDelete(user)
         })
-        const handleConfirmDelete = (id) =>{
+        const handleConfirmDelete = (user) =>{
             closeModal()
-            axiosSecure.delete(`/user/admin/${id}`)
+            axiosSecure.delete(`/user/admin/${user._id}`)
             .then(res => {
                 if(res.data.deletedCount > 0){
                     openModal({
                         title: 'success!',
-                        message:'User has been deleted from database.',
+                        message:`${user.name} has been deleted from database.`,
                         autoCloseTime: 4000,
                     })
                     refetch()
@@ -112,11 +114,11 @@ const AllUsers = () => {
                         <td>
                           {
                             user.role==='admin'? 'Admin' : 
-                            <button onClick={()=>handleMakeAdmin(user._id)} className="btn hover:bg-yellow-500"><FaUsers></FaUsers></button>
+                            <button onClick={()=>handleMakeAdmin(user)} className="btn hover:bg-yellow-500"><FaUsers></FaUsers></button>
                           }
                         </td>
                         <td>
-                          <button onClick={()=>handleDeleteUser(user._id)} className="btn hover:bg-yellow-500"><FaTrash></FaTrash></button>
+                          <button onClick={()=>handleDeleteUser(user)} className="btn hover:bg-yellow-500"><FaTrash></FaTrash></button>
                         </td>
                       </tr>)
                 }
