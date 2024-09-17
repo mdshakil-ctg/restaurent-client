@@ -50,6 +50,7 @@ const ShopCard = ({ data }) => {
     <div className="card bg-base-100 shadow-xl">
   <figure>
     <img
+      className='w-full h-56 object-cover'
       src={image}
       alt="Shoes" />
   </figure>

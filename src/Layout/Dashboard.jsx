@@ -3,7 +3,9 @@ import { FaBook, FaHome } from "react-icons/fa";
 import { ImSpoonKnife } from "react-icons/im";
 import { MdPayment, MdReviews } from "react-icons/md";
 import { FaCartShopping } from "react-icons/fa6";
+
 import useIsAdmin from "../Hooks/useIsAdmin";
+
 const Dashboard = () => {
   
     const {isAdmin} = useIsAdmin();
@@ -23,7 +25,7 @@ const Dashboard = () => {
           </NavLink>
         </li>
         <li className="text-xl font-semibold uppercase ">
-          <NavLink to="/dashboard/addItems">
+          <NavLink to="/dashboard/addItem">
             <ImSpoonKnife className="text-3xl inline  pb-2" /> add items
           </NavLink>
         </li>
@@ -105,7 +107,7 @@ const Dashboard = () => {
           </ul>
         </div>
       </div>
-      <div className="flex-1 p-10">
+      <div className="flex-1">
         <Outlet></Outlet>
       </div>
     </div>

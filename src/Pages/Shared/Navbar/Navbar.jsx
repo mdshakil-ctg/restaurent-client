@@ -3,17 +3,20 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaCartArrowDown } from "react-icons/fa6";
 import useCart from "../../../Hooks/useCart";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 
 const Navbar = () => {
   const { user, LogoutUser, setLoading } = useContext(AuthContext); 
   const {cart} = useCart();
-
+  const axiosPublic = useAxiosPublic();
 
   const handleLogout = () => {
     LogoutUser()
       .then(() => {
         setLoading(false);
+        axiosPublic.post('/logout')
+        .then(res => console.log(res))
       })
       .catch((err) => console.error(err));
   };

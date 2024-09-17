@@ -67,7 +67,7 @@ const SignUp = () => {
           <div className="shape"></div>
           <div className="shape"></div>
         </div>
-        <form onSubmit={handleSubmit(handleForm)}>
+        <form className="main-form" onSubmit={handleSubmit(handleForm)}>
           <h3>Sing Up Here</h3>
           <label htmlFor="username">Full Name</label>
           <input

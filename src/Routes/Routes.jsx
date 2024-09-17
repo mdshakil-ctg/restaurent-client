@@ -19,6 +19,7 @@ import MyCart from "../Pages/Dashboard/MyCart/MyCart";
 import AddReview from './../Pages/Dashboard/AddReview/AddReview';
 import Mybooking from './../Pages/Dashboard/Mybooking/Mybooking';
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
+import AddItem from "../components/AddItem/AddItem";
 
   export const router = createBrowserRouter([
     {
@@ -88,7 +89,11 @@ import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
         {
           path:'allUsers',
           element: <AllUsers></AllUsers>
-        }
+        },
+        {
+          path:'addItem',
+          element: <AddItem></AddItem>
+        },
       ]
     }
   ]);

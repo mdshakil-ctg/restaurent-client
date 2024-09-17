@@ -13,7 +13,7 @@ const Login = () => {
   const {
     loading,
     LoginUser,
-   
+    setLoading
   } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [isDisable, setIsDisable] = useState(false);
@@ -41,7 +41,9 @@ const Login = () => {
     .then(() => {
      navigate(location?.state?.from || '/')
     })
-    .catch(err => setError(err))
+    .catch(err => {
+      setLoading(false)
+      setError(err)})
     
     
   };
@@ -73,9 +75,9 @@ const  ValidateCaptchaField = (e) =>{
           <div className="shape"></div>
           <div className="shape"></div>
         </div>
-        <form onSubmit={handleSubmit(handleForm)}>
+        <form className="main-form" onSubmit={handleSubmit(handleForm)}>
           <h3>Login now!</h3>
-          {error && <span>{error}</span>}
+          {error && <span>{error.message}</span>}
           
           <label htmlFor="email">User ID Or Email</label>
           <input

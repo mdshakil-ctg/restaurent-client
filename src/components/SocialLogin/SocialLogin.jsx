@@ -37,6 +37,7 @@ const SocialLogin = () => {
                 })
             }
             else{
+              console.log('in the else state')
               navigate(location?.state?.from || '/')
                 openModal({
                     title: `Welcome Back ${result.user.displayName} to Bistro Boss!!!`,
@@ -49,21 +50,32 @@ const SocialLogin = () => {
     
       const handleFbSignUp = () => {
         facebookSingup()
-          .then((result) => {
-            if(result.user.email){
-                DatabaseUserCreate({email: result.user.email, name: result.user.displayName})
-                .then(res => {
-                    if(res.data.insertedId){
-                        openModal({
-                            title:`Welcome ${result.user.displayName} to Bistro Boss!!!`,
-                            message:'Please check your email for exclusive offers!',
-                            autoCloseTime: 6000
-                        })
-                        navigate(location?.state?.from || '/')
-                    }
-                })
-            }
-          })
+        .then((result) => {
+       
+          const isNewUser = result.user.metadata.creationTime === result.user.metadata.lastSignInTime;
+
+          if(isNewUser){
+              DatabaseUserCreate({email: result.user.email, name: result.user.displayName})
+              .then(res => {
+            
+                  if(res.data.insertedId){
+                    navigate(location?.state?.from || '/')
+                      openModal({
+                          title:`Welcome ${result.user.displayName} to Bistro Boss!!!`,
+                          message:'Please check your email for exclusive offers!',
+                          autoCloseTime: 6000
+                      })
+                  }
+              })
+          }
+          else{
+            navigate(location?.state?.from || '/')
+              openModal({
+                  title: `Welcome Back ${result.user.displayName} to Bistro Boss!!!`,
+                  autoCloseTime: 4000
+              })
+          }
+        })
           .catch((err) => console.error(err));
       };
     return (
