@@ -10,7 +10,6 @@ import ContactUs from "../Pages/ContactUs/ContactUs";
 import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
-import Secret from "../Pages/Shared/Secrets/Secret";
 import Dashboard from "../Layout/Dashboard";
 import UserHome from './../Pages/Dashboard/UserHome/UserHome';
 import Reservation from './../Pages/Dashboard/Reservation/Reservation';
@@ -20,6 +19,7 @@ import AddReview from './../Pages/Dashboard/AddReview/AddReview';
 import Mybooking from './../Pages/Dashboard/Mybooking/Mybooking';
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
 import AddItem from "../components/AddItem/AddItem";
+import ManageItems from "../Pages/Dashboard/Admin/AllUsers/ManageItems/ManageItems";
 
   export const router = createBrowserRouter([
     {
@@ -50,11 +50,8 @@ import AddItem from "../components/AddItem/AddItem";
         {
           path: '/login',
           element: <Login></Login>
-        },
-        {
-          path: '/secret',
-          element: <PrivateRoute><Secret></Secret></PrivateRoute>
         }
+        
       ]
     },
     {
@@ -93,6 +90,14 @@ import AddItem from "../components/AddItem/AddItem";
         {
           path:'addItem',
           element: <AddItem></AddItem>
+        },
+        {
+          path:'manageItems',
+          element: <ManageItems></ManageItems>
+        },
+        {
+          path:'payment',
+          element: <Payment></Payment>
         },
       ]
     }

@@ -4,10 +4,11 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaCartArrowDown } from "react-icons/fa6";
 import useCart from "../../../Hooks/useCart";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import logo from "../../../assets/logo.png"
 
 
 const Navbar = () => {
-  const { user, LogoutUser, setLoading } = useContext(AuthContext); 
+  const { user, LogoutUser, setLoading, loading } = useContext(AuthContext); 
   const {cart} = useCart();
   const axiosPublic = useAxiosPublic();
 
@@ -21,6 +22,10 @@ const Navbar = () => {
       .catch((err) => console.error(err));
   };
 
+  if(loading){
+    return <span>loading...</span>
+  }
+
   const navItems = (
     <>
       <li>
@@ -30,13 +35,14 @@ const Navbar = () => {
         <NavLink to="/menu">Menu</NavLink>
       </li>
       <li>
-        <NavLink to="/shop/soup">Our Shop</NavLink>
+        <NavLink to="/shop/soup">Item Gallary</NavLink>
+      </li>
+      
+      <li>
+        <NavLink to="/reservation">Reservaion</NavLink>
       </li>
       <li>
         <NavLink to="/contact">Contact Us</NavLink>
-      </li>
-      <li>
-        <NavLink to="/secret">Secret</NavLink>
       </li>
 
       {user ? (
@@ -94,7 +100,7 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">BISTRO BOSS</a>
+          <a className="w-[240px] h-[120px]"><img className="h-full w-full" src={logo}></img></a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>

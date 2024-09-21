@@ -4,6 +4,8 @@ import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import useCart from "./../../../Hooks/useCart";
 import useModal from "../../../Hooks/useModal";
 import { axiosSecure } from './../../../Hooks/useAxiosSecure';
+import { Link } from "react-router-dom";
+
 
 const MyCart = () => {
   const {openModal, closeModal} = useModal();  
@@ -13,6 +15,8 @@ const MyCart = () => {
     return acc + currentvalue.price;
   }, 0);
 
+  const totalPriceNum = parseFloat(totalPrice).toFixed(2)
+  
   
   const handleCartDelete = (id) =>{
     openModal({
@@ -21,6 +25,7 @@ const MyCart = () => {
         type: 'confirm',
         onConfirm: ()=>handleConfirmDelete(id)
     })
+
     const handleConfirmDelete = (id) =>{
         closeModal()
         axiosSecure.delete(`/cartItem/${id}`,{withCredentials:true})
@@ -42,8 +47,8 @@ const MyCart = () => {
       <SectionTitle title="payment history" subTitle="my cart"></SectionTitle>
       <div className="flex justify-around items-center text-3xl mb-5">
         <h5>TOTAL ORDERS {cart.length}</h5>
-        <h5>TOTAL PRICE ${totalPrice.toFixed(2)}</h5>
-        <button className="btn bg-yellow-700">PAY</button>
+        <h5>TOTAL PRICE ${totalPriceNum}</h5>
+        <Link to='/dashboard/payment'><button className="btn bg-yellow-700">PAY</button></Link>
       </div>
       {/* table content */}
       <div>

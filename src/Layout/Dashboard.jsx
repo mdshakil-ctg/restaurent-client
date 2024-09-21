@@ -8,8 +8,9 @@ import useIsAdmin from "../Hooks/useIsAdmin";
 
 const Dashboard = () => {
   
-    const {isAdmin} = useIsAdmin();
-    
+    const {isAdmin, isPending} = useIsAdmin();
+    console.log(isAdmin);
+    if(isPending) return <span> Loading...</span>
   return (
     <div className="flex">
       <div className="w-[300px] bg-yellow-300 min-h-screen p-2">
@@ -73,7 +74,7 @@ const Dashboard = () => {
          </NavLink>
        </li>
        <li className="text-xl font-semibold uppercase ">
-         <NavLink to="myBookings">
+         <NavLink to="myBooking">
            <FaBook className="text-3xl inline  pb-2" /> my bookings
          </NavLink>
        </li>

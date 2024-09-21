@@ -4,12 +4,13 @@ import { AuthContext } from '../Providers/AuthProvider';
 import  { axiosSecure } from '../Hooks/useAxiosSecure';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useModal from '../Hooks/useModal';
-// import { ModalContext } from '../Providers/ModalProvider';
-// import useCart from '../Hooks/useCart';
+
+
+//todo for the page write here
+//page loading time ()
+//  page scrolling check()
 const ShopCard = ({ data }) => {
-  // const {refetch} = useCart();
-  // const { openModal, SetModalMessage } = useContext(ModalContext);
-  
+
   const {openModal} = useModal();
   const { name, image, recipe, price, _id } = data;
   const navigate = useNavigate();
@@ -45,12 +46,12 @@ const ShopCard = ({ data }) => {
     }
   }
 
-
   return (
     <div className="card bg-base-100 shadow-xl">
   <figure>
     <img
       className='w-full h-56 object-cover'
+     
       src={image}
       alt="Shoes" />
   </figure>
