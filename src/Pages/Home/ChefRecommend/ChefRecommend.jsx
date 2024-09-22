@@ -1,9 +1,9 @@
+import { useCardDataApi } from '../../../Hooks/CardDataApi/useCardDataApi';
 import SectionTitle from '../../Shared/SectionTitle/SectionTitle';
-import { UseCardDataApi } from '../../../Hooks/CardDataApi/UseCardDataApi';
 import VerticalCard from '../../Shared/VerticalCard/VerticalCard';
 
 const ChefRecommend = () => {
-    const datas = UseCardDataApi('category');
+    const datas = useCardDataApi('category');
     return (
         <section className='mb-20'>
             <SectionTitle title={'chef recommends'} subTitle={'Should Try'}></SectionTitle>

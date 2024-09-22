@@ -1,13 +1,14 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaCartArrowDown } from "react-icons/fa6";
 import useCart from "../../../Hooks/useCart";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import logo from "../../../assets/logo.png"
+import logo from "../../../assets/logo.png";
 
 
 const Navbar = () => {
+  
   const { user, LogoutUser, setLoading, loading } = useContext(AuthContext); 
   const {cart} = useCart();
   const axiosPublic = useAxiosPublic();
@@ -71,6 +72,9 @@ const Navbar = () => {
     </>
   );
 
+
+  
+
   return (
     <>
     
@@ -105,9 +109,9 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
-        </div>
+       <div className="navbar-end">
+
+       </div>
       </div>
       {/* {loading && <progress className="progress"></progress>} */}
     </>

@@ -5,11 +5,11 @@ import "swiper/css/navigation";
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
-import { UseCardDataApi } from "../../../Hooks/CardDataApi/UseCardDataApi";
 import { FaQuoteLeft } from "react-icons/fa";
+import { useCardDataApi } from "../../../Hooks/CardDataApi/useCardDataApi";
 
 const Testimonial = () => {
-  const datas = UseCardDataApi('reviews');
+  const datas = useCardDataApi('reviews');
 
   return (
     <section className="md:mb-20">

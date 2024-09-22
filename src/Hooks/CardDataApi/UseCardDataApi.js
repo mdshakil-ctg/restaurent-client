@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const UseCardDataApi = (api) =>{
+export const useCardDataApi = (api) =>{
     const [datas, setDatas] = useState([]);
     useEffect(() => {
         fetch(`http://localhost:5000/${api}`)

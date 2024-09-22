@@ -1,11 +1,7 @@
 import { useState } from "react";
 import ShopCard from "./../components/ShopCard";
-import { useParams } from "react-router-dom";
 
 const ShopTabData = ({ datas }) => {
-    ({datas})
-    const params = useParams();
-    ({params})
   const count = parseInt(datas.length);
   const [itemsPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,6 +32,10 @@ for (let i = 1; i <= totalPages; i++) {
       setCurrentPage(currentPage - 1);
     }
   };
+  
+  if(!datas){
+    return <p>There is no data avilable now!</p>
+  }
 
   return (
     <div>

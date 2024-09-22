@@ -5,13 +5,16 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import OurLocation from "../../ContactUs/OurLocation/OurLocation";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import useModal from "../../../Hooks/useModal";
 
 const Reservation = () => {
-  const {user} = useContext(AuthContext)
+  const { openModal = {} } = useModal();
+  const { user } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const handleFormSubmit = async (data) => {
@@ -22,10 +25,18 @@ const Reservation = () => {
       name: data.name,
       phone: data.phone,
       time: data.time,
-      guest: data.guest
+      guest: data.guest,
     };
     const res = await axiosSecure.post("/booking", { bookingData });
     console.log(res);
+    if (res.data.insertedId) {
+      openModal({
+        title: "success!",
+        message: `Reserved table done`,
+        autoCloseTime: 3000,
+      });
+      reset();
+    }
   };
 
   return (
@@ -131,7 +142,7 @@ const Reservation = () => {
                   Email*
                 </label>
                 <input
-                  {...register("email", { required: true ,disabled: true})}
+                  {...register("email", { required: true, disabled: true })}
                   type="email"
                   id="time"
                   className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
@@ -152,7 +163,7 @@ const Reservation = () => {
           </form>
         </div>
       </div>
-      <SectionTitle title='our location' subTitle='visit us'></SectionTitle>
+      <SectionTitle title="our location" subTitle="visit us"></SectionTitle>
       <OurLocation></OurLocation>
     </div>
   );

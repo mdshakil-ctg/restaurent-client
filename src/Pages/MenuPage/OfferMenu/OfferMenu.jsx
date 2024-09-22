@@ -1,9 +1,9 @@
 import SectionTitle from '../../Shared/SectionTitle/SectionTitle';
 import MenuCards from '../../Shared/MenuCards/MenuCards';
-import { UseCardDataApi } from '../../../Hooks/CardDataApi/UseCardDataApi';
+import { useCardDataApi } from '../../../Hooks/CardDataApi/useCardDataApi';
 
 const OfferMenu = () => {
-    const datas = UseCardDataApi('category')
+    const datas = useCardDataApi('category')
     return (
         <div>
             <SectionTitle title='todays offer' subTitle="Don't miss"></SectionTitle>

@@ -6,7 +6,7 @@ import soup from '../../../assets/menu/soup-bg.jpg'
 import drinks from '../../../assets/menu/menu-bg.png'
 import MenuCards from '../../Shared/MenuCards/MenuCards';
 import { useMenuFilterData } from '../../../Hooks/useMenuFilterData';
-// import { useParams } from 'react-router-dom';
+
 
 const MenuGallary = () => {
     const dessertsData = useMenuFilterData('dessert');
@@ -14,8 +14,9 @@ const MenuGallary = () => {
     const saladsData = useMenuFilterData('salad');
     const soupsData = useMenuFilterData('soup');
     const drinksData = useMenuFilterData('drinks');
-    // const params = useParams()
-    // ({params})
+    const allData = useMenuFilterData();
+    console.log(allData);
+    
 
     return (
         <div>
