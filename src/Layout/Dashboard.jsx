@@ -9,7 +9,7 @@ import useIsAdmin from "../Hooks/useIsAdmin";
 const Dashboard = () => {
   
     const {isAdmin, isPending} = useIsAdmin();
-    console.log(isAdmin);
+    // console.log(isAdmin);
     if(isPending) return <span> Loading...</span>
   return (
     <div className="flex">
@@ -49,7 +49,7 @@ const Dashboard = () => {
 
        <ul className="p-8 space-y-3">
        <li className="text-xl font-semibold uppercase">
-         <NavLink to="/dashboard">
+         <NavLink to="/dashboard/user-home">
            <FaHome className="text-3xl inline  pb-2" /> USER HOME
          </NavLink>
        </li>
@@ -59,7 +59,7 @@ const Dashboard = () => {
          </NavLink>
        </li>
        <li className="text-xl font-semibold uppercase ">
-         <NavLink to="/dashboard/payment">
+         <NavLink to="/dashboard/payment-history">
            <MdPayment className="text-3xl inline  pb-2" /> payment history
          </NavLink>
        </li>
@@ -69,7 +69,7 @@ const Dashboard = () => {
          </NavLink>
        </li>
        <li className="text-xl font-semibold uppercase ">
-         <NavLink to="/dashboard/review">
+         <NavLink to="/dashboard/addReview">
            <MdReviews className="text-3xl inline  pb-2" /> Add review
          </NavLink>
        </li>

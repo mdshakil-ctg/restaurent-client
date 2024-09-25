@@ -47,7 +47,7 @@ const ShopCard = ({ data }) => {
   }
 
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card shadow-xltext-gray-800 bg-gray-200 transition-transform duration-300 transform hover:scale-110">
   <figure>
     <img
       className='w-full h-56 object-cover'
@@ -58,8 +58,8 @@ const ShopCard = ({ data }) => {
   <div className="card-body">
     <h2 className="card-title">
       {name}
-      <div className="bg-slate-700 text-white p-1 rounded-lg absolute top-2 right-2 text-sm font-semibold ">$ {price}</div>
     </h2>
+      <div className="bg-slate-700 text-white p-1 rounded-lg absolute top-2 right-2 text-sm font-semibold ">$ {price}</div>
     <p>{recipe}</p>
     <div className="card-actions justify-end">
       <Button handleAddtoCart={handleAddtoCart}  info={"add to cart"}></Button>
@@ -70,3 +70,6 @@ const ShopCard = ({ data }) => {
 };
 
 export default ShopCard;
+
+
+

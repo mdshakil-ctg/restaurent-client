@@ -11,7 +11,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
-import UserHome from './../Pages/Dashboard/UserHome/UserHome';
+import AdminHome from '../Pages/Dashboard/AdminHome/AdminHome';
 import Reservation from './../Pages/Dashboard/Reservation/Reservation';
 import Payment from './../Pages/Dashboard/Payment/Payment';
 import MyCart from "../Pages/Dashboard/MyCart/MyCart";
@@ -20,6 +20,10 @@ import Mybooking from './../Pages/Dashboard/Mybooking/Mybooking';
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
 import AddItem from "../components/AddItem/AddItem";
 import ManageItems from "../Pages/Dashboard/Admin/AllUsers/ManageItems/ManageItems";
+import PaymentSuccess from "../Pages/Dashboard/Payment/PaymentSuccess";
+import PaymentFailed from "../Pages/Dashboard/Payment/PaymentFailed";
+import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 
   export const router = createBrowserRouter([
     {
@@ -59,8 +63,8 @@ import ManageItems from "../Pages/Dashboard/Admin/AllUsers/ManageItems/ManageIte
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         {
-          path:'/dashboard',
-          element:<UserHome></UserHome>
+          path: 'user-home',
+          element: <UserHome></UserHome>
         },
         {
           path:'reservation',
@@ -69,6 +73,18 @@ import ManageItems from "../Pages/Dashboard/Admin/AllUsers/ManageItems/ManageIte
         {
           path:'payment',
           element: <Payment></Payment>
+        },
+        {
+          path:'payment-history',
+          element: <PaymentHistory></PaymentHistory>
+        },
+        {
+          path:'payment/success/:tranId',
+          element: <PaymentSuccess></PaymentSuccess>
+        },
+        {
+          path:'payment/fail/:tranId',
+          element: <PaymentFailed></PaymentFailed>
         },
         {
           path:'myCart',
@@ -83,6 +99,10 @@ import ManageItems from "../Pages/Dashboard/Admin/AllUsers/ManageItems/ManageIte
           element: <Mybooking></Mybooking>
         },
         //admin route
+        {
+          path:'/dashboard',
+          element:<AdminHome></AdminHome>
+        },
         {
           path:'allUsers',
           element: <AllUsers></AllUsers>

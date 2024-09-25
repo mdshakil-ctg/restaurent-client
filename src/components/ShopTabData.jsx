@@ -39,7 +39,7 @@ for (let i = 1; i <= totalPages; i++) {
 
   return (
     <div>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-3 gap-10">
         {currentItems.map((data) => (
           <ShopCard key={data._id} data={data}></ShopCard>
         ))}

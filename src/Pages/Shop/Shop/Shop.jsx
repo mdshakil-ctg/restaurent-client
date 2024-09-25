@@ -2,7 +2,7 @@ import ShowCaseCard from "../../Shared/ShowCaseCard/ShowCaseCard";
 import shopBanner from "../../../assets/shop/banner2.jpg";
 import { useMenuFilterData } from "../../../Hooks/useMenuFilterData";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import {  useState } from "react";
+import {useState} from "react";
 import ShopTabData from "../../../components/ShopTabData";
 import { useParams } from "react-router-dom";
 import SetTitle from "../../../components/SetTitle";
@@ -26,6 +26,7 @@ const Shop = () => {
   const dessertsData = useMenuFilterData("dessert");
   const drinksData = useMenuFilterData("drinks");
   const allData = useMenuFilterData();
+
   
   const handleChange = e =>{
     const text = e.target.value;
@@ -40,9 +41,10 @@ const Shop = () => {
       setMessage('There is no data match for your query!')
     }
     else{
-      setActiveTabs('all')
+    setActiveTabs('all')
     setSearchData(searchResult)
     setTabIndex(items.indexOf('all'))
+    setMessage('')
     }
   }
 
@@ -75,7 +77,7 @@ const Shop = () => {
             <Tab className={`${activeTabs == 'soup' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}>soup</Tab>
             <Tab className={`${activeTabs == 'dessert' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}>dessert</Tab>
             <Tab className={`${activeTabs == 'drinks' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}>drinks</Tab>
-           { searchData.length> 0 && <Tab className={`${activeTabs == 'all' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}>all</Tab>}
+          <Tab className={`${activeTabs == 'all' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}>all</Tab>
           </TabList>
           <TabPanel>
             <ShopTabData datas={saladsData}></ShopTabData>
@@ -92,11 +94,9 @@ const Shop = () => {
           <TabPanel>
             <ShopTabData datas={drinksData}></ShopTabData>
           </TabPanel>
-          {
-            searchData.length > 0 && <TabPanel>
-            <ShopTabData datas={searchData}></ShopTabData>
+          <TabPanel>
+            <ShopTabData datas={searchData.length > 0 ? searchData : allData}></ShopTabData>
           </TabPanel>
-          }
         </Tabs>
       </div>
     </div>
