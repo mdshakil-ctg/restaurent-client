@@ -3,11 +3,39 @@ import useMenu from "../../../../../Hooks/useMenu";
 import SectionTitle from "../../../../Shared/SectionTitle/SectionTitle";
 import { FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
+import useModal from "../../../../../Hooks/useModal";
 const ManageItems = () => {
   const { menu, refetch } = useMenu();
+
+  const axiosSecure = useAxiosSecure();
+  const {openModal={}, closeModal} = useModal();
   refetch();
-  console.log(menu);
+  
+
+  const handleItemDelete = (id, name) =>{
+
+    openModal({
+        title: 'Warning!!!',
+        message: `Are you sure you want to delete ${name} from the database?`,
+        type: 'confirm',
+        onConfirm: ()=>handleConfirmItemDelete(id, name)
+    })
+    const handleConfirmItemDelete = (id, name) =>{
+        closeModal()
+        axiosSecure.delete(`/deleteItem/${id}`)
+        .then(res => {
+            if(res.data.deletedCount > 0){
+                openModal({
+                    title: 'success!',
+                    message: `${name} has been deleted from the database.`,
+                    autoCloseTime: 2000,
+                })
+                refetch()
+            }
+        })
+      }
+}
 
   return (
     <div>
@@ -57,7 +85,7 @@ const ManageItems = () => {
                             </button></Link>
                           </td>
                           <td>
-                            <button className="btn btn-ghost btn-xs">
+                            <button onClick={()=>{handleItemDelete(item._id, item.name)}} className="btn btn-ghost btn-xs">
                             <MdDeleteSweep />
                             </button>
                           </td>
