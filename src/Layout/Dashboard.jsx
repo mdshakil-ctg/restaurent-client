@@ -13,7 +13,7 @@ const Dashboard = () => {
     if(isPending) return <span> Loading...</span>
   return (
     <div className="flex">
-      <div className="w-[300px] bg-yellow-300 min-h-screen p-2">
+      <div className="w-[300px] bg-slate-300 min-h-screen p-2">
         {/* //dashboard content */}
         <h1 className="uppercase mt-6 mb-20 text-center font-bold text-[20px] leading-6 font-serif ">
           bistro boss <br /> <span className="text-[16px]">restaurant</span>

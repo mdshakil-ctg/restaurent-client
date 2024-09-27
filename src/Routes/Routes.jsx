@@ -24,6 +24,7 @@ import PaymentSuccess from "../Pages/Dashboard/Payment/PaymentSuccess";
 import PaymentFailed from "../Pages/Dashboard/Payment/PaymentFailed";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import UpdateItems from "../Pages/Dashboard/Admin/UpdateItems/UpdateItems";
 
   export const router = createBrowserRouter([
     {
@@ -114,6 +115,10 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
         {
           path:'manageItems',
           element: <ManageItems></ManageItems>
+        },
+        {
+          path:'updateItems/:id',
+          element: <UpdateItems></UpdateItems>
         },
         {
           path:'payment',

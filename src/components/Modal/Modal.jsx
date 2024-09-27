@@ -4,7 +4,7 @@ import { TiTick } from 'react-icons/ti';
 import { RxCross2 } from "react-icons/rx";
 import './Modal.css';
 
-const Modal = ({ isOpen, title, message, onClose, onConfirm, type,autoCloseTime }) => {
+const Modal = ({ isOpen, title, message, onClose, onConfirm, type, autoCloseTime }) => {
  
   // Auto close after specified time (for success or warning)
   useEffect(() => {

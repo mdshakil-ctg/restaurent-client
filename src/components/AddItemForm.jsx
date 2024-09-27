@@ -50,13 +50,15 @@ const {
             'Content-Type': 'multipart/form-data',
             }
         })
+
         const itemInfo = {
             name: data.name,
             recipe: data.recipe,
-            image: result.data.data.display_url,
+            image: result?.data?.data?.display_url,
             category: data.category,
             price: data.price
         }
+
         console.log('image upload result',result.data);
         if(result.data.success){
             //make api call to save item in the database
