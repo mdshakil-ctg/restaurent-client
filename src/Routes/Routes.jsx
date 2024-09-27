@@ -25,6 +25,7 @@ import PaymentFailed from "../Pages/Dashboard/Payment/PaymentFailed";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import UpdateItems from "../Pages/Dashboard/Admin/UpdateItems/UpdateItems";
+import ManageBookings from "../Pages/Dashboard/Admin/ManageBookings/ManageBookings";
 
   export const router = createBrowserRouter([
     {
@@ -63,6 +64,7 @@ import UpdateItems from "../Pages/Dashboard/Admin/UpdateItems/UpdateItems";
       path:'/dashboard',
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
+        //general user routes
         {
           path: 'user-home',
           element: <UserHome></UserHome>
@@ -119,6 +121,10 @@ import UpdateItems from "../Pages/Dashboard/Admin/UpdateItems/UpdateItems";
         {
           path:'updateItems/:id',
           element: <UpdateItems></UpdateItems>
+        },
+        {
+          path:'manageBookings',
+          element: <ManageBookings></ManageBookings>
         },
         {
           path:'payment',
