@@ -1,25 +1,23 @@
 import { useForm } from "react-hook-form";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaCheckDouble } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import LoaderCup from "../../../components/LoaderCup/LoaderCup";
 
 const Payment = () => {
-
   // const { openModal = {} } = useModal();
   const { user } = useContext(AuthContext);
 
-    const axiosSecure = useAxiosSecure();
-
-    const location = useLocation()
-    const queryParams = new URLSearchParams(location.search)
-    const itemsParam = queryParams?.get('items')
-    const itemsId =  itemsParam ? itemsParam.split(','): [];
-    // console.log(itemsId); 
-    
-    
+  const axiosSecure = useAxiosSecure();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const itemsParam = queryParams?.get("items");
+  const itemsId = itemsParam ? itemsParam.split(",") : [];
+  // console.log(itemsId);
 
   const {
     register,
@@ -28,8 +26,8 @@ const Payment = () => {
     formState: { errors },
   } = useForm();
   const handlePaymentSubmit = async (data) => {
-      const paymentData = {
-          
+    setIsSubmitting(true);
+    const paymentData = {
       email: user?.email,
       name: user?.displayName,
       phone: data.phone,
@@ -40,14 +38,18 @@ const Payment = () => {
       orderIds: itemsId,
       date: new Date().toLocaleDateString(),
     };
-    
-    
-    
+
+    try {
       const res = await axiosSecure.post(`/order`, paymentData);
-      window.location.replace(res.data)
-      console.log({res});
-    
+      window.location.replace(res.data);
+    } catch (error) {
+      console.error("Payment submission failed:", error);
+      // Re-enable button if an error occurs
+      setIsSubmitting(false);
+    }
   };
+
+  isSubmitting && <LoaderCup></LoaderCup>;
   return (
     <div>
       <div className="flex ">
@@ -134,14 +136,15 @@ const Payment = () => {
                 </label>
                 <select
                   {...register("currency", { required: true })}
+                  defaultValue={"BDT"}
                   id="currency"
                   className="px-4 py-[13px] bg-yellow-500 text-white border border-gray-600 rounded-t-md focus:outline-none focus:rounded-t-md focus:text-black focus:border-yellow-500"
                 >
-                  <option className="hover:bg-yellow-500" value="usd">
-                    USD
-                  </option>
                   <option className="hover:bg-yellow-500" value="BDT">
                     BDT
+                  </option>
+                  <option className="hover:bg-yellow-500" value="usd">
+                    USD
                   </option>
                 </select>
               </div>
@@ -163,10 +166,17 @@ const Payment = () => {
             <div className="flex justify-center mt-20">
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="px-5 text-sm py-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-all duration-300"
               >
-                <FaCheckDouble className="inline mr-2 text-xl"></FaCheckDouble>
-                Proceed to Pay
+                {isSubmitting ? (
+                  <span className="loading loading-bars loading-md"></span>
+                ) : (
+                  <>
+                    <FaCheckDouble className="inline mr-2 text-xl" />
+                    Proceed to Pay
+                  </>
+                )}
               </button>
             </div>
           </form>

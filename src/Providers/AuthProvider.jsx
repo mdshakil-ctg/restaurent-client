@@ -24,9 +24,9 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const updateUser = (data) =>{
+    const updateUser = (name) =>{
         setLoading(true)
-        return updateProfile(auth.currentUser, {displayName: data?.name, photoURL : data?.img})
+        return updateProfile(auth.currentUser, {displayName: name})
     }
 
     const googleSingup = () =>{

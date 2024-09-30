@@ -123,7 +123,7 @@ const AddReview = () => {
                 className="px-5 text-sm py-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-all duration-300"
               >
                 <FaRocket className="inline mr-2 text-xl"></FaRocket>
-                Confirm Bookings
+                Add Review
               </button>
             </div>
           </form>

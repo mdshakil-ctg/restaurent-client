@@ -1,12 +1,14 @@
 import { useState } from "react";
 import ShopCard from "./../components/ShopCard";
+import MenuCartSkeleton from "./Skeleton/MenuCartSkeleton";
 
-const ShopTabData = ({ datas }) => {
+const ShopTabData = ({ datas, isLoading }) => {
+  console.log({isLoading})
   const count = parseInt(datas.length);
   const [itemsPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(count / itemsPerPage);
-  ({currentPage})
+
 
   const indexOfLastItem = currentPage * itemsPerPage;
 const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -18,10 +20,9 @@ for (let i = 1; i <= totalPages; i++) {
     pages.push(i);
 }
 
-//   const pages = [...Array(totalPages).keys()];
+
 
   const handleNextOption = () => {
-    ('hitting')
     if (currentPage < pages.length) {
       setCurrentPage(currentPage + 1);
     }
@@ -35,6 +36,19 @@ for (let i = 1; i <= totalPages; i++) {
   
   if(!datas){
     return <p>There is no data avilable now!</p>
+  }
+
+  if(isLoading){
+    return(
+      <div className="grid md:grid-cols-3 gap-10">
+       <MenuCartSkeleton></MenuCartSkeleton>
+       <MenuCartSkeleton></MenuCartSkeleton>
+       <MenuCartSkeleton></MenuCartSkeleton>
+       <MenuCartSkeleton></MenuCartSkeleton>
+       <MenuCartSkeleton></MenuCartSkeleton>
+       <MenuCartSkeleton></MenuCartSkeleton>
+      </div>
+    )
   }
 
   return (

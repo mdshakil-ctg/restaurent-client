@@ -44,7 +44,7 @@ const PaymentHistory = () => {
               {payHistory.map((item) => (
                 <tr key={item._id} className="hover">
                   <td>Food</td>
-                  <td>$ {item.totalAmount.toFixed(2)}</td>
+                  <td>$ {Number(item.totalAmount).toFixed(2)}</td>
                   <td>{item.tran_id}</td>
                   <td>{item.currency}</td>
                   <td>{item.date}</td>

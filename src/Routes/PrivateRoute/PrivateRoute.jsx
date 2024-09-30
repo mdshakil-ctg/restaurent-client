@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
+import LoaderCup from "../../components/LoaderCup/LoaderCup";
 
 
 const PrivateRoute = ({children}) => {
@@ -9,14 +10,14 @@ const PrivateRoute = ({children}) => {
     const location = useLocation()
     
     if(loading){
-        return <progress className="progress w-full"></progress>
+        return <LoaderCup></LoaderCup>
     }
 
     if(user){
         return children;
     }
 
-    return <Navigate to='/login' state={{from: location.pathname,}} replace></Navigate>
+    return <Navigate to='/login' state={{from: location.pathname}} replace></Navigate>
 };
 
 export default PrivateRoute;

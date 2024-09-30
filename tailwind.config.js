@@ -5,8 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+        satisfy: ['Satisfy', 'cursive'],
+      },
+    },
   },
+  // eslint-disable-next-line no-undef
   plugins: [ require('daisyui')],
 }
 

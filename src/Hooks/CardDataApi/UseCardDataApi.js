@@ -1,11 +1,21 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../useAxiosPublic";
 
 export const useCardDataApi = (api) =>{
-    const [datas, setDatas] = useState([]);
-    useEffect(() => {
-        fetch(`http://localhost:5000/${api}`)
-          .then((res) => res.json())
-          .then((data) => setDatas(data));
-        }, [api])
-        return datas;
+       
+    const axiosPublic = useAxiosPublic();
+    const {data: datas=[], isLoading,} = useQuery({
+        queryKey: [`${api}`],
+        queryFn: async() =>{
+          await new Promise(resolve => setTimeout(resolve, 5000)); // 2-second delay
+            const result = await axiosPublic.get(`/${api}`)
+            return result.data
+          }
+        })
+        
+        
+        console.log("into card data",datas,{isLoading});
+        return {datas, isLoading};
+
+
 }

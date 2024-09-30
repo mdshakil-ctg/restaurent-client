@@ -36,7 +36,7 @@ const Shop = () => {
   const handleSearch = event =>{
     event.preventDefault();
     const searchResult = allData.filter(item => item.name.toLowerCase().includes(serchText.toLowerCase()));
-    console.log({searchResult});
+    
     if(!searchResult.length){
       setMessage('There is no data match for your query!')
     }
@@ -80,22 +80,22 @@ const Shop = () => {
           <Tab className={`${activeTabs == 'all' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}>all</Tab>
           </TabList>
           <TabPanel>
-            <ShopTabData datas={saladsData}></ShopTabData>
+            <ShopTabData datas={saladsData.filterData} isLoading={saladsData.isLoading}></ShopTabData>
           </TabPanel>
           <TabPanel>
-            <ShopTabData datas={pizzasData}></ShopTabData>
+            <ShopTabData datas={pizzasData.filterData} isLoading={pizzasData.isLoading}></ShopTabData>
           </TabPanel>
           <TabPanel>
-            <ShopTabData datas={soupsData}></ShopTabData>
+            <ShopTabData datas={soupsData.filterData} isLoading={soupsData.isLoading}></ShopTabData>
           </TabPanel>
           <TabPanel>
-            <ShopTabData datas={dessertsData}></ShopTabData>
+            <ShopTabData datas={dessertsData.filterData} isLoading={dessertsData.isLoading}></ShopTabData>
           </TabPanel>
           <TabPanel>
-            <ShopTabData datas={drinksData}></ShopTabData>
+            <ShopTabData datas={drinksData.filterData} isLoading={drinksData.isLoading}></ShopTabData>
           </TabPanel>
           <TabPanel>
-            <ShopTabData datas={searchData.length > 0 ? searchData : allData}></ShopTabData>
+            <ShopTabData datas={searchData.length > 0 ? searchData : allData.datas} isLoading={allData.isLoading}></ShopTabData>
           </TabPanel>
         </Tabs>
       </div>

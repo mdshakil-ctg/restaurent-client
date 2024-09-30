@@ -1,4 +1,3 @@
-import React from 'react';
 import ShowCaseCard from '../../Shared/ShowCaseCard/ShowCaseCard';
 import imgurl from '../../../assets/home/banner.jpg'
 

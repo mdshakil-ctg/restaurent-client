@@ -3,11 +3,11 @@ import MenuCards from '../../Shared/MenuCards/MenuCards';
 import { useCardDataApi } from '../../../Hooks/CardDataApi/useCardDataApi';
 
 const OfferMenu = () => {
-    const datas = useCardDataApi('category')
+    const {datas, isLoading} = useCardDataApi('category')
     return (
         <div>
             <SectionTitle title='todays offer' subTitle="Don't miss"></SectionTitle>
-            <MenuCards datas={datas.slice(0,4)} buttonInfo='Order your favourite food' ></MenuCards>
+            <MenuCards datas={datas.slice(0,4)} buttonInfo='Order your favourite food' isLoading={isLoading} ></MenuCards>
         </div>
     );
 };

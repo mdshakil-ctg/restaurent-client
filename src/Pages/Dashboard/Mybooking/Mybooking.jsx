@@ -10,7 +10,7 @@ const Mybooking = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
 
-  const { data = [], refetch } = useQuery({
+  const { data = [], refetch, isLoading } = useQuery({
     queryKey: ["myBookings"],
     queryFn: async () => {
       const res = await axiosSecure.get(`myBookings?email=${user?.email}`);
@@ -41,6 +41,12 @@ const Mybooking = () => {
       }
     };
   };
+
+  if(isLoading){
+    return <div className="flex items-center h-screen">
+      <progress className="progress w-3/4 mx-auto h-3"></progress>
+    </div>
+  }
 
   return (
     <div>

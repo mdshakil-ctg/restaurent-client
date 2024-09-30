@@ -4,13 +4,16 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaCartArrowDown } from "react-icons/fa6";
 import useCart from "../../../Hooks/useCart";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import logo from "../../../assets/logo.png";
+import logo from "../../../assets/logo2.png";
+import LoaderCup from "../../../components/LoaderCup/LoaderCup";
+import useIsAdmin from "../../../Hooks/useIsAdmin";
 
 
 const Navbar = () => {
   
   const { user, LogoutUser, setLoading, loading } = useContext(AuthContext); 
   const {cart} = useCart();
+  const {isAdmin, isPending} = useIsAdmin()
   const axiosPublic = useAxiosPublic();
 
   const handleLogout = () => {
@@ -23,46 +26,46 @@ const Navbar = () => {
       .catch((err) => console.error(err));
   };
 
-  if(loading){
-    return <span>loading...</span>
+  if(loading || isPending){
+    <LoaderCup></LoaderCup>
   }
 
   const navItems = (
     <>
-      <li>
+      <li className="text-slate-400 mr-1">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="">
+      <li className="text-slate-400 mr-1">
         <NavLink to="/menu">Menu</NavLink>
       </li>
-      <li>
-        <NavLink to="/shop/soup">Item Gallary</NavLink>
+      <li className="text-slate-400 mr-1">
+        <NavLink to="/shop/soup">Gallary</NavLink>
       </li>
       
-      <li>
-        <NavLink to="/reservation">Reservaion</NavLink>
+      <li className="text-slate-400 mr-1">
+        <NavLink to="/reservation">Not Found</NavLink>
       </li>
-      <li>
+      <li className="text-slate-400 mr-1">
         <NavLink to="/contact">Contact Us</NavLink>
       </li>
 
       {user ? (
-        <li>
+        <li className="text-slate-400 mr-1">
           <button onClick={handleLogout}>Logout</button>
         </li>
       ) : (
         <>
-          <li>
+          <li className="text-slate-400 mr-1">
             <NavLink to="/signup">Sign Up</NavLink>
           </li>
-          <li>
+          <li className="text-slate-400 mr-1">
             <NavLink to="/login">Log In</NavLink>
           </li>
         </>
       )}
 
       <li>
-        <NavLink to="/dashboard">
+        <NavLink to={isAdmin ? "/dashboard/adminHome" :"/dashboard/myCart"}>
         
        <span className="relative z-30"> <FaCartArrowDown className="text-2xl"/></span>
        <div className="badge badge-warning badge-sm absolute top-0 right-0 z-40">{cart?.length}</div>
@@ -78,7 +81,7 @@ const Navbar = () => {
   return (
     <>
     
-      <div className="navbar fixed z-20 bg-black bg-opacity-30 max-w-screen-xl text-white font-semibold">
+      <div className="navbar fixed z-20 bg-black bg-opacity-100 max-w-screen-xl text-white font-semibold">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -104,7 +107,7 @@ const Navbar = () => {
               {navItems}
             </ul>
           </div>
-          <a className="w-[240px] h-[120px]"><img className="h-full w-full" src={logo}></img></a>
+          <a className="w-[140px] h-[60px]"><img className="h-full w-full" src={logo}></img></a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
@@ -113,7 +116,6 @@ const Navbar = () => {
 
        </div>
       </div>
-      {/* {loading && <progress className="progress"></progress>} */}
     </>
   );
 };

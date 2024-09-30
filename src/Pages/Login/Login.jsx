@@ -21,10 +21,13 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+ 
   
   useEffect(()=>{
     loadCaptchaEnginge(6);
   },[])
+
+ 
   
   const {
     register,
@@ -47,6 +50,8 @@ const Login = () => {
     
     
   };
+  console.log(loading);
+ 
 
 const  ValidateCaptchaField = (e) =>{
     const captchaLength = (e.target.value.length)
@@ -63,7 +68,6 @@ const  ValidateCaptchaField = (e) =>{
 
   
  
-
   
 
   return (
@@ -117,7 +121,7 @@ const  ValidateCaptchaField = (e) =>{
 
           <button disabled={!isDisable} className="btn-reg">
             {loading ? (
-              <progress className="progress w-56"></progress>
+              <span className="loading loading-bars loading-md"></span>
             ) : (
               "Login"
             )}

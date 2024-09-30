@@ -14,7 +14,7 @@ import SocialLogin from "../../components/SocialLogin/SocialLogin";
 const SignUp = () => {
   const {openModal} = useModal()
   const [isChecked, setIsChecked] = useState(false);
-  const {createUser,loading,setLoading} = useContext(AuthContext);
+  const {createUser,updateUser,loading,setLoading} = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const {
@@ -25,10 +25,13 @@ const SignUp = () => {
 
   const handleForm = (data) => {
     createUser(data.email, data.password)
-      .then(() => {
+      .then((res) => {
+        console.log(res);
         const userInfo = {name:data.name, email:data.email}
-      
-      DatabaseUserCreate(userInfo)
+
+      updateUser(data.name)
+      .then(()=>{console.log('user name updated succesfully')
+         DatabaseUserCreate(userInfo)
       .then(res => {
         if(res?.data?.insertedId){
           openModal({
@@ -39,14 +42,18 @@ const SignUp = () => {
         }
         
       })
+      setLoading(false);
       navigate(location?.state?.from || '/')
+      })
+      .catch((errors) => console.log(errors))
+     
       })
       .catch((error) =>  {
         setLoading(false)
         if(error.message.includes('email-already-in-use')){
           openModal({
             title: `${data.email}this email is already taken. Please confirm any other email for Register.`,
-            autoCloseTime: 7000
+            autoCloseTime: 5000
           })
         }
       });

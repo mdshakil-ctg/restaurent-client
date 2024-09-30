@@ -1,29 +1,32 @@
 
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
-import featuredImd from '../../../assets/home/featured.jpg'
+import featuredImd from '../../../assets/home/banner.jpg'
 import './Featured.css'
+import Button from "../../Shared/Button/Button";
 const Featured = () => {
   return (
-    <div className="mb-10 p-8 bg-fixed featured-bg flex flex-col items-center text-white">
-    <div className="z-10 p-16">
-    <SectionTitle
+    <div className="mb-10 p-8 bg-fixed featured-bg flex flex-col h-screen items-center text-white">
+    <div className="z-10 mb-10 w-full">
+      <SectionTitle
         title="from our menu"
         subTitle="Check it out"
       ></SectionTitle>
+    </div>
+    <div className="z-10 p-16">
       <div className="flex items-center gap-4">
         <div>
-          <img src={featuredImd} alt="Featured Image" />
+          <img className="rounded-xl" src={featuredImd} alt="Featured Image" />
         </div>
         <div className=" p-12 space-y-2">
-          <span>March 20, 2023</span>
-          <h5>WHERE CAN I GET SOME?</h5>
-          <p>
+          <span className="font-semibold text-xs">Septembar 20, 2024</span>
+          <h5 className="text-3xl font-satisfy">WHERE ARE YOU GET DRINKS?</h5>
+          <p className="text-xs">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
             voluptate facere, deserunt dolores maiores quod nobis quas quasi.
             Eaque repellat recusandae ad laudantium tempore consequatur
             consequuntur omnis ullam maxime tenetur.
           </p>
-          <button className="border-b-2 rounded px-3 py-2 font-semibold hover:bg-[#bb8506da]">READ MORE</button>
+          <div className="flex"><Button info={'Read More'}></Button></div>
         </div>
       </div>
     </div>

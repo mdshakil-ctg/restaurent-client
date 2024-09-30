@@ -1,17 +1,36 @@
+import { useNavigate } from 'react-router-dom';
 import { useRouteError } from "react-router-dom";
+import Img from '../assets/404.gif'
 
 const ErrorElement = () => {
-    const error = useRouteError();
-    console.error(error);
-    return (
-        <div id="error-page" className="">
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
-      <p>
-        <i>{error.statusText || error.message}</i>
+  const navigate = useNavigate();
+  const error = useRouteError();
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <h2 className="text-2xl font-semibold text-red-600 mb-4">
+        Oops! The page you are looking for is missing from the menu!
+      </h2>
+      <p><i>{error.statusText || error.message}</i></p>
+      <img src={Img} alt="Page Not Found" className="w-96 my-8" />
+      <p className="text-lg text-gray-600 mb-8">
+        It seems the page you ordered isnot on the menu. Lets help you find your way back!
       </p>
+      <div className="space-x-4">
+        <button
+          onClick={() => navigate("/")}
+          className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+        >
+          Go back to the homepage
+        </button>
+        <button
+          onClick={() => navigate("/menu")}
+          className="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-900 transition"
+        >
+          Check out our menu
+        </button>
+      </div>
     </div>
-    );
+  );
 };
 
 export default ErrorElement;

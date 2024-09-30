@@ -1,0 +1,107 @@
+.cup {
+    width: 180px;
+    height: 140px;
+    border: 6px solid #4B3621; /* Chocolate Brown */
+    position: absolute;
+    border-radius: 0px 0px 70px 70px;
+    background: url(../../assets/Loader-cup/coffee.png);
+    box-shadow: 0px 0px 0px 6px #f5e0c3; /* Light Cream */
+    background-repeat: repeat-x;
+    background-position: 0px 140px;
+    animation: fill 1s ease-in-out infinite;
+}
+
+@keyframes fill {
+    0% {
+        background-position: 0px 140px;
+    }
+    10% {
+        background-position: -225px 130px;
+    }
+    20% {
+        background-position: -450px 100px;
+    }
+    30% {
+        background-position: -675px 80px;
+    }
+    50% {
+        background-position: -900px 50px;
+    }
+    70% {
+        background-position: -1125px 45px;
+    }
+    90% {
+        background-position: -1350px 40px;
+    }
+    100% {
+        background-position: 0px 140px;
+    }
+}
+
+.handle {
+    height: 70px;
+    width: 40px;
+    background-color: transparent;
+    border: 6px solid #4B3621; /* Chocolate Brown */
+    position: relative;
+    left: 168px;
+    top: 6px;
+    border-radius: 0px 25px 80px 0px;
+}
+
+.smoke-container {
+    position: absolute;
+    top: -50px;  /* Adjust based on cup's position */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px; 
+    height: 150px; 
+    pointer-events: none; /* Non-interactive */
+}
+
+.smoke {
+    position: absolute;
+    bottom: 100px;
+    left: 40%;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(211, 211, 211, 0.6); /* Light gray smoke */
+    border-radius: 50%;
+    animation: rise 5s ease-in-out infinite;
+    opacity: 0;
+}
+
+/* Rising Smoke Animation */
+@keyframes rise {
+    0% {
+        transform: translateX(-50%) translateY(0) scale(1);
+        opacity: 0.2;
+    }
+    25% {
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateX(-40px) translateY(-50px) scale(1.5);
+        opacity: 0.4;
+    }
+    75% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateX(-80px) translateY(-100px) scale(2);
+        opacity: 0;
+    }
+}
+
+.smoke:nth-child(2) {
+    animation-delay: 0.5s;
+    
+}
+
+.smoke:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.smoke:nth-child(4) {
+    animation-delay: 1.5s;
+}

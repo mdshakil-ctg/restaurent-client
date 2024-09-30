@@ -7,11 +7,15 @@ import useCart from "../../../Hooks/useCart";
 
 
 const UserHome = () => {
-    const {user} = useContext(AuthContext);
-    const {cart} = useCart()
+    const {user , loading} = useContext(AuthContext);
+    const {cart, isLoading} = useCart()
+
     console.log(user);
+    if(loading || isLoading){
+      return <span className="loading loading-ring loading-lg"></span>
+    }
     return (
-        <div>
+        <div className="scrollbar-gutter-stable">
         <h4 className="h3 text-3xl mb-10">HI, WELCOME BACK</h4>
   
         <div className="grid md:grid-cols-4 gap-5 mb-10">

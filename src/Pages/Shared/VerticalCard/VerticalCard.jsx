@@ -1,3 +1,4 @@
+import Button from "../Button/Button";
 
 
 const VerticalCard = ({data}) => {
@@ -7,15 +8,16 @@ const VerticalCard = ({data}) => {
     <div className="card glass">
       <figure>
         <img
+        className="w-full h-full object-cover"
           src={image}
-          alt="car!"
+          alt="menu image!"
         />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
         <p>{details ? details : recipe}</p>
-        <div className="card-actions justify-center">
-          <button className="border-b-2 rounded py-2 px-3 border-[#BB8506] text-[#BB8506] hover:bg-black">ADD TO CART</button>
+        <div className="card-actions justify-end">
+          <Button info={'view more'}></Button>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { replace, useNavigate } from "react-router-dom";
+import useModal from './useModal';
 
 
 export const axiosSecure = axios.create({
@@ -12,6 +13,7 @@ export const axiosSecure = axios.create({
 const useAxiosSecure = () => {
     const {LogoutUser,setLoading} = useContext(AuthContext)
     const navigate = useNavigate()
+    const {openModal={}} = useModal();
     axiosSecure.interceptors.response.use(function(response){
         return response;
     }, async(error) =>{
@@ -20,6 +22,20 @@ const useAxiosSecure = () => {
            await LogoutUser()
             navigate('/login', replace)
             setLoading(false)
+        }
+        if(status >= 500){
+            openModal({
+                title:'OOPS',
+                message:'A server side error occured! Please try later',
+                autoCloseTime: 3000
+            })
+        }
+        else{
+            openModal({
+                title:'OOPS',
+                message:'Something went wrong',
+                autoCloseTime: 3000 
+            })
         }
         console.log('in the interceptor',error);
         return Promise.reject(error)

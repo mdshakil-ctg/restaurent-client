@@ -1,5 +1,5 @@
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import slide1 from "../../../assets/home/slide1.jpg";
@@ -13,7 +13,7 @@ const OnlineMenu = () => {
     <>
       <Swiper
         slidesPerView={4}
-        centeredSlides={true}
+        centeredSlides={false}
         spaceBetween={30}
         grabCursor={true}
         pagination={{
@@ -23,7 +23,7 @@ const OnlineMenu = () => {
         className="mySwiper"
       >
         <div className="absolute ">
-            <SwiperSlide><img src={slide1} alt="" /><p className=' text-white font-semibold text-xl opacity-60 p-4 relative bottom-24'>SALADS</p></SwiperSlide>
+            <SwiperSlide><img src={slide1} alt="" /><p className=' text-black font-semibold text-xl opacity-80 p-4 relative bottom-24'>SALADS</p></SwiperSlide>
             <SwiperSlide><img src={slide2} alt="" /><p className=' text-white font-semibold text-xl opacity-60 p-4 relative bottom-24'>PIZZAS</p></SwiperSlide>
             <SwiperSlide><img src={slide3} alt="" /><p className=' text-white font-semibold text-xl opacity-60 p-4 relative bottom-24'>SOUPS</p></SwiperSlide>
             <SwiperSlide><img src={slide4} alt="" /><p className='text-white font-semibold text-xl opacity-60 p-4  relative bottom-24'>DESSERTS</p></SwiperSlide>       

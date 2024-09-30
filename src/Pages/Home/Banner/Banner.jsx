@@ -3,16 +3,20 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import img1 from "../../../../src/assets/home/01.jpg";
 import img2 from "../../../../src/assets/home/02.jpg";
-import img3 from "../../../../src/assets/home/03.png";
+import img3 from "../../../../src/assets/home/03.jpg";
 import img4 from "../../../../src/assets/home/04.jpg";
-import img5 from "../../../../src/assets/home/05.png";
-import img6 from "../../../../src/assets/home/06.png";
+import img5 from "../../../../src/assets/home/05.jpg";
+import img6 from "../../../../src/assets/home/06.jpg";
+
 
 const Banner = () => {
+  
   return (
-    <Carousel autoPlay className="text-center">
+    <>
+    
+     <Carousel autoPlay infiniteLoop={true} interval={3000} stopOnHover={false} showStatus={false} showIndicators={false} showThumbs={false} className="text-center">
       <div>
-        <img src={img1} />
+        <img src={img1}  />
       </div>
       <div>
         <img src={img2} />
@@ -30,6 +34,8 @@ const Banner = () => {
         <img src={img6} />
       </div>
     </Carousel>
+    </>
+   
   );
 };
 

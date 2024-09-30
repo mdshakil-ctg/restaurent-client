@@ -10,7 +10,7 @@ import { useState } from "react";
 
 const MyCart = () => {
   const { openModal, closeModal } = useModal();
-  const { cart, refetch } = useCart();
+  const { cart, refetch, isLoading } = useCart();
   const [selectedItems, setSelectedItems] = useState([])
   // console.log({ selectedItems });
 
@@ -77,18 +77,24 @@ const MyCart = () => {
       }
     }
 
+    if(isLoading){
+      return <div className="flex items-center h-screen">
+        <progress className="progress w-3/4 mx-auto h-3"></progress>
+      </div>
+    }
 
 
   return (
     <div>
       <SetTitle title="My Cart"></SetTitle>
-      <SectionTitle title="payment history" subTitle="my cart"></SectionTitle>
+      <SectionTitle title="wanna add more?" subTitle="my cart"></SectionTitle>
       <div className="flex justify-around items-center text-3xl mb-5">
         <h5>TOTAL ORDERS {cart.length}</h5>
         <h5>TOTAL PRICE ${totalPriceNum}</h5>
       </div>
       {/* table content */}
-      <div>
+      {
+        cart?.length > 0 &&      <div>
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
@@ -138,6 +144,7 @@ const MyCart = () => {
           </table>
         </div>
       </div>
+      }
       {/* checkout content */}
       <div className="w-1/2 mx-auto mt-14 card bg-slate-200 p-16">
         <div className="my-6">
