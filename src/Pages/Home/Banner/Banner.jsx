@@ -16,10 +16,10 @@ const Banner = () => {
     
      <Carousel autoPlay infiniteLoop={true} interval={3000} stopOnHover={false} showStatus={false} showIndicators={false} showThumbs={false} className="text-center">
       <div>
-        <img src={img1}  />
+        <img src={img1}/>
       </div>
       <div>
-        <img src={img2} />
+        <img src={img2}/>
       </div>
       <div>
         <img src={img3} />

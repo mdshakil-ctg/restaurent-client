@@ -14,7 +14,7 @@ export const useCardDataApi = (api) =>{
         })
         
         
-        console.log("into card data",datas,{isLoading});
+        
         return {datas, isLoading};
 
 

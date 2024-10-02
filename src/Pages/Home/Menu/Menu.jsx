@@ -10,12 +10,12 @@ const Menu = () => {
   const { datas, isLoading } = useCardDataApi("category");
 
   return (
-    <div className="max-w-screen-lg mx-auto mb-10">
+    <div className="max-w-screen-lg mx-auto mb-20">
       <SectionTitle
         title="from our menu"
         subTitle="Check it out"
       ></SectionTitle>
-      <div className="grid md:grid-cols-2 gap-5">
+      <div className="grid md:grid-cols-2 gap-6 mb-12">
         {isLoading ? (
           <>
             <Skeleton></Skeleton>

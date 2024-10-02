@@ -1,9 +1,9 @@
 import ShowCaseCard from '../../Shared/ShowCaseCard/ShowCaseCard';
-import dessert from '../../../assets/menu/dessert-bg.jpeg'
+import dessert from '../../../assets/menu/dessert-bg.jpg'
 import pizza from '../../../assets/menu/pizza-bg.jpg'
 import salad from '../../../assets/menu/salad-bg.jpg'
 import soup from '../../../assets/menu/soup-bg.jpg'
-import drinks from '../../../assets/menu/menu-bg.png'
+import drinks from '../../../assets/menu/drink.jpg'
 import MenuCards from '../../Shared/MenuCards/MenuCards';
 import { useMenuFilterData } from '../../../Hooks/useMenuFilterData';
 

@@ -1,10 +1,9 @@
-import ShowCaseCard from '../../Shared/ShowCaseCard/ShowCaseCard';
-import imgurl from '../../../assets/home/banner.jpg'
+import imgurl from '../../../assets/contact/banner.jpg'
 
 const MenuBanner = () => {
     return (
         <div>
-        <ShowCaseCard details='WHOULD YOU LIKE TO TRY A DISH?' name={"OUR MENU"} imgUrl={imgurl}></ShowCaseCard>
+        <img src={imgurl} alt="Menu Image here" />
         </div>
     );
 };

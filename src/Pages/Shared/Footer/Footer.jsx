@@ -1,21 +1,28 @@
-
+import footerImg from '../../../assets/footer/footer.png'
+console.log(footerImg);
 
 const Footer = () => {
   return (
-    <div className="grid md:grid-cols-2 text-white text-center">
-      <div className="bg-[#1F2937] flex flex-col justify-center items-center p-10">
-        <h3 className="font-semibold text-xl mb-2">CONTACT US</h3>
-        <div className="text-center text-xs grid gap-1">
+    <div className="grid md:grid-cols-3 text-white text-center h-[350px]"
+    style={{ backgroundImage: `url(${footerImg})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+
+     
+      <div></div>
+      <div className=" flex flex-col justify-center items-center p-10">
+        <h3 className="font-semibold text-2xl mb-2">CONTACT US</h3>
+        <div className="text-center text-xs text-orange-400 font-semibold grid gap-1">
         <p>123 ABS Street, Uni 21, Bangladesh</p>
         <p>+88 123456789</p>
         <p>Mon - Fri: 08:00 - 22:00</p>
         <p>Sat - Sun : 10:00 - 23:00</p>
         </div>
       </div>
-      <footer className="footer footer-center bg-[#111827] p-10">
+      
+      <footer className={`footer footer-center p-10`}
+      >
         <div>
           <p className="font-semibold text-xl">Follow US</p>
-          <p className=" text-xs">Join us on social media</p>
+          <p className=" text-xs text-orange-400 font-semibold">Join us on social media</p>
           <nav>
             <div className="grid grid-flow-col gap-4">
               <a>
@@ -53,11 +60,13 @@ const Footer = () => {
               </a>
             </div>
           </nav>
-        </div>
-      </footer>
-      <div className="bg-[#151515] text-xs col-span-2 py-2">
-      <p>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+          <div className=" text-xs col-span-2 py-2 fixed bottom-0 right-1/3 text-slate-500">
+      <p>Copyright © {new Date().getFullYear()} - {"All right reserved by Pothik's restaurent"}</p>
       </div>
+        </div>
+        
+      </footer>
+      
     </div>
   );
 };

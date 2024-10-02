@@ -22,9 +22,14 @@ const Testimonial = () => {
       ) : (
         <div className="my-10 mx-28">
           <Swiper
-            autoplay={{ delay: 2000 }} // Set autoplay with 3 seconds delay
+            autoplay={{ 
+              delay: 3000, // Set autoplay delay to 3 seconds
+              disableOnInteraction: false, // Prevent autoplay from stopping when interacting
+            }}
+            loop={true}
+            speed={2000} // 2 seconds transition speed
             navigation={true}
-            modules={[Navigation, Autoplay]} // Include Autoplay in modules
+            modules={[Navigation, Autoplay]} // Include Navigation and Autoplay in modules
             className="mySwiper"
           >
             {datas.map((data) => (

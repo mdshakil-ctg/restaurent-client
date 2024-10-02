@@ -27,7 +27,7 @@ const MenuCards = ({ datas, buttonInfo = "see details", isLoading }) => {
 
   return (
     <div className="max-w-screen-lg mx-auto mb-10">
-      <div className="grid md:grid-cols-2 ">
+      <div className="grid md:grid-cols-2 gap-10 mb-12">
         {datas.map((data) => (
           <MenuCard
             key={data._id}

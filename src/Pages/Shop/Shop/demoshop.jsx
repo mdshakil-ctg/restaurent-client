@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import SetTitle from "../../../components/SetTitle";
 
 const Shop = () => {
-  // const [serchText, setSerchText] = useState('')
+  const [serchText, setSerchText] = useState('')
   const [searchData, setSearchData] = useState([]);
   const [message, setMessage] = useState([]);
   
@@ -26,29 +26,26 @@ const Shop = () => {
   const dessertsData = useMenuFilterData("dessert");
   const drinksData = useMenuFilterData("drinks");
   const allData = useMenuFilterData();
-  // console.log({allData}, {searchData}, {serchText});
 
   
-  
+  const handleChange = e =>{
+    const text = e.target.value;
+    setSerchText(text);
+  }
 
   const handleSearch = event =>{
-    
+    console.log('hitting');
     event.preventDefault();
-    console.log('hitting', event.target.search.value);
-    const searchText = event.target.search.value.trim();
-    const searchResult = allData?.datas?.filter(item => item.name.toLowerCase().includes(searchText.toLowerCase()));
-    console.log({searchResult})
+    const searchResult = allData.filter(item => item.name.toLowerCase().includes(serchText.toLowerCase()));
+    
     if(!searchResult.length){
-      console.log('if hitting')
       setMessage('There is no data match for your query!')
     }
     else{
-      console.log('else hitting')
-    setActiveTabs('all')        
+    setActiveTabs('all')
     setSearchData(searchResult)
     setTabIndex(items.indexOf('all'))
     setMessage('')
-    
     }
   }
 
@@ -63,9 +60,8 @@ const Shop = () => {
         <form onSubmit={handleSearch} className="w-full relative">
           {/* search bar content */}
           <input
-          // onBlurCapture={(e)=>setSerchText(e.target.value)}
-          name='search'
-          className="border-2 border-slate-600 placeholder-black placeholder:text-sm placeholder:font-satisfy font-semibold focus:outline-none" type="text"  placeholder="Search your favourite food" />
+          onChange={handleChange}
+          className="border-2 border-slate-600 placeholder-black placeholder:text-sm placeholder:font-satisfy font-semibold focus:outline-none" type="text" name="" id=""  placeholder="Search your favourite food" />
           <button type="submit" className="btn btn-ghost rounded-none
            text-4xl mt-6 absolute right-0 bottom-0"> <MdManageSearch /></button>
         </form>
@@ -76,8 +72,8 @@ const Shop = () => {
         <Tabs  selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList 
           className='flex flex-row justify-center items-center bg-[#2B2A28] border-b-[12px] border-b-[#EB4E01] text-white font-semibold text-xl mb-16 '
-          onClick={(e) => {setActiveTabs(e.target.innerHTML)}}>
-            <Tab className={`${activeTabs == 'salad' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6  transition duration-500 ease-out cursor-pointer uppercase`}>salad</Tab>
+          onClick={(e) => {console.log(e.target.innerHTML, 'inner'),setActiveTabs(e.target.innerHTML)}}>
+            <Tab className={`${activeTabs == 'salad' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'}  py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}>salad</Tab>
             <Tab className={`${activeTabs == 'pizza' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6  transition duration-500 ease-out cursor-pointer uppercase`}>pizza</Tab>
             <Tab className={`${activeTabs == 'soup' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}>soup</Tab>
             <Tab className={`${activeTabs == 'dessert' ? 'bg-[#EB4E01] outline-none' : 'bg-[#2B2A28]'} py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}>dessert</Tab>
