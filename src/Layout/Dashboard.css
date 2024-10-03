@@ -1,0 +1,10 @@
+.active {
+     /* Example styling for the active link */
+    color: yellow;
+  }
+  .active li{
+    background-color: black;
+    width: 100%;
+    border-radius: 20px;
+  }
+  

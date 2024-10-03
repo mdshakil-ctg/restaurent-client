@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         sans: ['Poppins', 'sans-serif'],
         satisfy: ['Satisfy', 'cursive'],
+        raleway: ['Raleway', 'sans-serif']
       },
     },
   },

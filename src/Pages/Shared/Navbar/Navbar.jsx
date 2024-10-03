@@ -12,10 +12,10 @@ import useIsAdmin from "../../../Hooks/useIsAdmin";
 const Navbar = () => {
   
   const { user, LogoutUser, setLoading, loading } = useContext(AuthContext); 
-  const {cart} = useCart();
+  const {cart, refetch} = useCart();
   const {isAdmin, isPending} = useIsAdmin()
   const axiosPublic = useAxiosPublic();
-
+  refetch();
   const handleLogout = () => {
     LogoutUser()
       .then(() => {
@@ -47,6 +47,9 @@ const Navbar = () => {
       </li>
       <li className="text-slate-400 mr-1">
         <NavLink to="/contact">Contact Us</NavLink>
+      </li>
+      <li className="text-slate-400 mr-1">
+        <NavLink to={isAdmin ? "/dashboard/adminHome" :"/dashboard/user-home"}>Dashboard</NavLink>
       </li>
 
       {user ? (

@@ -1,126 +1,144 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaBook, FaHome } from "react-icons/fa";
-import { ImSpoonKnife } from "react-icons/im";
-import { MdPayment, MdReviews } from "react-icons/md";
+import { FaBook, FaComment, FaHome, FaCompress, FaUserShield} from "react-icons/fa";
+import { AiFillDashboard } from "react-icons/ai";
+import { GiSecretBook } from "react-icons/gi";
+import { HiMenuAlt1, HiTemplate  } from "react-icons/hi";
+import { TbShoppingBagEdit } from "react-icons/tb";
+import { MdPayment, MdReviews, MdLeakAdd } from "react-icons/md";
 import { FaCartShopping } from "react-icons/fa6";
-
+import profileImg from "../../src/assets/others/profile.png";
 import useIsAdmin from "../Hooks/useIsAdmin";
 import LoaderCup from "../components/LoaderCup/LoaderCup";
 import Footer from "../Pages/Shared/Footer/Footer";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
+import './Dashboard.css'
 
 const Dashboard = () => {
   const { isAdmin, isPending } = useIsAdmin();
+  const { user } = useContext(AuthContext);
+  console.log(user);
   // console.log(isAdmin);
-  if (isPending)
-    return (
-      <LoaderCup></LoaderCup>
-    );
+  if (isPending) return <LoaderCup></LoaderCup>;
   return (
     <>
-    <div className="flex min-h-screen">
+      <div className="flex bg-black">
         {/* //dashboard content */}
-      <div className="w-[300px] bg-slate-300 p-2">
-        <h1 className="uppercase mt-6 mb-20 text-center font-bold text-[20px] leading-6 font-serif ">
+        <div className="w-[300px] bg-[#1C2A35] text-white p-2">
+          {/* <h1 className="uppercase mt-6 mb-20 text-center font-bold text-[20px] leading-6 font-serif ">
           bistro boss <br /> <span className="text-[16px]">restaurant</span>
-        </h1>
-        {isAdmin ? (
-          <ul className="p-8 space-y-3">
-            <li className="text-xl font-semibold uppercase">
+        </h1> */}
+          <div>
+            <div className="bg-yellow-400 w-16 h-16 mx-auto mt-8 mb-2 rounded-2xl flex">
+              <img
+                src={user?.photoURL || profileImg}
+                className=" w-full h-auto object-cover p-3 pb-0 border-2 rounded-2xl"
+                alt="user-image"
+              />
+            </div>
+            <h3 className="text-center text-sm font-satisfy">
+              {user.displayName}
+            </h3>
+          </div>
+          {isAdmin ? (
+            <ul className="p-8">
               <NavLink to="/dashboard/adminHome">
-                <FaHome className="text-3xl inline  pb-2" /> admin home
+              <li className="flex items-center font-medium capitalize mb-1 px-2 py-1">
+                  <AiFillDashboard className="text-xl" /> <span className="ml-2">dashboard</span> 
+                </li>
               </NavLink>
-            </li>
-            <li className="text-xl font-semibold uppercase ">
               <NavLink to="/dashboard/addItem">
-                <ImSpoonKnife className="text-3xl inline  pb-2" /> add items
+              <li className="flex items-center font-medium capitalize mb-1 px-2 py-1">
+                  <MdLeakAdd  className="text-xl" /> <span className="ml-2">add items</span> 
+                </li>
               </NavLink>
-            </li>
-            <li className="text-xl font-semibold uppercase ">
               <NavLink to="/dashboard/manageItems">
-                <MdPayment className="text-3xl inline  pb-2" /> manage items
+              <li className="flex items-center font-medium capitalize mb-1 px-2 py-1">
+                  <TbShoppingBagEdit className="text-xl" /> <span className="ml-2">manage items</span> 
+                </li>
               </NavLink>
-            </li>
-            <li className="text-xl font-semibold uppercase ">
               <NavLink to="/dashboard/manageBookings">
-                <FaCartShopping className="text-3xl inline  pb-2" /> manage
-                bookings
+              <li className="flex items-center font-medium capitalize mb-1 px-2 py-1">
+                  <GiSecretBook  className="text-xl" /> <span className="ml-2">manage bookings</span> 
+                </li>
               </NavLink>
-            </li>
-            <li className="text-xl font-semibold uppercase ">
               <NavLink to="/dashboard/allUsers">
-                <MdReviews className="text-3xl inline  pb-2" /> all users
+              <li className="flex items-center font-medium capitalize mb-1 px-2 py-1">
+                  <FaUserShield className="text-xl" /><span className="ml-2">all users</span> 
+                </li>
               </NavLink>
-            </li>
-          </ul>
-        ) : (
-          <ul className="p-8 space-y-3">
-            <li className="text-xl font-semibold uppercase">
+            </ul>
+          ) : (
+            <ul className="p-8">
+             
               <NavLink to="/dashboard/user-home">
-                <FaHome className="text-3xl inline  pb-2" /> USER HOME
+                <li className="flex items-center font-medium capitalize mb-1 px-2 py-1">
+                  <AiFillDashboard className="text-xl" /> <span className="ml-2">Dashboard</span> 
+                </li>
               </NavLink>
-            </li>
-            <li className="text-xl font-semibold uppercase ">
               <NavLink to="/dashboard/reservation">
-                <ImSpoonKnife className="text-3xl inline  pb-2" /> Reservation
+              <li className="flex items-center font-medium capitalize mb-1 px-2 py-1">
+                  <FaCompress  className="text-xl" /> <span className="ml-2">Reservation</span>
+                </li>
               </NavLink>
-            </li>
-            <li className="text-xl font-semibold uppercase ">
               <NavLink to="/dashboard/payment-history">
-                <MdPayment className="text-3xl inline  pb-2" /> payment history
+              <li className="flex items-center font-medium capitalize mb-1 px-2 py-1">
+                  <MdPayment className="text-xl" /> <span className="ml-2">payment</span>
+                </li>
               </NavLink>
-            </li>
-            <li className="text-xl font-semibold uppercase ">
               <NavLink to="/dashboard/myCart">
-                <FaCartShopping className="text-3xl inline  pb-2" /> My Cart
+              <li className="flex items-center font-medium capitalize mb-1 px-2 py-1">
+                  <FaCartShopping className="text-xl" /> <span className="ml-2">My Cart</span>
+                </li>
               </NavLink>
-            </li>
-            <li className="text-xl font-semibold uppercase ">
               <NavLink to="/dashboard/addReview">
-                <MdReviews className="text-3xl inline  pb-2" /> Add review
+              <li className="flex items-center font-medium capitalize mb-1 px-2 py-1">
+                  <MdReviews className="text-xl" /> <span className="ml-2">Add review</span>
+                </li>
               </NavLink>
-            </li>
-            <li className="text-xl font-semibold uppercase ">
+              
               <NavLink to="myBooking">
-                <FaBook className="text-3xl inline  pb-2" /> my bookings
+              <li className="flex items-center font-medium capitalize mb-1 px-2 py-1">
+                  <FaBook className="text-xl" /> <span className="ml-2">My Bookings</span>
+                </li>
               </NavLink>
-            </li>
-          </ul>
-        )}
+            </ul>
+          )}
 
-        <div className="divider">Default</div>
+          <div className="border border-yellow-600 mx-4"></div>
 
-        <div>
-          <ul>
-            <li className="text-xl font-semibold uppercase">
+          <div>
+            <ul className="p-8">
               <NavLink to="/">
-                <FaHome className="text-3xl inline  pb-2" /> Home
+              <li className="flex items-center font-medium hover:bg-black hover:rounded-lg hover:text-yellow-300  capitalize px-2 py-1">
+                  <FaHome className="text-xl" /> <span className="ml-2">home</span>
+                </li>
               </NavLink>
-            </li>
-            <li className="text-xl font-semibold uppercase ">
               <NavLink to="/menu">
-                <ImSpoonKnife className="text-3xl inline  pb-2" /> Menu
+              <li className="flex items-center font-medium hover:bg-black hover:rounded-lg hover:text-yellow-300  capitalize px-2 py-1">
+                  <HiMenuAlt1  className="text-xl" /> <span className="ml-2">menu</span>
+                </li>
               </NavLink>
-            </li>
-            <li className="text-xl font-semibold uppercase ">
               <NavLink to="/shop/soup">
-                <MdPayment className="text-3xl inline  pb-2" /> Shop
+              <li className="flex items-center font-medium hover:bg-black hover:rounded-lg hover:text-yellow-300  capitalize px-2 py-1">
+                  <HiTemplate  className="text-xl" /> <span className="ml-2">gallary</span>
+                </li>
               </NavLink>
-            </li>
-            <li className="text-xl font-semibold uppercase ">
               <NavLink to="/contact">
-                <FaCartShopping className="text-3xl inline  pb-2" /> Contact
+              <li className="flex items-center font-medium hover:bg-black hover:rounded-lg hover:text-yellow-300 capitalize px-2 py-1">
+                  <FaUserShield className="text-xl" /> <span className="ml-2">contact</span>
+                </li>
               </NavLink>
-            </li>
-          </ul>
+            </ul>
+          </div>
+        </div>
+        {/* outlet content */}
+        <div className="flex-1">
+          <Outlet></Outlet>
         </div>
       </div>
-      {/* outlet content */}
-      <div className="flex-1">
-        <Outlet></Outlet>
-      </div>
-    </div>
-{/* footer content */}
-<Footer></Footer>
+      {/* footer content */}
+      <Footer></Footer>
     </>
   );
 };
