@@ -1,10 +1,11 @@
 
+import AddItemForm from './../AddItemForm';
 
-import AddPartnerForm from '../AddItemForm';
+
 
 const AddItem = () => {
     return (
-       <AddPartnerForm></AddPartnerForm>
+       <AddItemForm></AddItemForm>
     );
 };
 

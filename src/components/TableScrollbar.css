@@ -1,0 +1,17 @@
+.table-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.table-scrollbar::-webkit-scrollbar-track {
+  background: #d80a0a; /* Color of the scrollbar track */
+}
+
+.table-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #b31c1c; /* Color of the scrollbar handle */
+  border-radius: 10px; /* Rounded corners */
+  border: 2px solid transparent; /* Space around handle */
+}
+
+.table-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #881111; /* Color on hover */
+}

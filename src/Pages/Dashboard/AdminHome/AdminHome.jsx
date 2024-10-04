@@ -2,11 +2,11 @@ import { FaHandHoldingDollar } from "react-icons/fa6";
 import { FaTelegramPlane } from "react-icons/fa";
 import { HiUsers } from "react-icons/hi2";
 import { SiElement } from "react-icons/si";
-import { MdEmail } from "react-icons/md";
 import { SlOptionsVertical } from "react-icons/sl";
-import { IoNotifications, IoSettings } from "react-icons/io5";
+import {  IoSettings } from "react-icons/io5";
 import CanvasJSReact from "@canvasjs/react-charts";
 import { useRef } from "react";
+// import { PiChartBar } from "react-icons/pi";
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const AdminHome = () => {
   // Original sales data in units
@@ -18,12 +18,21 @@ const AdminHome = () => {
     { label: "Drinks", value: 200 },
     { label: "Others", value: 50 },
   ];
-
+  
+const colors = {
+    Salad: "#003f5c",
+    Pizza: "#ffa600",
+    Soup: "#dc9094 ",
+    Dessert: "#ff6361",
+    Drinks: "#58508d",
+    Others: "#bc5090",
+  };
   const totalSales = totalSalesData.reduce((acc, item) => acc + item.value, 0);
 
   const dataPoints = totalSalesData.map((item) => ({
     y: Math.round((item.value / totalSales) * 100),
     label: item.label,
+    color: colors[item.label]
   }));
 
   console.log(dataPoints);
@@ -71,14 +80,6 @@ const AdminHome = () => {
   };
 
   // Define colors for each data series
-  const colors = {
-    Salad: "red",
-    Pizza: "violet",
-    Soup: "purple",
-    Dessert: "blue",
-    Drinks: "#FFC300",
-    Others: "#FF5733",
-  };
 
   // Construct dataPoints array for each category
   const createDataSeries = (name, yValues) => {
@@ -135,20 +136,9 @@ const AdminHome = () => {
 
   return (
     <div>
-      <div className="bg-[#1C1C1C]  flex justify-end p-5 space-x-5">
-        <div className=" inline-block relative">
-          <MdEmail className="text-white text-xl inline-block" />
-          <div className="w-2 h-2 rounded-full bg-red-600 absolute top-0 -right-1"></div>
-        </div>
-        <div className=" inline-block relative">
-          <IoNotifications className="text-white text-xl inline-block" />
-          <div className="w-2 h-2 rounded-full bg-green-400 absolute top-0 right-0"></div>
-        </div>
-        <div className=" inline-block relative">
-          <IoSettings className="text-white text-xl inline-block" />
-          <div className="w-2 h-2 rounded-full bg-pink-400 absolute top-0 right-0"></div>
-        </div>
-      </div>
+     <div>
+      {/* <DashboardNavbar></DashboardNavbar> */}
+     </div>
       <div className="grid grid-cols-2 ">
         <div className="grid grid-cols-2 gap-5 p-4">
           <div className="bg-[#1C1C1C]">

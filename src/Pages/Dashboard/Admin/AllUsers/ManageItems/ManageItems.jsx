@@ -1,10 +1,11 @@
-import { MdDeleteSweep } from "react-icons/md";
+import { MdOutlineDelete  } from "react-icons/md";
 import useMenu from "../../../../../Hooks/useMenu";
 import SectionTitle from "../../../../Shared/SectionTitle/SectionTitle";
-import { FaRegEdit } from "react-icons/fa";
+import { TiEdit } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
 import useModal from "../../../../../Hooks/useModal";
+import '../../../../../../src/components/TableScrollbar.css'
 const ManageItems = () => {
   const { menu, refetch } = useMenu();
 
@@ -25,6 +26,7 @@ const ManageItems = () => {
         closeModal()
         axiosSecure.delete(`/deleteItem/${id}`)
         .then(res => {
+          console.log({res})
             if(res.data.deletedCount > 0){
                 openModal({
                     title: 'success!',
@@ -33,36 +35,45 @@ const ManageItems = () => {
                 })
                 refetch()
             }
+            else if(res.data.deletedCount === 0){
+              {
+                openModal({
+                  title: 'sorry',
+                  message:`${name} has been not deleted from the database.`,
+                  autoCloseTime: 2000,
+                })
+              }
+            }
         })
       }
 }
 
   return (
-    <div>
+    <div className="pb-10 pl-16 table-scrollbar">
       <SectionTitle
         title="manage all items"
-        subTitle="hurry up!"
+        subTitle="look up!"
       ></SectionTitle>
-      <div>
-        <p>TOTAL ITEMS : {menu.length}</p>
+      <div className="mb-6">
+        <p className="font-raleway ">TOTAL MENU ITEMS : {menu?.length}</p>
         <div>
           {/* table content  */}
-          <div className="overflow-x-auto">
-            <table className="table">
+          <div className="overflow-x-auto overflow-y-auto max-h-svh table-scrollbar">
+            <table className="table mt-6">
               {/* head */}
-              <thead>
-                <tr>
+              <thead className=" w-full">
+                <tr className="text-slate-200 ">
                   <th>Item Image</th>
                   <th>Item Name</th>
                   <th>Price</th>
-                  <th>Update Item</th>
+                  <th>Edit Item</th>
                   <th>Delete Item</th>
                 </tr>
               </thead>
               <tbody>
                 {
-                    menu.map(item => <tr key={item._id}>
-                          <td>
+                    menu.map(item => <tr key={item._id} className="border-none">
+                          <td className="border-none">
                             <div className="flex items-center gap-3">
                               <div className="avatar">
                                 <div className="mask mask-squircle h-12 w-12">
@@ -76,17 +87,17 @@ const ManageItems = () => {
                           <td>
                             {item?.name}
                             <br />
-                            <span className="badge badge-ghost badge-sm">{item?.category}</span>
+                            <span className="badge badge-ghost badge-xs">{item?.category}</span>
                           </td>
                           <td>{item.price ? Number(item.price).toFixed(2) : '0.00'}</td>
                           <td>
-                            <Link to={`/dashboard/updateItems/${item._id}`}><button className="btn btn-ghost btn-xs">
-                            <FaRegEdit></FaRegEdit> 
+                            <Link to={`/dashboard/updateItems/${item._id}`}><button className="btn btn-ghost btn-xs ">
+                            <TiEdit className="text-xl hover:bg-yellow-400 hover:text-slate-900 rounded" />
                             </button></Link>
                           </td>
                           <td>
                             <button onClick={()=>{handleItemDelete(item._id, item.name)}} className="btn btn-ghost btn-xs">
-                            <MdDeleteSweep />
+                            <MdOutlineDelete className="text-xl hover:bg-yellow-400 hover:text-slate-900 rounded" />
                             </button>
                           </td>
                         </tr>)

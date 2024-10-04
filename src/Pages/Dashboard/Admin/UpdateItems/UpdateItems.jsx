@@ -5,6 +5,7 @@ import useModal from "../../../../Hooks/useModal";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
 
 const UpdateItems = () => {
   const { openModal = {} } = useModal();
@@ -102,13 +103,13 @@ const UpdateItems = () => {
   };
 
   return (
-    <div className="p-20">
+    <div className="p-20 pt-0">
       {/* Show loading spinner during initial loading */}
       {isLoading && <div className="spinner">Loading...</div>}
 
       {!isLoading && (
         <>
-          <h1>Update item {item?.name}</h1>
+          <SectionTitle title='Update item' subTitle={item?.name}></SectionTitle>
           <form onSubmit={handleSubmit(handleUpdateItem)}>
             {/* name section */}
             <div className="flex flex-col mb-2">
@@ -119,7 +120,7 @@ const UpdateItems = () => {
                 {...register("name")}
                 type="text"
                 id="name"
-                className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:border-yellow-500"
+                className="px-4 py-2 bg-gray-700  border border-gray-600 rounded-md focus:outline-none focus:border-b-yellow-500 placeholder:text-white"
                 placeholder="Enter item name"
               />
             </div>
@@ -133,7 +134,7 @@ const UpdateItems = () => {
                 <select
                   {...register("category")}
                   id="category"
-                  className="px-4 py-[13px] bg-yellow-500 text-white border border-gray-600 rounded-t-md focus:outline-none focus:rounded-t-md focus:text-black focus:border-yellow-500"
+                  className="px-4 py-[13px] bg-gray-700  border border-gray-600 rounded-t-md focus:outline-none focus:rounded-t-md focus:text-black focus:border-b-yellow-500 placeholder:text-slate-200"
                 >
                   <option value="salad">Salad</option>
                   <option value="pizza">Pizza</option>
@@ -152,7 +153,7 @@ const UpdateItems = () => {
                   {...register("price")}
                   type="text"
                   id="price"
-                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
+                  className="px-4 py-2 bg-gray-700  border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-b-yellow-500 text-white placeholder:text-white pla"
                   placeholder="Enter price"
                 />
               </div>
@@ -167,7 +168,7 @@ const UpdateItems = () => {
                 {...register("recipe")}
                 id="recipe"
                 rows="5"
-                className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md focus:outline-none focus:border-yellow-500"
+                className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md focus:outline-none focus:border-b-yellow-500 placeholder:text-sm"
                 placeholder="Enter recipe details"
               ></textarea>
             </div>
@@ -194,7 +195,7 @@ const UpdateItems = () => {
             <div className="flex justify-end">
               <button
                 type="submit"
-                className="px-5 text-sm py-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-all duration-300"
+                className="px-5 text-sm py-3 bg-yellow-500 text-black font-satisfy rounded-md hover:bg-yellow-600 transition-all duration-300"
                 disabled={isFetching} // Disable while refetching
               >
                 {isFetching ? "Updating..." : "UPDATE ITEM"}

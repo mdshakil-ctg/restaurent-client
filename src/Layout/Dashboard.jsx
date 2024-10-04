@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaBook, FaComment, FaHome, FaCompress, FaUserShield} from "react-icons/fa";
+import { FaBook, FaHome, FaCompress, FaUserShield} from "react-icons/fa";
 import { AiFillDashboard } from "react-icons/ai";
 import { GiSecretBook } from "react-icons/gi";
 import { HiMenuAlt1, HiTemplate  } from "react-icons/hi";
@@ -13,6 +13,7 @@ import Footer from "../Pages/Shared/Footer/Footer";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import './Dashboard.css'
+import DashboardNavbar from "../components/DashboardNavbar";
 
 const Dashboard = () => {
   const { isAdmin, isPending } = useIsAdmin();
@@ -133,7 +134,8 @@ const Dashboard = () => {
           </div>
         </div>
         {/* outlet content */}
-        <div className="flex-1">
+        <div className="flex-1 bg-[#1C1C1C] text-slate-200">
+          <DashboardNavbar/>
           <Outlet></Outlet>
         </div>
       </div>
