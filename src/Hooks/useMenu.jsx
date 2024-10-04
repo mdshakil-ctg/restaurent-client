@@ -4,14 +4,15 @@ import useAxiosPublic from "./useAxiosPublic"
 
 const useMenu = () =>{
     const axiosPublic = useAxiosPublic();
-    const {data : menu = [], refetch} = useQuery({
+    const {data : menu = [], refetch, isLoading, isFetching} = useQuery({
         queryKey: ['menu'],
         queryFn: async() =>{
             const res = await axiosPublic.get('/menu')
             return res.data
         }
     })
-    return {menu, refetch}
+    console.log({menu});
+    return {menu, refetch, isLoading, isFetching }
 }
 
 export default useMenu;

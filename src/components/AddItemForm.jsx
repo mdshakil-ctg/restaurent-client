@@ -1,10 +1,11 @@
 import SectionTitle from "../Pages/Shared/SectionTitle/SectionTitle";
-import { ImSpoonKnife } from "react-icons/im";
 import { useForm } from "react-hook-form"
 import { useState } from "react";
 import axios from "axios";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import useModal from "../Hooks/useModal";
+import { SlOptionsVertical } from "react-icons/sl";
+import DashboardButton from "./DashboardButton/DashboardButton";
 
 const AddItemForm = () => {
 const {openModal} = useModal();
@@ -85,7 +86,7 @@ const {
   
   return (
     <div className="flex ">
-      <div className="min-h-screen w-full max-w-4xl bg-[#1C1C1C] text-white p-16 pt-0">
+      <div className="min-h-screen w-full h-[600px] mb-0 m-6 bg-[#1C1C1C] text-white p-16 pt-0">
         {/* Form Title */}
         {errors && <span className="text-red-500">{errors.message}</span>}
         <div className="text-white">
@@ -94,7 +95,27 @@ const {
             subTitle="what's new"
           ></SectionTitle>
         </div>
+       <div className="flex justify-between gap-4 bg-black p-5">
+       <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80 w-1/3">
+              <span className="text-sm font-semibold ">Statistics</span>
+              <span className="cursor-pointer">
+                <SlOptionsVertical className="text-yellow-400"/>
+              </span>
+            </div>
+        <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80 w-1/3">
+              <span className="text-sm font-semibold ">Options</span>
+              <span className="cursor-pointer">
+                <SlOptionsVertical className="text-yellow-400" />
+              </span>
+            </div>
+        <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80 w-1/3">
+              <span className="text-sm font-semibold ">Menulist</span>
+              <span className="cursor-pointer">
+                <SlOptionsVertical className="text-yellow-400"/>
+              </span>
+            </div>
 
+       </div>
         <form onSubmit={handleSubmit(handleFormSubmit)}>
           <div className="flex flex-col mb-2">
             {errors.name ? 
@@ -198,20 +219,11 @@ const {
             </div>
           </div>
           <div className="flex justify-end">
-            <button
-              type="submit"
-              className="bg-gradient-to-r from-slate-600  to-[#f89f06] text-white font-semibold py-2 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-125 font-satisfy transition duration-300 ease-in-out"
-            >
-              {
-                loading ? <span className="loading loading-bars loading-sm"></span>
-                : <>
-                <ImSpoonKnife className="inline mr-2 text-xl"></ImSpoonKnife>
-                ADD ITEM
-                </>
-              }
-
-            </button>
-
+          {
+            loading ? 
+            <button className="bg-[#1C1C1C] px-16 py-3 text-yellow-400 shadow-slate-300 shadow-lg"><span className="loading loading-bars loading-sm"></span></button> :
+            <DashboardButton text="Add Item" small loading onClick={handleFormSubmit}></DashboardButton>
+          }
           </div>
         </form>
       </div>

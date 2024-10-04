@@ -18,7 +18,7 @@ import DashboardNavbar from "../components/DashboardNavbar";
 const Dashboard = () => {
   const { isAdmin, isPending } = useIsAdmin();
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   // console.log(isAdmin);
   if (isPending) return <LoaderCup></LoaderCup>;
   return (
@@ -134,7 +134,7 @@ const Dashboard = () => {
           </div>
         </div>
         {/* outlet content */}
-        <div className="flex-1 bg-[#1C1C1C] text-slate-200">
+        <div className="flex-1 bg-black text-slate-200">
           <DashboardNavbar/>
           <Outlet></Outlet>
         </div>

@@ -6,10 +6,14 @@ import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
+import { SlOptionsVertical } from "react-icons/sl";
+import DashboardButton from "../../../../components/DashboardButton/DashboardButton";
+import LoaderCup from "../../../../components/LoaderCup/LoaderCup";
 
 const UpdateItems = () => {
   const { openModal = {} } = useModal();
   const [selectedImage, setSelectedImage] = useState(null);
+  
   const [imgUrl, setImgUrl] = useState(null);
   const imageApi = import.meta.env.VITE_IMAGEBB_API;
   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${imageApi}`;
@@ -75,18 +79,19 @@ const UpdateItems = () => {
 
     // Send the updated fields to the server
     const res = await axiosSecure.put(`/updateItem/${id}`, updatedData);
+    console.log({res});
 
     if (res.data.modifiedCount > 0) {
-      reset();
       openModal({
         title: "Success!",
         message: `Data has been updated`,
         autoCloseTime: 2000,
       });
       navigate('/dashboard/manageItems')
+      reset();
     } else {
       openModal({
-        title: "Update failed!",
+        title: "Failed!",
         message: `Try again later.`,
         autoCloseTime: 2000,
         type: "confirm",
@@ -105,11 +110,32 @@ const UpdateItems = () => {
   return (
     <div className="p-20 pt-0">
       {/* Show loading spinner during initial loading */}
-      {isLoading && <div className="spinner">Loading...</div>}
+      {isLoading && <LoaderCup></LoaderCup>}
 
       {!isLoading && (
         <>
           <SectionTitle title='Update item' subTitle={item?.name}></SectionTitle>
+          <div className="flex justify-between gap-4 bg-black p-5">
+       <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80 w-1/3">
+              <span className="text-sm font-semibold ">Statistics</span>
+              <span className="cursor-pointer">
+                <SlOptionsVertical className="text-yellow-400"/>
+              </span>
+            </div>
+        <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80 w-1/3">
+              <span className="text-sm font-semibold ">Options</span>
+              <span className="cursor-pointer">
+                <SlOptionsVertical className="text-yellow-400" />
+              </span>
+            </div>
+        <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80 w-1/3">
+              <span className="text-sm font-semibold ">Menulist</span>
+              <span className="cursor-pointer">
+                <SlOptionsVertical className="text-yellow-400"/>
+              </span>
+            </div>
+
+       </div>
           <form onSubmit={handleSubmit(handleUpdateItem)}>
             {/* name section */}
             <div className="flex flex-col mb-2">
@@ -120,8 +146,8 @@ const UpdateItems = () => {
                 {...register("name")}
                 type="text"
                 id="name"
-                className="px-4 py-2 bg-gray-700  border border-gray-600 rounded-md focus:outline-none focus:border-b-yellow-500 placeholder:text-white"
-                placeholder="Enter item name"
+                className="px-4 py-2 bg-gray-700  rounded-none  focus:outline-none focus:border-b-yellow-500 placeholder:text-white"
+                placeholder={item?.name}
               />
             </div>
 
@@ -133,8 +159,9 @@ const UpdateItems = () => {
                 </label>
                 <select
                   {...register("category")}
+                  defaultValue={item?.category}
                   id="category"
-                  className="px-4 py-[13px] bg-gray-700  border border-gray-600 rounded-t-md focus:outline-none focus:rounded-t-md focus:text-black focus:border-b-yellow-500 placeholder:text-slate-200"
+                  className="px-4 py-[13px] bg-gray-700  focus:outline-none  focus:text-black focus:border-b-yellow-500 placeholder:text-slate-200"
                 >
                   <option value="salad">Salad</option>
                   <option value="pizza">Pizza</option>
@@ -153,8 +180,9 @@ const UpdateItems = () => {
                   {...register("price")}
                   type="text"
                   id="price"
-                  className="px-4 py-2 bg-gray-700  border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-b-yellow-500 text-white placeholder:text-white pla"
-                  placeholder="Enter price"
+                  defaultValue={item?.price}
+                  className="px-4 py-2 bg-gray-700  rounded-none focus:outline-none focus:border-b-yellow-500 text-white placeholder:text-white pla"
+                  placeholder={item?.price}
                 />
               </div>
             </div>
@@ -166,10 +194,11 @@ const UpdateItems = () => {
               </label>
               <textarea
                 {...register("recipe")}
+                defaultValue={item?.recipe}
                 id="recipe"
                 rows="5"
-                className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md focus:outline-none focus:border-b-yellow-500 placeholder:text-sm"
-                placeholder="Enter recipe details"
+                className="px-4 py-2 bg-gray-700 text-white  rounded-none focus:outline-none focus:border-b-yellow-500 placeholder:text-sm"
+                placeholder={item?.recipe}
               ></textarea>
             </div>
 
@@ -177,14 +206,14 @@ const UpdateItems = () => {
             <div className="flex items-center mb-6">
               <label
                 htmlFor="image"
-                className="cursor-pointer bg-gray-700 text-white py-2 px-6 rounded mr-6 shadow hover:bg-gray-900 transition-all"
+                className="cursor-pointer bg-gray-700 text-white py-2 px-6 rounded mr-6 shadow hover:bg-yellow-500 transition-all"
               >
                 Choose File
               </label>
               <input onChange={handleFileChange} type="file" id="image" className="hidden" />
-              <div className="w-2/5 mt-6">
+              <div className="w-[250px] mt-10">
                 {selectedImage ? (
-                  <img src={URL.createObjectURL(selectedImage)} alt="Selected" />
+                  <img src={URL.createObjectURL(selectedImage)} className="w-full h-auto object-cover" alt="Selected" />
                 ) : (
                   <img src={imgUrl} alt="Current" />
                 )}
@@ -193,13 +222,11 @@ const UpdateItems = () => {
 
             {/* update button */}
             <div className="flex justify-end">
-              <button
-                type="submit"
-                className="px-5 text-sm py-3 bg-yellow-500 text-black font-satisfy rounded-md hover:bg-yellow-600 transition-all duration-300"
-                disabled={isFetching} // Disable while refetching
-              >
-                {isFetching ? "Updating..." : "UPDATE ITEM"}
-              </button>
+            {
+            isFetching  ? 
+            <button className="bg-[#1C1C1C] px-16 py-3 text-yellow-400 shadow-slate-300 shadow-lg"><span className="loading loading-bars loading-sm"></span></button> :
+            <DashboardButton text="Update Item" small type="submit"></DashboardButton>
+          }
             </div>
           </form>
         </>
