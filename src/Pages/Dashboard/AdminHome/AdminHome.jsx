@@ -137,12 +137,12 @@ const colors = {
   return (
     <div>
      <div>
-      {/* <DashboardNavbar></DashboardNavbar> */}
+      
      </div>
       <div className="grid grid-cols-2 ">
         <div className="grid grid-cols-2 gap-5 p-4">
-          <div className="bg-[#1C1C1C]">
-            <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80">
+          <div className="bg-[#1C1C1C] text-slate-400">
+            <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">
               <span className="text-sm font-semibold ">Revenue</span>
               <span className="cursor-pointer">
                 <SlOptionsVertical />
@@ -150,17 +150,17 @@ const colors = {
             </div>
             <div className="flex justify-center my-6 ">
               <p>
-                <FaHandHoldingDollar className="text-6xl text-slate-600" />
+                <FaHandHoldingDollar className="text-6xl text-yellow-400" />
               </p>
             </div>
             <div className="mb-6">
-              <p className="font-raleway text-3xl font-bold text-yellow-400 text-center">
+              <p className="font-raleway text-3xl font-bold text-center">
                 $ 18654
               </p>
             </div>
           </div>
           <div className="bg-[#1C1C1C]">
-            <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80">
+            <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400 ">
               <span className="text-sm font-semibold ">Customers</span>
               <span className="cursor-pointer">
                 <SlOptionsVertical />
@@ -168,17 +168,17 @@ const colors = {
             </div>
             <div className="flex justify-center my-6 ">
               <p>
-                <HiUsers className="text-6xl text-slate-600" />
+                <HiUsers className="text-6xl text-yellow-400" />
               </p>
             </div>
             <div className="mb-6">
-              <p className="font-raleway text-3xl font-bold text-yellow-400 text-center">
+              <p className="font-raleway text-3xl font-bold text-slate-400 text-center">
                 63
               </p>
             </div>
           </div>
           <div className="bg-[#1C1C1C]">
-            <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80">
+            <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400 ">
               <span className="text-sm font-semibold ">Products</span>
               <span className="cursor-pointer">
                 <SlOptionsVertical />
@@ -186,17 +186,17 @@ const colors = {
             </div>
             <div className="flex justify-center my-6 ">
               <p>
-                <SiElement className="text-6xl text-slate-600" />
+                <SiElement className="text-6xl text-yellow-400" />
               </p>
             </div>
             <div className="mb-6">
-              <p className="font-raleway text-3xl font-bold text-yellow-400 text-center">
+              <p className="font-raleway text-3xl font-bold text-slate-400 text-center">
                 107
               </p>
             </div>
           </div>
           <div className="bg-[#1C1C1C]">
-            <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80">
+            <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400 ">
               <span className="text-sm font-semibold ">Orders</span>
               <span className="cursor-pointer">
                 <SlOptionsVertical />
@@ -204,11 +204,11 @@ const colors = {
             </div>
             <div className="flex justify-center my-6 ">
               <p>
-                <FaTelegramPlane className="text-6xl text-slate-600" />
+                <FaTelegramPlane className="text-6xl text-yellow-400" />
               </p>
             </div>
             <div className="mb-6">
-              <p className="font-raleway text-3xl font-bold text-yellow-400 text-center">
+              <p className="font-raleway text-3xl font-bold text-slate-400 text-center">
                 249
               </p>
             </div>
