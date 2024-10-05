@@ -27,7 +27,7 @@ const PaymentHistory = () => {
   }, [axiosSecure,setError, user?.email]);
 
   if(loading){
-    return <div className=" h-[70vh] flex justify-center items-center ">
+    return <div className=" h-[95vh] flex justify-center items-center ">
       <div className=" flex justify-center flex-grow"><span className="loading loading-ring w-24"></span></div>
     </div>
   }

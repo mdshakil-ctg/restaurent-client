@@ -4,7 +4,7 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaCartArrowDown } from "react-icons/fa6";
 import useCart from "../../../Hooks/useCart";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import logo from "../../../assets/logo2.png";
+import logo from "../../../assets/logo/logo-with-text-eraser.png";
 import LoaderCup from "../../../components/LoaderCup/LoaderCup";
 import useIsAdmin from "../../../Hooks/useIsAdmin";
 
@@ -12,10 +12,9 @@ import useIsAdmin from "../../../Hooks/useIsAdmin";
 const Navbar = () => {
   
   const { user, LogoutUser, setLoading, loading } = useContext(AuthContext); 
-  const {cart, refetch} = useCart();
+  const {cart} = useCart();
   const {isAdmin, isPending} = useIsAdmin()
   const axiosPublic = useAxiosPublic();
-  refetch();
   const handleLogout = () => {
     LogoutUser()
       .then(() => {
@@ -32,28 +31,28 @@ const Navbar = () => {
 
   const navItems = (
     <>
-      <li className="text-slate-400 mr-1">
+      <li className="text-yellow-400 mr-1">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="text-slate-400 mr-1">
+      <li className="text-yellow-400 mr-1">
         <NavLink to="/menu">Menu</NavLink>
       </li>
-      <li className="text-slate-400 mr-1">
+      <li className="text-yellow-400 mr-1">
         <NavLink to="/shop/soup">Gallary</NavLink>
       </li>
       
-      <li className="text-slate-400 mr-1">
+      <li className="text-yellow-400 mr-1">
         <NavLink to="/reservation">Not Found</NavLink>
       </li>
-      <li className="text-slate-400 mr-1">
+      <li className="text-yellow-400 mr-1">
         <NavLink to="/contact">Contact Us</NavLink>
       </li>
-      <li className="text-slate-400 mr-1">
+      <li className="text-yellow-400 mr-1">
         <NavLink to={isAdmin ? "/dashboard/adminHome" :"/dashboard/user-home"}>Dashboard</NavLink>
       </li>
 
       {user ? (
-        <li className="text-slate-400 mr-1">
+        <li className="text-yellow-400 mr-1">
           <button onClick={handleLogout}>Logout</button>
         </li>
       ) : (
@@ -84,7 +83,7 @@ const Navbar = () => {
   return (
     <>
     
-      <div className="navbar fixed z-20 bg-black bg-opacity-100 max-w-screen-xl text-white font-semibold">
+      <div className="navbar p-0 fixed z-20 bg-black bg-opacity-100 max-w-screen-xl text-white font-semibold">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -105,15 +104,15 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 py-0 shadow"
             >
               {navItems}
             </ul>
           </div>
-          <a className="w-[140px] h-[60px]"><img className="h-full w-full" src={logo}></img></a>
+          <a className="w-[160px]"><img className="ml-1 w-[50%] object-cover" src={logo}></img></a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navItems}</ul>
+          <ul className="menu menu-horizontal py-0 px-1">{navItems}</ul>
         </div>
        <div className="navbar-end">
 

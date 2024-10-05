@@ -10,22 +10,27 @@ import profileImg from "../../src/assets/others/profile.png";
 import useIsAdmin from "../Hooks/useIsAdmin";
 import LoaderCup from "../components/LoaderCup/LoaderCup";
 import Footer from "../Pages/Shared/Footer/Footer";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import './Dashboard.css'
 import DashboardNavbar from "../components/DashboardNavbar";
+import useCart from "../Hooks/useCart";
 
 const Dashboard = () => {
   const { isAdmin, isPending } = useIsAdmin();
   const { user } = useContext(AuthContext);
+  const {cart, refetch} = useCart();
   // console.log(user);
   // console.log(isAdmin);
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
   if (isPending) return <LoaderCup></LoaderCup>;
   return (
     <>
       <div className="flex bg-black">
         {/* //dashboard content */}
-        <div className="w-[300px] bg-[#1C2A35] text-white p-2">
+        <div className="w-[300px] min-h-screen bg-[#1C2A35] text-white p-2">
           {/* <h1 className="uppercase mt-6 mb-20 text-center font-bold text-[20px] leading-6 font-serif ">
           bistro boss <br /> <span className="text-[16px]">restaurant</span>
         </h1> */}
@@ -89,7 +94,7 @@ const Dashboard = () => {
               </NavLink>
               <NavLink to="/dashboard/myCart">
               <li className="flex items-center font-medium capitalize mb-1 px-2 py-1">
-                  <FaCartShopping className="text-xl" /> <span className="ml-2">My Cart</span>
+                  <FaCartShopping className="text-xl" /> <span className="ml-2">My Cart <span className="text-sm">({cart?.length})</span></span>
                 </li>
               </NavLink>
               <NavLink to="/dashboard/addReview">

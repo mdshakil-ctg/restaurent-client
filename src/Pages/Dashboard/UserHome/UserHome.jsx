@@ -8,6 +8,14 @@ import { FaCartFlatbed } from "react-icons/fa6";
 import { MdReviews } from "react-icons/md";
 import { PiNotebookBold } from "react-icons/pi";
 import { RiSecurePaymentLine } from "react-icons/ri";
+import CanvasJSReact from "@canvasjs/react-charts";
+import OptionSection from "../../../components/OptionSection";
+import { FaHandHoldingHeart } from "react-icons/fa";
+import { FaShareFromSquare } from "react-icons/fa6";
+import { FaCalendarTimes } from "react-icons/fa";
+import proImg from '../../../assets/others/profile.png'
+const CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
 const UserHome = () => {
   const { user, loading } = useContext(AuthContext);
   const { cart, isLoading } = useCart();
@@ -16,15 +24,41 @@ const UserHome = () => {
     return <span className="loading loading-ring loading-lg"></span>;
   }
 
+  // Data for the user's activity chart
+  const chartOptions = {
+    animationEnabled: true,
+    backgroundColor: "#1C1C1C",
+    theme: "dark2", // Theme for the chart
+    axisY: {
+      prefix: "",
+      gridThickness: 0,
+      },
+    
+    data: [
+      {
+        type: "column", // Chart type
+        dataPoints: [
+          { label: "Orders", y: cart?.length || 0 },
+          { label: "Reviews", y: 3 }, // Replace with dynamic value if available
+          { label: "Bookings", y: 16 }, // Replace with dynamic value
+          { label: "Payments", y: 9 }, // Replace with dynamic value
+          { label: "Favourites", y: 18 }, // Replace with dynamic value
+          { label: "Cancelled", y: 5 }, // Replace with dynamic value
+          { label: "Referrals", y: 12 }, // Replace with dynamic value
+        ],
+      }
+    ]
+  };
+
   return (
-    <div className="scrollbar-gutter-stable h-[70vh] flex flex-col">
+    <div className="scrollbar-gutter-stable h-[100vh] flex flex-col">
       <div className="grid grid-cols-3 gap-5 p-4 flex-grow-0">
         {/* Menus */}
         <div className="bg-[#1C1C1C] text-slate-400">
           <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">
             <span className="text-sm font-semibold">Menus</span>
             <span className="cursor-pointer">
-              <SlOptionsVertical  className="text-yellow-400"/>
+              <SlOptionsVertical className="text-yellow-400" />
             </span>
           </div>
           <div className="flex justify-center my-6">
@@ -39,7 +73,7 @@ const UserHome = () => {
           <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">
             <span className="text-sm font-semibold">Total Shop</span>
             <span className="cursor-pointer">
-              <SlOptionsVertical className="text-yellow-400"/>
+              <SlOptionsVertical className="text-yellow-400" />
             </span>
           </div>
           <div className="flex justify-center my-6">
@@ -56,7 +90,7 @@ const UserHome = () => {
           <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">
             <span className="text-sm font-semibold">Contacts</span>
             <span className="cursor-pointer">
-              <SlOptionsVertical className="text-yellow-400"/>
+              <SlOptionsVertical className="text-yellow-400" />
             </span>
           </div>
           <div className="flex justify-center my-6">
@@ -69,8 +103,56 @@ const UserHome = () => {
           </div>
         </div>
       </div>
+      <div className="grid grid-cols-2 gap-4 m-4 mt-0">
+      {/* chartjs option */}
+      <div className="">
+        <OptionSection text={'Monthly Activities'}></OptionSection>
+        <CanvasJSChart options={chartOptions} />
+      </div>
+      {/* user activities */}
+      <div className="bg-[#1C1C1C] flex flex-col ">
+          <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">
+            <span className="text-sm font-semibold">User Activities</span>
+            <span className="cursor-pointer text-yellow-400">
+              <SlOptionsVertical />
+            </span>
+          </div>
+          <div className="flex flex-col text-xs text-slate-400 gap-2 items-center justify-center flex-grow ">
+            <div className="space-y-1">
+            <div className="flex  w-full gap-2 pl-3">
+              <FaCartFlatbed className="text-[#99A1C6] text-xl" />
+              <p className="text-sm flex-grow">ORDERS : {cart?.length}</p>
+            </div>
+            <div className="flex  w-full gap-2 pl-3">
+              <MdReviews className="text-[#51CDA0] text-xl" />
+              <p className="text-sm flex-grow">REVIEWS : 3</p>
+            </div>
+            <div className="flex w-full gap-2 pl-3">
+              <PiNotebookBold className="text-[#DF7970] text-xl" />
+              <p className="text-sm flex-grow">BOOKINGS : 16</p>
+            </div>
+            <div className="flex w-full gap-2 pl-3">
+              <RiSecurePaymentLine className="text-[#4C9CA0] text-xl" />
+              <p className="text-sm flex-grow">PAYMENT : 9</p>
+            </div>
+            <div className="flex w-full gap-2 pl-3">
+              <FaHandHoldingHeart  className="text-[#C6A4B8] text-xl" />
+              <p className="text-sm flex-grow">Favourites : 18</p>
+            </div>
+            <div className="flex w-full gap-2 pl-3">
+              <FaCalendarTimes   className="text-[#D9E18D] text-xl" />
+              <p className="text-sm flex-grow">Cancelled : 5</p>
+            </div>
+            <div className="flex w-full gap-2 pl-3">
+              <FaShareFromSquare  className="text-[#88B3C6] text-xl" />
+              <p className="text-sm flex-grow">Referrals : 12</p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <div className="grid grid-cols-2 gap-4 mx-4  flex-grow overflow-auto">
+      <div className="grid grid-cols-2 gap-4 mx-4 h-64 flex-grow  overflow-auto">
         {/* User Profile */}
         <div className="bg-[#1C1C1C] flex flex-col">
           <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">
@@ -82,7 +164,7 @@ const UserHome = () => {
           <div className="flex flex-col text-xs text-slate-400 items-center justify-center flex-grow">
             <img
               className="w-20 rounded-full mb-2"
-              src={user?.photoURL}
+          src={user?.photoURL ? user.photoURL : proImg}
               alt="user-photo"
             />
             <p>{user?.displayName}</p>
@@ -91,34 +173,32 @@ const UserHome = () => {
           </div>
         </div>
         {/* User Activities */}
-        <div className="bg-[#1C1C1C] flex flex-col">
+        {/* <div className="bg-[#1C1C1C] flex flex-col">
           <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">
             <span className="text-sm font-semibold">User Activities</span>
             <span className="cursor-pointer text-yellow-400">
               <SlOptionsVertical />
             </span>
           </div>
-          <div className="flex flex-col text-xs text-slate-400 gap-2 items-center justify-center flex-grow  pl-[20%]">
+          <div className="flex flex-col text-xs text-slate-400 gap-2 items-center justify-center flex-grow pl-[20%]">
             <div className="flex  w-full gap-2 pl-3">
               <FaCartFlatbed className="text-blue-400 text-xl" />
               <p className="text-sm flex-grow">ORDERS : {cart?.length}</p>
             </div>
             <div className="flex  w-full gap-2 pl-3">
-              <MdReviews  className="text-pink-400 text-xl" />
+              <MdReviews className="text-pink-400 text-xl" />
               <p className="text-sm flex-grow">REVIEWS : 3</p>
             </div>
             <div className="flex w-full gap-2 pl-3">
-              <PiNotebookBold  className="text-green-400 text-xl" />
+              <PiNotebookBold className="text-green-400 text-xl" />
               <p className="text-sm flex-grow">BOOKINGS : 16</p>
             </div>
             <div className="flex w-full gap-2 pl-3">
-              <RiSecurePaymentLine   className="text-red-400 text-xl" />
+              <RiSecurePaymentLine className="text-red-400 text-xl" />
               <p className="text-sm flex-grow">PAYMENT : 9</p>
             </div>
-          
-            
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

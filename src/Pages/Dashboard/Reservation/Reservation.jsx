@@ -41,9 +41,9 @@ const Reservation = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <div className="flex ">
-        <div className=" w-full max-w-4xl  mx-auto bg-black p-16">
+        <div className=" min-h-screen max-w-4xl  mx-auto bg-black p-16">
           {/* Form Title */}
           {errors && <span>{errors.message}</span>}
           <div className="text-white">
@@ -58,7 +58,7 @@ const Reservation = () => {
               {/* Date section  */}
               <div className="flex flex-col">
                 <label htmlFor="date" className="text-gray-300 mb-2">
-                  Date*
+                  Date
                 </label>
                 <input
                   {...register("date", { required: true })}
@@ -71,7 +71,7 @@ const Reservation = () => {
               {/* time section  */}
               <div className="flex flex-col">
                 <label htmlFor="time" className="text-gray-300 mb-2">
-                  Time*
+                  Time
                 </label>
                 <input
                   {...register("time", { required: true })}
@@ -84,7 +84,7 @@ const Reservation = () => {
               {/* guest section */}
               <div className="flex flex-col">
                 <label htmlFor="guest" className="text-gray-300 mb-4">
-                  Guest*
+                  Guest
                 </label>
                 <select
                   {...register("guest", { required: true })}
@@ -114,7 +114,7 @@ const Reservation = () => {
               {/* name section  */}
               <div className="flex flex-col">
                 <label htmlFor="name" className="text-gray-300 mb-2">
-                  Name*
+                  Name
                 </label>
                 <input
                   {...register("name", { required: true })}
@@ -127,7 +127,7 @@ const Reservation = () => {
               {/* Phone section  */}
               <div className="flex flex-col">
                 <label htmlFor="phone" className="text-gray-300 mb-2">
-                  Phone*
+                  Phone
                 </label>
                 <input
                   {...register("phone", { required: true })}
@@ -176,7 +176,7 @@ const Reservation = () => {
               {/* email section  */}
               <div className="flex flex-col">
                 <label htmlFor="email" className="text-gray-300 mb-2">
-                  Email*
+                  Email
                 </label>
                 <input
                   {...register("email", { required: true, disabled: true })}

@@ -3,9 +3,11 @@ import { AuthContext } from '../Providers/AuthProvider';
 import { axiosSecure } from '../Hooks/useAxiosSecure';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useModal from '../Hooks/useModal';
+import useCart from '../Hooks/useCart';
 
 const ShopCard = ({ data }) => {
   const { openModal } = useModal();
+  const {refetch} = useCart()
   const { name, image, recipe, price, _id } = data;
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,11 +24,13 @@ const ShopCard = ({ data }) => {
       }, { withCredentials: true })
       .then(res => {
         if (res.data.insertedId) {
+          //call the refetch for update data
+          refetch()
           openModal({
             title: 'Success!',
             message: 'Your cart has been added',
             type: 'success',
-            autoCloseTime: 5000,
+            autoCloseTime: 2000,
           });
         }
       });
