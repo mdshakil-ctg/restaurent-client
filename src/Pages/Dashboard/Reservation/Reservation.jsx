@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
-import { ImSpoonKnife } from "react-icons/im";
+
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import OurLocation from "../../ContactUs/OurLocation/OurLocation";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import useModal from "../../../Hooks/useModal";
+import DashboardButton from './../../../components/DashboardButton/DashboardButton';
 
 const Reservation = () => {
   const { openModal = {} } = useModal();
@@ -42,7 +43,7 @@ const Reservation = () => {
   return (
     <div>
       <div className="flex ">
-        <div className="min-h-screen w-full max-w-4xl bg-black p-16">
+        <div className=" w-full max-w-4xl  mx-auto bg-black p-16">
           {/* Form Title */}
           {errors && <span>{errors.message}</span>}
           <div className="text-white">
@@ -63,7 +64,7 @@ const Reservation = () => {
                   {...register("date", { required: true })}
                   type="date"
                   id="date"
-                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
+                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600  rounded-b-none focus:outline-none focus:border-yellow-500"
                   placeholder="--/--/--"
                 />
               </div>
@@ -76,8 +77,8 @@ const Reservation = () => {
                   {...register("time", { required: true })}
                   type="time"
                   id="time"
-                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
-                  placeholder="--/ -- --"
+                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600  rounded-b-none focus:outline-none focus:border-yellow-500"
+                  placeholder=""
                 />
               </div>
               {/* guest section */}
@@ -88,7 +89,7 @@ const Reservation = () => {
                 <select
                   {...register("guest", { required: true })}
                   id="guest"
-                  className="px-4 py-[13px] bg-yellow-500 text-white border border-gray-600 rounded-t-md focus:outline-none focus:rounded-t-md focus:text-black focus:border-yellow-500"
+                  className="px-4 py-[12px] bg-gray-700 text-white border border-gray-600  focus:outline-none focus:rounded-t-md focus:text-black focus:border-yellow-500"
                 >
                   <option className="hover:bg-yellow-500" value="1">
                     1 person
@@ -119,8 +120,8 @@ const Reservation = () => {
                   {...register("name", { required: true })}
                   type="text"
                   id="time"
-                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
-                  placeholder="host name here"
+                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600  placeholder:text-slate-200 rounded-b-none focus:outline-none focus:border-yellow-500"
+                  placeholder="Host name here"
                 />
               </div>
               {/* Phone section  */}
@@ -130,12 +131,48 @@ const Reservation = () => {
                 </label>
                 <input
                   {...register("phone", { required: true })}
-                  type="number"
+                  type="text"
                   id="time"
-                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
+                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600  rounded-b-none focus:outline-none focus:border-yellow-500 placeholder:text-slate-200 "
                   placeholder="Host Phone Number"
                 />
-              </div>{" "}
+              </div>
+               {/* table section */}
+               <div className="flex flex-col">
+                <label htmlFor="table" className="text-gray-300 mb-4">
+                  Table
+                </label>
+                <select
+                  {...register("table", { required: false })}
+                  id="table"
+                  className="px-4 py-[12px] bg-gray-700 text-white border border-gray-600  focus:outline-none focus:rounded-t-md focus:text-black focus:border-yellow-500"
+                >
+                  <option className="hover:bg-yellow-500" value="1">
+                  Main Dining Area
+                  </option>
+                  <option className="hover:bg-yellow-500" value="2">
+                  Near the Window
+                  </option>
+                  <option className="hover:bg-yellow-500" value="3">
+                  Booth Seating
+                  </option>
+                  <option className="hover:bg-yellow-500" value="4">
+                  Close to the Bar
+                  </option>
+                  <option className="hover:bg-yellow-500" value="5">
+                  Private/Dedicated Room
+                  </option>
+                  <option className="hover:bg-yellow-500" value="6">
+                  Patio Seating
+                  </option>
+                  <option className="hover:bg-yellow-500" value="7">
+                  Garden Area
+                  </option>
+                  <option className="hover:bg-yellow-500" value="8">
+                  Rooftop
+                  </option>
+                </select>
+              </div>
               {/* email section  */}
               <div className="flex flex-col">
                 <label htmlFor="email" className="text-gray-300 mb-2">
@@ -145,25 +182,20 @@ const Reservation = () => {
                   {...register("email", { required: true, disabled: true })}
                   type="email"
                   id="time"
-                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
+                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600  rounded-b-none focus:outline-none focus:border-yellow-500 placeholder:text-slate-200 "
                   placeholder={user?.email}
                 />
               </div>
             </div>
 
             <div className="flex justify-center mt-20">
-              <button
-                type="submit"
-                className="px-5 text-sm py-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-all duration-300"
-              >
-                <ImSpoonKnife className="inline mr-2 text-xl"></ImSpoonKnife>
-                Confirm Bookings
-              </button>
+              
+              <DashboardButton type='submit' small text="Confirm Bookings"/>
             </div>
           </form>
         </div>
       </div>
-      <SectionTitle title="our location" subTitle="visit us"></SectionTitle>
+      
       <OurLocation></OurLocation>
     </div>
   );
