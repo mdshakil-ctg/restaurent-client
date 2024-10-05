@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { SlOptionsVertical } from "react-icons/sl";
 import SectionTitle from "../../../Shared/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
-import { FaTrash, FaUsers } from "react-icons/fa";
+import {  FaUsers } from "react-icons/fa";
 import { FaTelegramPlane } from "react-icons/fa";
 import { HiUsers } from "react-icons/hi2";
 import { SiElement } from "react-icons/si";
@@ -165,13 +165,13 @@ const AllUsers = () => {
                           <span className="text-yellow-300 text-base bg-black rounded">ADMIN</span>
                         ) : (
                           
-                          <button  className="btn btn-ghost btn-xs ">
+                          <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost btn-xs ">
                           <FaUsers className="text-2xl badge badge-info hover:bg-yellow-400 hover:text-slate-900 rounded" />
                         </button>
                         )}
                       </td>
                       <td>
-                        <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost btn-xs ">
+                        <button onClick={() => handleDeleteUser(user)} className="btn btn-ghost btn-xs ">
                           <TiEdit className="text-2xl badge badge-error hover:badge-warning hover:text-slate-900 rounded" />
                         </button>
                       </td>
