@@ -7,6 +7,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import logo from "../../../assets/logo/logo-with-text-eraser.png";
 import LoaderCup from "../../../components/LoaderCup/LoaderCup";
 import useIsAdmin from "../../../Hooks/useIsAdmin";
+import './Navbar.css'
 
 
 const Navbar = () => {
@@ -31,36 +32,36 @@ const Navbar = () => {
 
   const navItems = (
     <>
-      <li className="text-yellow-400 mr-1">
+      <li className="text-gray-400 mr-1">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li className="text-yellow-400 mr-1">
+      <li className="text-gray-400 mr-1">
         <NavLink to="/menu">Menu</NavLink>
       </li>
-      <li className="text-yellow-400 mr-1">
+      <li className="text-gray-400 mr-1">
         <NavLink to="/shop/soup">Gallary</NavLink>
       </li>
       
-      <li className="text-yellow-400 mr-1">
-        <NavLink to="/reservation">Not Found</NavLink>
+      <li className="text-gray-400 mr-1">
+        <NavLink to="/user-reservation">Not Found</NavLink>
       </li>
-      <li className="text-yellow-400 mr-1">
+      <li className="text-gray-400 mr-1">
         <NavLink to="/contact">Contact Us</NavLink>
       </li>
-      <li className="text-yellow-400 mr-1">
+      <li className="text-gray-400 mr-1">
         <NavLink to={isAdmin ? "/dashboard/adminHome" :"/dashboard/user-home"}>Dashboard</NavLink>
       </li>
 
       {user ? (
-        <li className="text-yellow-400 mr-1">
+        <li className="text-gray-400 mr-1">
           <button onClick={handleLogout}>Logout</button>
         </li>
       ) : (
         <>
-          <li className="text-slate-400 mr-1">
+          <li className="text-gray-400 mr-1">
             <NavLink to="/signup">Sign Up</NavLink>
           </li>
-          <li className="text-slate-400 mr-1">
+          <li className="text-gray-400 mr-1">
             <NavLink to="/login">Log In</NavLink>
           </li>
         </>
@@ -69,8 +70,8 @@ const Navbar = () => {
       <li>
         <NavLink to={isAdmin ? "/dashboard/adminHome" :"/dashboard/myCart"}>
         
-       <span className="relative z-30"> <FaCartArrowDown className="text-2xl"/></span>
-       <div className="badge badge-warning badge-sm absolute top-0 right-0 z-40">{cart?.length}</div>
+       <span className="relative z-30"> <FaCartArrowDown className="text-2xl  text-gray-400"/></span>
+       <div className="badge badge-sm leading-3 badge-warning absolute top-0 -right-1 z-10">{cart?.length}</div>
         
         </NavLink>
       </li>
@@ -83,7 +84,7 @@ const Navbar = () => {
   return (
     <>
     
-      <div className="navbar p-0 fixed z-20 bg-black bg-opacity-100 max-w-screen-xl text-white font-semibold">
+      <div className="navbar p-0 fixed z-20 bg-black max-w-screen-xl font-semibold">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -104,7 +105,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 py-0 shadow"
+              className="menu menu-sm dropdown-content rounded-box z-[1] mt-3 w-52 p-2 py-0 shadow"
             >
               {navItems}
             </ul>

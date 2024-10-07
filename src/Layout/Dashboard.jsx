@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { FaBook, FaHome, FaCompress, FaUserShield} from "react-icons/fa";
 import { AiFillDashboard } from "react-icons/ai";
 import { GiSecretBook } from "react-icons/gi";
@@ -17,11 +17,17 @@ import DashboardNavbar from "../components/DashboardNavbar";
 import useCart from "../Hooks/useCart";
 
 const Dashboard = () => {
+
+  const location = useLocation();
+  const hideNavbar = location.pathname.includes('/user-');
+  console.log(hideNavbar);
+  //todo: hide the footer for admin routes
+  
+
   const { isAdmin, isPending } = useIsAdmin();
   const { user } = useContext(AuthContext);
   const {cart, refetch} = useCart();
-  // console.log(user);
-  // console.log(isAdmin);
+
   useEffect(() => {
     refetch();
   }, [refetch]);
@@ -30,10 +36,7 @@ const Dashboard = () => {
     <>
       <div className="flex bg-black">
         {/* //dashboard content */}
-        <div className="w-[300px] min-h-screen bg-[#1C2A35] text-white p-2">
-          {/* <h1 className="uppercase mt-6 mb-20 text-center font-bold text-[20px] leading-6 font-serif ">
-          bistro boss <br /> <span className="text-[16px]">restaurant</span>
-        </h1> */}
+        <div className="w-[300px] min-h-screen  bg-[#1C2A35] text-white p-2">
           <div>
             <div className="bg-yellow-400 w-16 h-16 mx-auto mt-8 mb-2 rounded-2xl flex">
               <img
@@ -82,7 +85,7 @@ const Dashboard = () => {
                   <AiFillDashboard className="text-xl" /> <span className="ml-2">Dashboard</span> 
                 </li>
               </NavLink>
-              <NavLink to="/dashboard/reservation">
+              <NavLink to="/dashboard/user-reservation">
               <li className="flex items-center font-medium capitalize mb-1 px-2 py-1">
                   <FaCompress  className="text-xl" /> <span className="ml-2">Reservation</span>
                 </li>
@@ -139,7 +142,7 @@ const Dashboard = () => {
           </div>
         </div>
         {/* outlet content */}
-        <div className="flex-1 bg-black text-slate-200">
+        <div className="flex-1 bg-black text-slate-200 ">
           <DashboardNavbar/>
           <Outlet></Outlet>
         </div>

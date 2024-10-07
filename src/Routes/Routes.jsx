@@ -71,7 +71,7 @@ import AdminRoute from "./AdminRoute/AdminRoute";
           element: <UserHome></UserHome>
         },
         {
-          path:'reservation',
+          path:'user-reservation',
           element:<Reservation></Reservation>
         },
         {

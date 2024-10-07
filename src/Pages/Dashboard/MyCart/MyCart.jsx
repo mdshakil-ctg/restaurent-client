@@ -111,7 +111,7 @@ const MyCart = () => {
         {/* table content */}
         {cart?.length > 0 && (
           <div className="col-span-2 card rounded-none glass min-h-[320px]">
-            <div className="overflow-x-auto overflow-y-auto">
+            <div className="overflow-auto h-[330px] scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700">
               <table className="table">
                 {/* head */}
                 <thead>
@@ -163,7 +163,7 @@ const MyCart = () => {
           </div>
         )}
         {/* checkout content */}
-        <div className="col-span-1 bg-[#2D2D2D] flex flex-col  p-5 text-xs ">
+        <div className="col-span-1 bg-[#2D2D2D] flex flex-col mb-5 p-5 text-xs ">
           <div className="mb-10">
             {/* <h4 className="text-center text-[#FF7F50] mb-4">Order Summary</h4> */}
             <div className='mb-10'>

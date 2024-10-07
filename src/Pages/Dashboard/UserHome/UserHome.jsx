@@ -51,7 +51,7 @@ const UserHome = () => {
   };
 
   return (
-    <div className="scrollbar-gutter-stable h-[100vh] flex flex-col">
+    <div className=" flex flex-col">
       <div className="grid grid-cols-3 gap-5 p-4 flex-grow-0">
         {/* Menus */}
         <div className="bg-[#1C1C1C] text-slate-400">
@@ -117,35 +117,35 @@ const UserHome = () => {
               <SlOptionsVertical />
             </span>
           </div>
-          <div className="flex flex-col text-xs text-slate-400 gap-2 items-center justify-center flex-grow ">
-            <div className="space-y-1">
-            <div className="flex  w-full gap-2 pl-3">
-              <FaCartFlatbed className="text-[#99A1C6] text-xl" />
-              <p className="text-sm flex-grow">ORDERS : {cart?.length}</p>
+          <div className="flex flex-col text-xs text-slate-400 items-center justify-center flex-grow ">
+            <div className="space-y-2 text-lg">
+            <div className="flex items-center w-full gap-2 pl-3">
+              <FaCartFlatbed className="text-[#99A1C6] " />
+              <p className=" flex-grow">ORDERS : {cart?.length}</p>
             </div>
-            <div className="flex  w-full gap-2 pl-3">
-              <MdReviews className="text-[#51CDA0] text-xl" />
-              <p className="text-sm flex-grow">REVIEWS : 3</p>
+            <div className="flex items-center w-full gap-2 pl-3">
+              <MdReviews className="text-[#51CDA0] " />
+              <p className=" flex-grow">REVIEWS : 3</p>
             </div>
-            <div className="flex w-full gap-2 pl-3">
-              <PiNotebookBold className="text-[#DF7970] text-xl" />
-              <p className="text-sm flex-grow">BOOKINGS : 16</p>
+            <div className="flex items-center w-full gap-2 pl-3">
+              <PiNotebookBold className="text-[#DF7970] " />
+              <p className=" flex-grow">BOOKINGS : 16</p>
             </div>
-            <div className="flex w-full gap-2 pl-3">
-              <RiSecurePaymentLine className="text-[#4C9CA0] text-xl" />
-              <p className="text-sm flex-grow">PAYMENT : 9</p>
+            <div className="flex items-center w-full gap-2 pl-3">
+              <RiSecurePaymentLine className="text-[#4C9CA0] " />
+              <p className=" flex-grow">PAYMENT : 9</p>
             </div>
-            <div className="flex w-full gap-2 pl-3">
-              <FaHandHoldingHeart  className="text-[#C6A4B8] text-xl" />
-              <p className="text-sm flex-grow">Favourites : 18</p>
+            <div className="flex items-center w-full gap-2 pl-3">
+              <FaHandHoldingHeart  className="text-[#C6A4B8] " />
+              <p className=" flex-grow">Favourites : 18</p>
             </div>
-            <div className="flex w-full gap-2 pl-3">
-              <FaCalendarTimes   className="text-[#D9E18D] text-xl" />
-              <p className="text-sm flex-grow">Cancelled : 5</p>
+            <div className="flex items-center w-full gap-2 pl-3">
+              <FaCalendarTimes   className="text-[#D9E18D] " />
+              <p className=" flex-grow">Cancelled : 5</p>
             </div>
-            <div className="flex w-full gap-2 pl-3">
-              <FaShareFromSquare  className="text-[#88B3C6] text-xl" />
-              <p className="text-sm flex-grow">Referrals : 12</p>
+            <div className="flex items-center w-full gap-2 pl-3">
+              <FaShareFromSquare  className="text-[#88B3C6] " />
+              <p className=" flex-grow">Referrals : 12</p>
             </div>
             </div>
           </div>
@@ -172,33 +172,6 @@ const UserHome = () => {
             <p>Phone: +880 1819 000000</p>
           </div>
         </div>
-        {/* User Activities */}
-        {/* <div className="bg-[#1C1C1C] flex flex-col">
-          <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">
-            <span className="text-sm font-semibold">User Activities</span>
-            <span className="cursor-pointer text-yellow-400">
-              <SlOptionsVertical />
-            </span>
-          </div>
-          <div className="flex flex-col text-xs text-slate-400 gap-2 items-center justify-center flex-grow pl-[20%]">
-            <div className="flex  w-full gap-2 pl-3">
-              <FaCartFlatbed className="text-blue-400 text-xl" />
-              <p className="text-sm flex-grow">ORDERS : {cart?.length}</p>
-            </div>
-            <div className="flex  w-full gap-2 pl-3">
-              <MdReviews className="text-pink-400 text-xl" />
-              <p className="text-sm flex-grow">REVIEWS : 3</p>
-            </div>
-            <div className="flex w-full gap-2 pl-3">
-              <PiNotebookBold className="text-green-400 text-xl" />
-              <p className="text-sm flex-grow">BOOKINGS : 16</p>
-            </div>
-            <div className="flex w-full gap-2 pl-3">
-              <RiSecurePaymentLine className="text-red-400 text-xl" />
-              <p className="text-sm flex-grow">PAYMENT : 9</p>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

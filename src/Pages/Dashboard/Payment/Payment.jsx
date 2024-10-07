@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form";
-import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useContext, useState } from "react";
-import { FaCheckDouble } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import LoaderCup from "../../../components/LoaderCup/LoaderCup";
+import DashboardButton from "../../../components/DashboardButton/DashboardButton";
 
 const Payment = () => {
   // const { openModal = {} } = useModal();
@@ -56,7 +55,7 @@ const Payment = () => {
         <div className="min-h-screen w-full max-w-4xl bg-black p-16">
           {/* Form Title */}
           {errors && <span>{errors.message}</span>}
-          <div className="text-white">
+          <div className="text-white font-satisfy text-xl">
             <h5>Delivery Information</h5>
           </div>
 
@@ -72,7 +71,7 @@ const Payment = () => {
                   type="email"
                   id="time"
                   defaultValue={user?.email}
-                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
+                  className="px-4 py-2 bg-gray-700 placeholder:text-gray-400 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
                   placeholder={user?.email}
                 />
               </div>
@@ -99,7 +98,7 @@ const Payment = () => {
                   {...register("region", { required: true })}
                   type="text"
                   id="region"
-                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
+                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500  placeholder:text-white"
                   placeholder="Please choose your region"
                 />
               </div>
@@ -112,7 +111,7 @@ const Payment = () => {
                   {...register("phone", { required: true })}
                   type="number"
                   id="time"
-                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
+                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500 placeholder:text-white"
                   placeholder="Host Phone Number"
                 />
               </div>
@@ -125,7 +124,7 @@ const Payment = () => {
                   {...register("city", { required: true })}
                   type="text"
                   id="city"
-                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
+                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500 placeholder:text-white"
                   placeholder="Please choose your city"
                 />
               </div>
@@ -138,7 +137,7 @@ const Payment = () => {
                   {...register("currency", { required: true })}
                   defaultValue={"BDT"}
                   id="currency"
-                  className="px-4 py-[13px] bg-yellow-500 text-white border border-gray-600 rounded-t-md focus:outline-none focus:rounded-t-md focus:text-black focus:border-yellow-500"
+                  className="px-4 py-[13px] bg-gray-700 text-white border border-gray-600 rounded-t-md focus:outline-none focus:rounded-t-md focus:text-black focus:border-yellow-500"
                 >
                   <option className="hover:bg-yellow-500" value="BDT">
                     BDT
@@ -157,32 +156,22 @@ const Payment = () => {
                   {...register("address", { required: true })}
                   type="text"
                   id="address"
-                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
-                  placeholder="Full address here"
+                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500 placeholder:text-white"
+                  placeholder="Full address here "
                 />
               </div>
             </div>
 
             <div className="flex justify-center mt-20">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="px-5 text-sm py-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 transition-all duration-300"
-              >
-                {isSubmitting ? (
-                  <span className="loading loading-bars loading-md"></span>
-                ) : (
-                  <>
-                    <FaCheckDouble className="inline mr-2 text-xl" />
-                    Proceed to Pay
-                  </>
-                )}
-              </button>
+              {isSubmitting ? (
+                <span className="loading loading-bars loading-lg bg-yellow-400 border border-white"></span>
+              ) : (
+                <DashboardButton small type="submit" text="proceed to pay" />
+              )}
             </div>
           </form>
         </div>
       </div>
-      <SectionTitle title="our location" subTitle="visit us"></SectionTitle>
     </div>
   );
 };

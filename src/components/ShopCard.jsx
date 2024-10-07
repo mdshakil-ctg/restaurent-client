@@ -54,7 +54,7 @@ const ShopCard = ({ data }) => {
         <div className="card-actions justify-end ">
           <button 
             onClick={handleAddtoCart} 
-            className='bg-yellow-400 px-2 py-1 rounded-lg text-xs text-black opacity-0 transition-opacity duration-300 group-hover:opacity-100'
+            className='bg-yellow-400 px-4 py-2 font-satisfy font-semibold rounded-lg text-xs hover:bg-red-400 text-black opacity-0 transition-opacity duration-300 group-hover:opacity-100'
           >
             ORDER NOW
           </button>

@@ -4,14 +4,14 @@ import Footer from '../Pages/Shared/Footer/Footer';
 
 const Main = () => {
     const location = useLocation();
-    const hideHeaderFooterRoutes = ['/login', '/signup'];
-    const sholdHideHeaderFooter = hideHeaderFooterRoutes.includes(location.pathname);
-
+    const hideHeaderFooterRoutes = ['/login', '/signup', '/dashboard'];
+    const shouldHideHeaderFooter = hideHeaderFooterRoutes.includes(location.pathname) || location.pathname.startsWith('dashboard');
+    console.log({shouldHideHeaderFooter});
     return (
         <div>
-            {sholdHideHeaderFooter || <Navbar></Navbar>}
+            <Navbar></Navbar>
             <Outlet></Outlet>
-            {sholdHideHeaderFooter || <Footer></Footer>}
+            {shouldHideHeaderFooter || <Footer></Footer>}
         </div>
     );
 };

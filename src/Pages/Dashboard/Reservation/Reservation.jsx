@@ -18,6 +18,8 @@ const Reservation = () => {
     reset,
     formState: { errors },
   } = useForm();
+  
+  
   const handleFormSubmit = async (data) => {
     console.log(data);
     const bookingData = {
@@ -42,8 +44,8 @@ const Reservation = () => {
 
   return (
     <div className="">
-      <div className="flex ">
-        <div className=" min-h-screen max-w-4xl  mx-auto bg-black p-16">
+      <div className="flex">
+        <div className=" m-h-screen max-w-4xl  mx-auto bg-black p-16">
           {/* Form Title */}
           {errors && <span>{errors.message}</span>}
           <div className="text-white">
@@ -54,23 +56,23 @@ const Reservation = () => {
           </div>
 
           <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6  p-10 pb-20 bg-[#1C1C1C] max-h-screen">
               {/* Date section  */}
               <div className="flex flex-col">
-                <label htmlFor="date" className="text-gray-300 mb-2">
+                <label htmlFor="date" className="text-gray-300 text-sm  mb-2">
                   Date
                 </label>
                 <input
                   {...register("date", { required: true })}
                   type="date"
                   id="date"
-                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600  rounded-b-none focus:outline-none focus:border-yellow-500"
+                  className="px-4 py-2 bg-gray-700 text-white border border-gray-600 rounded-b-none focus:outline-none focus:border-yellow-500"
                   placeholder="--/--/--"
                 />
               </div>
               {/* time section  */}
               <div className="flex flex-col">
-                <label htmlFor="time" className="text-gray-300 mb-2">
+                <label htmlFor="time" className="text-gray-300 text-sm mb-2">
                   Time
                 </label>
                 <input
@@ -83,7 +85,7 @@ const Reservation = () => {
               </div>
               {/* guest section */}
               <div className="flex flex-col">
-                <label htmlFor="guest" className="text-gray-300 mb-4">
+                <label htmlFor="guest" className="text-red-300 text-sm mb-4">
                   Guest
                 </label>
                 <select
@@ -113,7 +115,7 @@ const Reservation = () => {
               </div>
               {/* name section  */}
               <div className="flex flex-col">
-                <label htmlFor="name" className="text-gray-300 mb-2">
+                <label htmlFor="name" className="text-gray-300 text-sm mb-2">
                   Name
                 </label>
                 <input
@@ -126,7 +128,7 @@ const Reservation = () => {
               </div>
               {/* Phone section  */}
               <div className="flex flex-col">
-                <label htmlFor="phone" className="text-gray-300 mb-2">
+                <label htmlFor="phone" className="text-gray-300 text-sm mb-2">
                   Phone
                 </label>
                 <input
@@ -139,7 +141,7 @@ const Reservation = () => {
               </div>
                {/* table section */}
                <div className="flex flex-col">
-                <label htmlFor="table" className="text-gray-300 mb-4">
+                <label htmlFor="table" className="text-red-300 text-sm mb-4">
                   Table
                 </label>
                 <select
@@ -175,7 +177,7 @@ const Reservation = () => {
               </div>
               {/* email section  */}
               <div className="flex flex-col">
-                <label htmlFor="email" className="text-gray-300 mb-2">
+                <label htmlFor="email" className="text-gray-300 text-sm mb-2">
                   Email
                 </label>
                 <input

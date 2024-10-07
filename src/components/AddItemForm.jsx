@@ -131,7 +131,7 @@ const {
             {...register("name", { required: 'Name is required' })}
               type="text"
               id="name"
-              className="px-4 py-2 bg-slate-800 text-white placeholder:text-white  border border-gray-600 rounded-md focus:outline-none focus:border-yellow-500"
+              className="px-4 py-2 bg-slate-800 text-white placeholder:text-white   rounded-md focus:outline-none focus:border-yellow-500"
               placeholder="Food title here"
             />
           </div>
@@ -144,7 +144,7 @@ const {
               <select
               {...register("category", { required: "Category is required" })}
                 id="category"
-                className="px-4 py-[13px] bg-slate-800 text-white border border-gray-600 rounded-t-md focus:outline-none focus:rounded-t-md focus:text-black focus:border-yellow-500"
+                className="px-4 pt-[12px] pb-[11px] bg-slate-800 text-white  rounded-t-md focus:outline-none focus:rounded-t-md focus:text-black focus:border-yellow-500"
               >
                 <option  value="salad">
                   Salad
@@ -177,7 +177,7 @@ const {
               {...register("price", { required: "Price is required" })}
                 type="text"
                 id="price"
-                className="px-4 py-2 bg-slate-800 text-white border placeholder:text-white border-gray-600 rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
+                className="px-4 py-2 bg-slate-800 text-white  placeholder:text-white  rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
                 placeholder="food price in usd"
               />
             </div>
@@ -197,7 +197,7 @@ const {
             {...register("recipe", { required: "Recipe is required" })}
               id="recipe"
               rows="5"
-              className="px-4 py-2 bg-slate-800 text-white border border-gray-600 rounded-t-md focus:outline-none focus:border-yellow-500"
+              className="px-4 py-2 bg-slate-800 text-white  rounded-t-md focus:outline-none focus:border-yellow-500"
               placeholder="Write recipe here..."
             ></textarea>
           </div>

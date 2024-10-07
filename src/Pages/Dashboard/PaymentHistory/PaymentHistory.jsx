@@ -34,7 +34,7 @@ const PaymentHistory = () => {
   
 
   return (
-    <div className="max-w-screen-lg px-10 pb-10  mx-auto">
+    <div className="max-w-screen-lg px-10  mx-auto">
       <SectionTitle
         title="payment history"
         subTitle="at a glance!"
@@ -45,11 +45,11 @@ const PaymentHistory = () => {
       </div>
       {/* history table */}
       <div>
-        <div className="overflow-x-auto">
+        <div className="bg-[#1C2A35] h-[100vh] overflow-x-auto overflow-y-auto scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700 p-10">
           <table className="table">
             {/* head */}
             <thead>
-              <tr className="text-slate-300">
+              <tr className="text-slate-300 ">
                 <th>Category</th>
                 <th>TotalAmount</th>
                 <th>Trans Id</th>
@@ -61,7 +61,7 @@ const PaymentHistory = () => {
               {payHistory.map((item) => (
                 <tr key={item._id} className="hover border-none hover:text-black">
                   <td>Food</td>
-                  <td>$ {Number(item.totalAmount).toFixed(2)}</td>
+                  <td className="text-red-200">$ {Number(item.totalAmount).toFixed(2)}</td>
                   <td>{item.tran_id}</td>
                   <td>{item.currency}</td>
                   <td>{item.date}</td>

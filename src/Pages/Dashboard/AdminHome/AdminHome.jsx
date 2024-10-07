@@ -135,7 +135,7 @@ const colors = {
   };
 
   return (
-    <div>
+    <div className="mr-5">
      <div>
       
      </div>
@@ -232,7 +232,7 @@ const colors = {
         </div>
       </div>
 
-      <div className="grid grid-cols-1">
+      <div className="grid grid-cols-1 mb-5">
         
         <div className="ml-4 relative">
 			<div className="w-12 bg-[#1C1C1C] absolute right-0 top-0 z-10"><IoSettings className="text-4xl text-white p-2"></IoSettings></div>

@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaTrash } from "react-icons/fa6";
 import useModal from "../../../Hooks/useModal";
+import OptionSection from "../../../components/OptionSection";
+import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
 
 const Mybooking = () => {
   const { openModal = {}, closeModal } = useModal();
@@ -49,35 +51,42 @@ const Mybooking = () => {
   }
 
   return (
-    <div>
-      {/* mybooking compontnt {myBookings?.length} */}
-      mybooking compontnt {data?.length}
+    <div className="p-20 pt-5">
       <div>
-        <div className="overflow-x-auto">
+        <SectionTitle title={'my bookings'} subTitle={'are you ready'}/>
+      </div>
+      <div className="grid grid-cols-3 gap-5 mb-10">
+        <OptionSection text={`My Total Bookings: ${data?.length} `}></OptionSection>
+        <OptionSection text={'Options'}></OptionSection>
+        <OptionSection text={'Cancle Bookings'}></OptionSection>
+      </div>
+      <div>
+        <div className="overflow-x-auto overflow-y-auto max-h-screen bg-[#1C1C1C] px-10 py-5">
           <table className="table">
             {/* head */}
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Guest Number</th>
-                <th>Date & Time</th>
-                <th>Action</th>
+            <thead className="text-blue-400">
+              <tr> 
+                <th className="text-center">Guest Number</th>
+                <th className="text-center">Date & Time</th>
+                <th className="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
-              {data.map((item, i) => (
-                <tr key={item._id} className="bg-base-200">
-                  <th>{i + 1}</th>
-                  <td>{item.guest}</td>
+              {data.map((item) => (
+                <tr key={item._id} className="border-none text-center">
+                  
+                  <td>{item.guest} Person</td>
                   <td>
+                    <div>
                     {item.time} on {item.date}
+                    </div>
                   </td>
                   <td>
                     <button
                       onClick={() => handleDeletebooking(item._id)}
-                      className="btn btn-error"
+                      className="badge badge-md badge-error"
                     >
-                      <FaTrash></FaTrash>
+                      <FaTrash className="text-black"></FaTrash>
                     </button>
                   </td>
                 </tr>
