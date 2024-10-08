@@ -9,7 +9,7 @@ const Main = () => {
     console.log({shouldHideHeaderFooter});
     return (
         <div>
-            <Navbar></Navbar>
+            <Navbar hideHeaderFooterRoutes={hideHeaderFooterRoutes}></Navbar>
             <Outlet></Outlet>
             {shouldHideHeaderFooter || <Footer></Footer>}
         </div>

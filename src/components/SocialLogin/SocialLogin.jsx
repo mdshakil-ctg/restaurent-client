@@ -1,10 +1,11 @@
 
 import { useContext } from "react";
-import { BsFacebook, BsGoogle } from "react-icons/bs";
+import { BsGoogle } from "react-icons/bs";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 import DatabaseUserCreate from './../../Hooks/DatabaseUserCreate';
 import useModal from "../../Hooks/useModal";
+import { FaFacebookF } from "react-icons/fa";
 
 const SocialLogin = () => {
     const {openModal={}} = useModal();
@@ -72,7 +73,7 @@ const SocialLogin = () => {
             navigate(location?.state?.from || '/')
               openModal({
                   title: `Welcome Back ${result.user.displayName} to Bistro Boss!!!`,
-                  autoCloseTime: 4000
+                  autoCloseTime: 3000
               })
           }
         })
@@ -81,10 +82,10 @@ const SocialLogin = () => {
     return (
         <div className="social">
         <div onClick={handleGoogleSignUp} className="go">
-          <BsGoogle /> Google
+          <BsGoogle />
         </div>
         <div onClick={handleFbSignUp} className="fb">
-          <BsFacebook /> Facebook
+          <FaFacebookF/>
         </div>
       </div>
     );

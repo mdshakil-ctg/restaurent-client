@@ -65,16 +65,14 @@ input {
   display: block;
   height: 50px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.07);
+  background-color: rgba(255, 255, 255, 0.125);
   border-radius: 3px;
   padding: 0 10px;
   margin-top: 8px;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
 }
-::placeholder {
-  color: #e5e5e5;
-}
+
 .btn-reg {
   margin-top: 10px;
   width: 100%;
@@ -104,7 +102,7 @@ input {
   text-align: center;
 }
 .social div:hover {
-  background-color: rgba(255, 255, 255, 0.47);
+  background-color: rgba(179, 117, 42, 0.47);
   cursor: pointer;
 }
 .social .fb {
@@ -136,7 +134,7 @@ input {
 .terms .terms-label {
   display: inline;
   margin: 0;
-  font-size: 12px;
+  font-size: 10px;
   cursor: pointer;
   color: #a88f8f;
 }
@@ -150,3 +148,10 @@ input[type="checkbox"] {
   accent-color: #4caf50;
   margin: 0 10px 0 0;
 }
+
+.captcha-container canvas {
+  background-color: #4e3d3d !important; /* Change this to your desired background color */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  padding: 10px; /* Optional: Add padding */
+}
+

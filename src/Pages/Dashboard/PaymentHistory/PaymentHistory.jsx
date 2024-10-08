@@ -45,7 +45,7 @@ const PaymentHistory = () => {
       </div>
       {/* history table */}
       <div>
-        <div className="bg-[#1C2A35] h-[100vh] overflow-x-auto overflow-y-auto scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700 p-10">
+        <div className="bg-[#1C2A35] h-[100vh] overflow-x-auto overflow-y-auto scrollbar-thin scrollbar-thumb-teal-500 mb-5 scrollbar-track-gray-700 p-10">
           <table className="table">
             {/* head */}
             <thead>

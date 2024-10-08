@@ -11,7 +11,7 @@ const ChefRecommend = () => {
         title={"chef recommends"}
         subTitle={"Should Try"}
       ></SectionTitle>
-      <div className="grid md:grid-cols-3 gap-10 mx-20">
+      <div className="grid md:grid-cols-3 gap-10 max-w-screen-lg mx-auto">
         {isLoading ? (
           <>
             <MenuCartSkeleton></MenuCartSkeleton>

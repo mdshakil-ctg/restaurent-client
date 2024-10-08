@@ -15,7 +15,7 @@ const MyCart = () => {
   const { openModal, closeModal } = useModal();
   const { cart, refetch, isLoading } = useCart();
   const [selectedItems, setSelectedItems] = useState([]);
-  // console.log({ selectedItems });
+  console.log({ selectedItems });
 
   const navigate = useNavigate();
   const totalPrice = cart
@@ -116,16 +116,17 @@ const MyCart = () => {
                 {/* head */}
                 <thead>
                   <tr className="text-[#FF7F50]">
-                    <th className="text-start"></th>
-                    <th className="text-start">ITEM IMAGE</th>
-                    <th className="text-start">ITEM NAME</th>
-                    <th className="text-start">PRICE</th>
-                    <th className="text-start">ACTION</th>
+                    <th className="text-center"></th>
+                    <th className="text-center">ITEM IMAGE</th>
+                    <th className="text-center">ITEM NAME</th>
+                    <th className="text-center">PRICE</th>
+                    <th className="text-center">ACTION</th>
                   </tr>
                 </thead>
                 <tbody>
                   {cart.map((item) => (
                     <tr  key={item._id} className="border-none">
+                      {console.log(item._id)}
                       <td>
                         <div className="flex justify-center items-center">
                           <input
@@ -145,9 +146,9 @@ const MyCart = () => {
                           </div>
                         </div>
                       </td>
-                      <td>{item.name}</td>
-                      <td>{item.price}</td>
-                      <td>
+                      <td className="text-center">{item.name}</td>
+                      <td className="text-center">{item.price}</td>
+                      <td className="text-center">
                         <button
                           onClick={() => handleCartDelete(item._id)}
                           className=" badge badge-error badge-md hover:bg-yellow-500"

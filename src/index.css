@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Change the autofill background and text color */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #000000 inset; /* Adjust the background color */
+    -webkit-text-fill-color: white; /* Adjust the text color */
+}
+
+/* Apply similar styles for Firefox */
+input:-moz-autofill {
+    background-color: #000000 !important; /* Adjust the background color */
+    color: white !important; /* Adjust the text color */
+}

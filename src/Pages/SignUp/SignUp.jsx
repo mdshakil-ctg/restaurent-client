@@ -82,9 +82,10 @@ const SignUp = () => {
             type="text"
             placeholder="Your Full Name"
             id="username"
+            className="placeholder:text-gray-200 focus:bg-black !text-orange-400 "
           />
           {errors.name && (
-            <span className="text-yellow-400 text-xs">Name is required</span>
+            <span className="!text-red-400 text-xs">Name is required</span>
           )}
 
           <label htmlFor="email">User ID</label>
@@ -93,9 +94,10 @@ const SignUp = () => {
             type="email"
             placeholder="Email or Phone"
             id="email"
+            className="placeholder:text-gray-200 focus:bg-black text-white"
           />
           {errors.email && (
-            <span className="text-yellow-400 text-xs">Email required</span>
+            <span className="!text-red-400 text-xs">Email required</span>
           )}
 
           <label htmlFor="password">Password</label>
@@ -104,16 +106,17 @@ const SignUp = () => {
             type="password"
             placeholder="Your Password"
             id="password"
+            className="placeholder:text-gray-200 focus:bg-black !text-white"
           />
           {errors?.password && (
-            <span className="text-yellow-400 text-xs">
+            <span className="!text-red-400 text-xs">
               password must be 6 characters long.
             </span>
           )}
 
           <div className="terms">
             <label className="terms-label" htmlFor="terms">
-             I agree with Bistro <span className="hover:underline">Terms and conditions</span>, and <span className="hover:underline">Privacy Polices</span>
+             I agree with <span className="hover:underline">Terms and conditions</span>, and <span className="hover:underline">Privacy Polices</span>
             </label>
             <input
               onChange={handleCheckboxChange}

@@ -152,7 +152,7 @@ const UserHome = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mx-4 h-64 flex-grow  overflow-auto">
+      <div className="grid grid-cols-2 gap-4 mx-4 h-64 flex-grow  overflow-auto mb-4">
         {/* User Profile */}
         <div className="bg-[#1C1C1C] flex flex-col">
           <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">

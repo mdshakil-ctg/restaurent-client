@@ -10,7 +10,7 @@ import useIsAdmin from "../../../Hooks/useIsAdmin";
 import './Navbar.css'
 
 
-const Navbar = () => {
+const Navbar = ({hideHeaderFooterRoutes}) => {
   
   const { user, LogoutUser, setLoading, loading } = useContext(AuthContext); 
   const {cart} = useCart();
@@ -84,7 +84,7 @@ const Navbar = () => {
   return (
     <>
     
-      <div className="navbar p-0 fixed z-20 bg-black max-w-screen-xl font-semibold">
+      <div className={`navbar p-0 fixed z-20  max-w-screen-xl font-semibold ${!hideHeaderFooterRoutes ? 'bg-black' : 'bg-gray-900'}`}>
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

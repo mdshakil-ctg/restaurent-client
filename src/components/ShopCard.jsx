@@ -40,7 +40,7 @@ const ShopCard = ({ data }) => {
   };
 
   return (
-    <div className=" shadow-xl text-white cursor-pointer bg-black transition-transform duration-300 transform hover:scale-110 group">
+    <div className=" shadow-xl text-white cursor-pointer overflow-hidden h-[400px] bg-black transition-transform duration-300 transform hover:scale-110 group">
       <figure>
         <img
           className='w-full h-[200px] object-cover'

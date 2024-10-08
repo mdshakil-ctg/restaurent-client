@@ -28,7 +28,7 @@ const OnlineMenu = () => {
     >
       <SwiperSlide>
         <img src={slide1} alt="Salads" />
-        <p className="text-black font-semibold text-xl opacity-80 p-4 relative bottom-24">SALADS</p>
+        <p className="text-white font-semibold text-xl opacity-80 p-4 relative bottom-24">SALADS</p>
       </SwiperSlide>
       <SwiperSlide>
         <img src={slide2} alt="Pizzas" />

@@ -6,7 +6,7 @@ import { Link, useLocation, useNavigate} from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { loadCaptchaEnginge, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
-// import useModal from "../../Hooks/useModal";
+import '../../../src/Pages/SignUp/SignUp.css'
 
 
 const Login = () => {
@@ -81,7 +81,7 @@ const  ValidateCaptchaField = (e) =>{
         </div>
         <form className="main-form" onSubmit={handleSubmit(handleForm)}>
           <h3>Login now!</h3>
-          {error && <span>{error.message}</span>}
+          {error?.message?.includes('auth/invalid-credential') && <span className="!text-red-400 !pt-3 !text-center !block">Password is wrong.</span>}
           
           <label htmlFor="email">User ID Or Email</label>
           <input
@@ -89,9 +89,10 @@ const  ValidateCaptchaField = (e) =>{
             type="email"
             placeholder="Email or Phone"
             id="email"
+            className="placeholder:text-gray-200 focus:bg-black text-white"
           />
           {errors.email && (
-            <span className="text-yellow-400 text-xs">Email required</span>
+            <span className="!text-red-400 text-xs">Email required</span>
           )}
 
           <label htmlFor="password">Password</label>
@@ -100,20 +101,21 @@ const  ValidateCaptchaField = (e) =>{
             type="password"
             placeholder="Your Password"
             id="password"
+            className="placeholder:text-gray-200 focus:bg-black text-white"
           />
           {errors?.password && (
-              <span className="text-yellow-400 text-xs">
+              <span className="!text-red-400 text-xs">
               password must be 6 characters long.
             </span>
           )}
 
-          <div className="my-4">
+          <div className="my-4 captcha-container">
           <LoadCanvasTemplateNoReload />
           </div>
           <input
 
             onChange={ValidateCaptchaField}
-            className="mb-4"
+            className="placeholder:text-gray-200 mb-4 focus:bg-black text-white"
             type="text"
             placeholder="Enter captcha code here"
             id="password"
@@ -126,8 +128,9 @@ const  ValidateCaptchaField = (e) =>{
               "Login"
             )}
           </button>
+          
           <div className="mt-3 ml-2 text-sm">
-            <span>New to our site? <Link className="hover:text-yellow-300" to='/signup'>Please SingUp First!</Link></span>
+            <span>New to our site? <Link className="hover:text-pink-300" to='/signup'>Please SingUp First!</Link></span>
           </div>
          <SocialLogin></SocialLogin>
         </form>

@@ -1,7 +1,6 @@
 import ShowCaseCard from '../../Shared/ShowCaseCard/ShowCaseCard';
 import dessert from '../../../assets/menu/dessert-bg.jpg'
 import pizza from '../../../assets/menu/pizza-bg.jpg'
-import salad from '../../../assets/menu/salad-bg.jpg'
 import soup from '../../../assets/menu/soup-bg.jpg'
 import drinks from '../../../assets/menu/drink.jpg'
 import MenuCards from '../../Shared/MenuCards/MenuCards';
@@ -29,7 +28,7 @@ const MenuGallary = () => {
             <MenuCards datas={pizzasData.filterData.slice(0,9)} buttonInfo='order your favourite food' isLoading={pizzasData.isLoading}></MenuCards>
 
             {/* salad section */}
-            <ShowCaseCard imgUrl={salad} details={'Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce'} name={"SALAD"} ></ShowCaseCard>
+            <ShowCaseCard imgUrl={'https://img.freepik.com/free-photo/high-angle-tasty-fresh-salad-composition_23-2148537199.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid'} details={'Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce'} name={"SALAD"} ></ShowCaseCard>
             <MenuCards datas={saladsData.filterData.slice(0,8)} buttonInfo='order your favourite food' isLoading={saladsData.isLoading}></MenuCards>
 
             {/* soup section */}

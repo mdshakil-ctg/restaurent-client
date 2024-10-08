@@ -2,7 +2,6 @@ import { useState } from "react";
 import MenuCard from "../MenuCard/MenuCard";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
-// import Skeleton from 'react-loading-skeleton';
 import "react-loading-skeleton/dist/skeleton.css";
 import Skeleton from "../../../components/Skeleton/Skeleton";
 import ButtonSkeleton from "../../../components/Skeleton/ButtonSkeleton";
@@ -15,7 +14,8 @@ const MenuCards = ({ datas, buttonInfo = "see details", isLoading }) => {
   if (isLoading) {
     return (
       <>
-      <div className="grid md:grid-cols-2 gap-10">
+      <div className="grid md:grid-cols-2 gap-10 max-w-screen-lg mx-auto mb-10">
+      <Skeleton></Skeleton>
       <Skeleton></Skeleton>
       <Skeleton></Skeleton>
       <Skeleton></Skeleton>
