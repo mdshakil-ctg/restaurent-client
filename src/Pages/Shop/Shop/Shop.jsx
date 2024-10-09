@@ -49,7 +49,7 @@ const Shop = () => {
   };
 
   return (
-    <div className="mb-20">
+    <div className="mb-20 pt-16">
       <SetTitle title={"Shop"}></SetTitle>
       <div className="mb-20">
         <img src={shopBanner} alt="" />

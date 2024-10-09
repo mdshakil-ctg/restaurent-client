@@ -12,7 +12,7 @@ import img6 from "../../../../src/assets/home/06.jpg";
 const Banner = () => {
   
   return (
-    <>
+    <div className="pt-16">
     
      <Carousel autoPlay infiniteLoop={true} interval={3000} stopOnHover={false} showStatus={false} showIndicators={false} showThumbs={false} className="text-center">
       <div>
@@ -34,7 +34,7 @@ const Banner = () => {
         <img src={img6} />
       </div>
     </Carousel>
-    </>
+    </div>
    
   );
 };

@@ -1,15 +1,9 @@
-
-import "./About.css";
+import ShowCaseCard from "../../Shared/ShowCaseCard/ShowCaseCard";
 
 const About = () => {
   return (
-    <div className="background-section max-w-screen-md md:max-w-screen-lg mx-auto mb-24">
-      <div className="overlay">
-        <h1>Restaurant</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, libero accusamus
-        </p>
-      </div>
+    <div className="mt-5 md:mt-10 lg:mt-20">
+      <ShowCaseCard imgUrl={'https://img.freepik.com/free-photo/digital-lavender-style-interior-design_23-2151561232.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid'} details={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, libero accusamus'} name={"Restaurant"}/>
     </div>
   );
 };

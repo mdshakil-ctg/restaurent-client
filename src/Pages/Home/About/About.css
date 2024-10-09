@@ -5,18 +5,18 @@ font-weight: 400;
 font-style: normal;
 }
 
-
 .background-section {
   background-image: url('https://img.freepik.com/free-photo/digital-lavender-style-interior-design_23-2151561232.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid');
   background-size: cover;
   background-position: center;
   height: 572px; 
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   opacity: 90%;
 }
 
+/* Overlay Styles */
 .overlay {
   background-color: transparent;
   /* opacity: 50%; */
@@ -28,6 +28,7 @@ font-style: normal;
   color: #fff;
 }
 
+/* Overlay Headings and Paragraphs */
 .overlay h1 {
   font-size: 2rem;
   margin-bottom: 10px;
@@ -38,3 +39,43 @@ font-style: normal;
   font-size: 1rem;
   /* opacity: 70%; */
 }
+
+/* Media Queries for Mobile and Tablet */
+@media (max-width: 768px) { /* Tablet */
+  .background-section {
+    height: 400px; /* Adjust height for tablet */
+  }
+
+  .overlay {
+    padding: 2rem 4rem; /* Reduce padding for tablet */
+    max-width: 90%; /* Adjust max-width for tablet */
+  }
+
+  .overlay h1 {
+    font-size: 1.5rem; /* Smaller heading font size */
+  }
+
+  .overlay p {
+    font-size: 0.9rem; /* Smaller paragraph font size */
+  }
+}
+
+@media (max-width: 480px) { /* Mobile */
+  .background-section {
+    height: 300px; /* Adjust height for mobile */
+  }
+
+  .overlay {
+    padding: 1rem 2rem; /* Reduce padding for mobile */
+    max-width: 95%; /* Adjust max-width for mobile */
+  }
+
+  .overlay h1 {
+    font-size: 1.25rem; /* Smaller heading font size */
+  }
+
+  .overlay p {
+    font-size: 0.8rem; /* Smaller paragraph font size */
+  }
+}
+

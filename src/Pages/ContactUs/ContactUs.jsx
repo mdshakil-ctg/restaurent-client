@@ -9,7 +9,7 @@ import OurLocation from "./OurLocation/OurLocation";
 const ContactUs = () => {
 
     return (
-        <div className="mb-20 ">
+        <div className="mb-20 pt-16">
             <SetTitle title={'Contact us'}></SetTitle>
             <div className="h-[700px]"><img className="w-full h-full object-cover" src="../../../src/assets/contact/contact-banner.jpg" alt="" /></div>
             {/* <ShowCaseCard details={'Would you like to try a dish'} imgUrl={'../../../src/assets/contact/banner.jpg'} name={'CONTACT US'}></ShowCaseCard> */}

@@ -12,10 +12,10 @@ const Featured = () => {
         subTitle="Check it out"
       ></SectionTitle>
     </div>
-    <div className="z-10 p-16">
-      <div className="flex items-center gap-4">
+    <div className="z-10 md:p-16">
+      <div className="flex items-center md:gap-4">
         <div>
-          <img className="rounded-xl" src={featuredImd} alt="Featured Image" />
+          <img className="rounded-xl hidden md:flex" src={featuredImd} alt="Featured Image" />
         </div>
         <div className=" p-12 space-y-2">
           <span className="font-semibold text-xs">Septembar 20, 2024</span>

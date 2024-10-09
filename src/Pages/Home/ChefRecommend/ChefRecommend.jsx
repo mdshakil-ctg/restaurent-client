@@ -6,12 +6,12 @@ import MenuCartSkeleton from "./../../../components/Skeleton/MenuCartSkeleton";
 const ChefRecommend = () => {
   const { datas, isLoading } = useCardDataApi("category");
   return (
-    <section className="mb-20">
+    <section className="p-6 md:p-10 lg:p-20 xl:p-24 mb-20">
       <SectionTitle
         title={"chef recommends"}
         subTitle={"Should Try"}
       ></SectionTitle>
-      <div className="grid md:grid-cols-3 gap-10 max-w-screen-lg mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {isLoading ? (
           <>
             <MenuCartSkeleton></MenuCartSkeleton>

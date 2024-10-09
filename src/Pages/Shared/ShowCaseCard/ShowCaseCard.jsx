@@ -11,7 +11,7 @@ const ShowCaseCard = ({imgUrl, details, name}) => {
 
 
     return (
-        <div style={divStyle} className="background-section max-w-screen-md md:max-w-screen-xl mx-auto mb-24">
+        <div style={divStyle} className="background-section">
       <div className="overlay">
         <h1 className="">{name}</h1>
         <p>

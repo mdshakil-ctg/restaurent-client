@@ -10,12 +10,12 @@ const Menu = () => {
   const { datas, isLoading } = useCardDataApi("category");
 
   return (
-    <div className="max-w-screen-lg mx-auto mb-20">
+    <div className="p-6 md:p-10 lg:p-20 xl:p-24">
       <SectionTitle
         title="from our menu"
         subTitle="Check it out"
       ></SectionTitle>
-      <div className="grid md:grid-cols-2 gap-6 mb-12">
+      <div className="grid md:grid-cols-2 gap-6 mb-8 md:mb-12">
         {isLoading ? (
           <>
             <Skeleton></Skeleton>
@@ -34,8 +34,6 @@ const Menu = () => {
       <div className="text-center">
         <Link to="/shop/soup">
           <Button info={"View full menu"}></Button>
-          
-
         </Link>
       </div>
     </div>

@@ -12,7 +12,7 @@ const OnlineMenu = () => {
   return (
     <Swiper
       slidesPerView={4}
-      spaceBetween={30}
+      spaceBetween={20}
       grabCursor={true}
       loop={true} // Enable looping to make autoplay continuous
       pagination={{
@@ -28,23 +28,23 @@ const OnlineMenu = () => {
     >
       <SwiperSlide>
         <img src={slide1} alt="Salads" />
-        <p className="text-white font-semibold text-xl opacity-80 p-4 relative bottom-24">SALADS</p>
+        <p className="text-white font-semibold text-xl opacity-80 p-4 relative bottom-24">.</p>
       </SwiperSlide>
       <SwiperSlide>
         <img src={slide2} alt="Pizzas" />
-        <p className="text-white font-semibold text-xl opacity-60 p-4 relative bottom-24">PIZZAS</p>
+        <p className="text-white font-semibold text-xl opacity-60 p-4 relative bottom-24">.</p>
       </SwiperSlide>
       <SwiperSlide>
         <img src={slide3} alt="Soups" />
-        <p className="text-white font-semibold text-xl opacity-60 p-4 relative bottom-24">SOUPS</p>
+        <p className="text-white font-semibold text-xl opacity-60 p-4 relative bottom-24">.</p>
       </SwiperSlide>
       <SwiperSlide>
         <img src={slide4} alt="Desserts" />
-        <p className="text-white font-semibold text-xl opacity-60 p-4 relative bottom-24">DESSERTS</p>
+        <p className="text-white font-semibold text-xl opacity-60 p-4 relative bottom-24">.</p>
       </SwiperSlide>
       <SwiperSlide>
         <img src={slide5} alt="Salads" />
-        <p className="text-white font-semibold text-xl opacity-60 p-4 relative bottom-24">SALADS</p>
+        <p className="text-white font-semibold text-xl opacity-60 p-4 relative bottom-24">.</p>
       </SwiperSlide>
     </Swiper>
   );

@@ -19,7 +19,7 @@ const Home = () => {
     }
 
     return (
-        <div>            
+        <div >            
             <SetTitle title={'Home'}></SetTitle>
             <Banner></Banner>
             <Category></Category>
