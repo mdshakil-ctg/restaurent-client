@@ -1,5 +1,6 @@
 .signup-body {
   background-color: #080710;
+  
 }
 .background {
   width: 430px;
@@ -7,11 +8,11 @@
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
-  top: 50%;
+  top: 55%;
 }
 .background .shape {
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   position: absolute;
   border-radius: 50%;
 }
@@ -33,7 +34,7 @@
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 50%;
+  top: 55%;
   left: 50%;
   border-radius: 10px;
   backdrop-filter: blur(10px);
@@ -93,7 +94,6 @@ input {
   display: flex;
 }
 .social div {
-  /* background: red; */
   width: 100%;
   border-radius: 3px;
   padding: 10px;
@@ -120,9 +120,6 @@ input {
   align-items: center;
   gap: 15px;
 }
-/* .social i{
-  margin-right: 4px;
-} */
 .terms {
   display: flex;
   flex-direction: row-reverse;
@@ -155,3 +152,160 @@ input[type="checkbox"] {
   padding: 10px; /* Optional: Add padding */
 }
 
+@media (max-width: 768px) {
+  
+  .main-form {
+    width: 85%; /* Adjust form width for tablet screens */
+    padding: 35px 20px; /* Adjust padding for smaller screens */
+  }
+
+  .main-form h3 {
+    font-size: 26px; /* Further adjust font size */
+  }
+
+  .shape:first-child {
+    height: 100px;
+    width: 100px;
+    top: -50px;
+    left: -50px;
+  }
+
+  .shape:last-child {
+    height: 100px;
+    width: 100px;
+    bottom: -50px;
+    right: -50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .background {
+  
+  width: 100%;
+  height: 420px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 30%;
+  top: 50%;
+}
+
+.shape:first-child {
+  height: 90px;
+  width: 90px;
+  top: -110px;
+  left: 80px;
+}
+
+.shape:last-child {
+  height: 90px;
+  width: 90px;
+  bottom: -120px;
+  right: -65px;
+}
+  
+.main-form {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  height: auto;
+  width: 90%;
+  background-color: rgba(255, 255, 255, 0.13);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 30px 15px;
+}
+  
+
+  .main-form h3 {
+    font-size: 22px; 
+  }
+
+  label {
+    font-size: 12px; 
+  }
+
+  input {
+    height: 40px; 
+    font-size: 12px; 
+  }
+
+  .btn-reg {
+    font-size: 14px; 
+    padding: 8px 0;
+  }
+
+  .social div {
+    font-size: 14px; 
+    padding: 8px; 
+  }
+
+  .terms-label {
+    font-size: 9px; 
+  }
+
+  input[type="checkbox"] {
+    width: 12px;
+  }
+}
+
+@media (max-width: 1180px) and (min-width: 821px) {
+  .main-form {
+    width: 75%; /* Adjust the form width for the tablet */
+    padding: 40px 25px; /* Adjust the padding as needed */
+  }
+
+  .main-form h3 {
+    font-size: 28px; /* Adjust heading font size */
+  }
+
+  label {
+    font-size: 14px; /* Adjust label font size */
+  }
+
+  input {
+    height: 45px; /* Adjust input height */
+    font-size: 13px; /* Adjust input font size */
+  }
+
+  .btn-reg {
+    font-size: 16px; /* Adjust button font size */
+    padding: 10px 0; /* Adjust padding */
+  }
+
+  .social div {
+    font-size: 15px; /* Adjust font size for social buttons */
+    padding: 9px; /* Adjust padding */
+  }
+
+  .terms-label {
+    font-size: 11px; /* Adjust terms font size */
+  }
+
+  input[type="checkbox"] {
+    width: 14px;
+  }
+
+  .background {
+    width: 380px;
+    height: 450px;
+  }
+
+  .shape:first-child {
+    height: 150px;
+    width: 150px;
+    top: -140px;
+    left: -320px;
+  }
+
+  .shape:last-child {
+    height: 150px;
+    width: 150px;
+    bottom: -140px;
+    right: -320px;
+  }
+}

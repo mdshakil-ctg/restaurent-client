@@ -1,86 +1,245 @@
-[
-  {
-    "name": "Margherita Pizza",
-    "recipe": "Fresh mozzarella, tomatoes, basil, and olive oil.",
-    "image": "https://img.freepik.com/free-photo/delicious-pizza-traditional-italian-pizza_1328-3991.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 12.99
-  },
-  {
-    "name": "Caesar Salad",
-    "recipe": "Romaine lettuce, croutons, and Caesar dressing.",
-    "image": "https://img.freepik.com/free-photo/bottom-close-view-caesar-salad-oval-plate-dark-red-table_140725-129900.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 8.99
-  },
-  {
-    "name": "Grilled Salmon",
-    "recipe": "Salmon fillet grilled with seasonal vegetables.",
-    "image": "https://img.freepik.com/free-photo/grilled-salmon-fish-with-various-vegetables-pan-flaming-grill-pepper-lemon-salt-herb-decoration-selective-focus-healthy-meal-concept_1150-37791.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 19.99
-  },
-  {
-    "name": "Chocolate Lava Cake",
-    "recipe": "Warm chocolate cake with a gooey center.",
-    "image": "https://img.freepik.com/free-photo/dessert-black-forest-with-cherry-side-view_140725-11375.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 6.99
-  },
-  {
-    "name": "Spaghetti Carbonara",
-    "recipe": "Pasta with eggs, cheese, pancetta, and pepper.",
-    "image": "https://img.freepik.com/free-photo/bowl-spaghetti-with-green-leaf-top_1340-26760.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 14.99
-  },
-  {
-    "name": "Caprese Salad",
-    "recipe": "Tomatoes, mozzarella, basil, olive oil, and balsamic.",
-    "image": "https://img.freepik.com/free-photo/italian-caprese-salad-valentine-s-day_1220-3527.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 9.99
-  },
-  {
-    "name": "Chicken Alfredo",
-    "recipe": "Fettuccine pasta in creamy Alfredo sauce with chicken.",
-    "image": "https://img.freepik.com/free-photo/top-view-cooked-dough-pasta-with-greens-inside-plate-dark-desk_140725-61932.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 15.99
-  },
-  {
-    "name": "Beef Tacos",
-    "recipe": "Ground beef, lettuce, cheese, and salsa in taco shells.",
-    "image": "https://img.freepik.com/free-photo/mexican-tacos-with-beef-tomato-sauce-salsa_2829-14194.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 10.99
-  },
-  {
-    "name": "Shrimp Stir-Fry",
-    "recipe": "Shrimp sautéed with vegetables in soy sauce.",
-    "image": "https://img.freepik.com/free-photo/gourmet-seafood-meal-plate-with-prawn-generated-by-ai_188544-33803.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 18.99
-  },
-  {
-    "name": "Mushroom Risotto",
-    "recipe": "Creamy risotto with mushrooms and Parmesan.",
-    "image": "https://img.freepik.com/free-photo/vegetarian-risotto-with-fresh-mushrooms-parmesan-cheese-generated-by-ai_188544-10223.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 13.99
-  },
-  {
-    "name": "Fettuccine Primavera",
-    "recipe": "Pasta with seasonal vegetables in a light sauce.",
-    "image": "https://img.freepik.com/free-photo/grated-cheese-farfalle-pasta-plate_23-2147925968.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 12.99
-  },
-  {
-    "name": "Vegetable Curry",
-    "recipe": "Mixed vegetables in a spiced coconut curry sauce.",
-    "image": "https://img.freepik.com/free-photo/pot-chili-mexican-snacks_23-2148181600.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 11.99
-  },
-  {
-    "name": "Pancakes",
-    "recipe": "Fluffy pancakes served with maple syrup.",
-    "image": "https://img.freepik.com/free-photo/photorealistic-pancakes-with-raspberries_23-2151042553.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 7.99
-  },
-  {
-    "name": "Tiramisu",
-    "recipe": "Coffee-flavored dessert made with mascarpone.",
-    "image": "https://img.freepik.com/free-photo/tiramisu-with-mascarpone-cheese-chocolate-plate_140725-11024.jpg?uid=R88479733&ga=GA1.1.303088461.1726933426&semt=ais_hybrid",
-    "price": 5.99
+/* Common styles for all screen sizes */
+.signup-body {
+  background-color: #080710;
+}
+
+.background {
+  width: 430px;
+  height: 520px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 55%;
+}
+
+.background .shape {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.shape:first-child {
+  background: linear-gradient(#1845ad, #23a2f6);
+  left: -100px;
+  top: -145px;
+}
+
+.shape:last-child {
+  background: linear-gradient(to right, #ff512f, #f09819);
+  right: -100px;
+  bottom: -145px;
+}
+
+.main-form {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  height: auto;
+  width: 440px;
+  background-color: rgba(255, 255, 255, 0.13);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 55%;
+  left: 50%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+}
+
+.main-form * {
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+
+.main-form h3 {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+input {
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.125);
+  border-radius: 3px;
+  padding: 0 10px;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.btn-reg {
+  margin-top: 10px;
+  width: 100%;
+  background-color: #c1b228;
+  color: #080710;
+  padding: 10px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-reg:disabled {
+  background-color: #c1b22859;
+  cursor: not-allowed;
+}
+
+.social {
+  margin-top: 20px;
+  display: flex;
+}
+
+.social div {
+  width: 100%;
+  border-radius: 3px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.27);
+  color: #eaf0fb;
+  text-align: center;
+}
+
+.social div:hover {
+  background-color: rgba(179, 117, 42, 0.47);
+  cursor: pointer;
+}
+
+.terms {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.terms .terms-label {
+  font-size: 10px;
+  cursor: pointer;
+  color: #a88f8f;
+}
+
+input[type="checkbox"] {
+  width: 15px;
+  cursor: pointer;
+  accent-color: #4caf50;
+  margin-right: 10px;
+}
+
+.captcha-container canvas {
+  background-color: #4e3d3d !important;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Tablet Screens (768px and below) */
+@media (max-width: 768px) {
+  .main-form {
+    width: 85%;
+    padding: 35px 20px;
   }
-]
+
+  .main-form h3 {
+    font-size: 26px;
+  }
+
+  .shape:first-child {
+    height: 100px;
+    width: 100px;
+    top: -50px;
+    left: -50px;
+  }
+
+  .shape:last-child {
+    height: 100px;
+    width: 100px;
+    bottom: -50px;
+    right: -50px;
+  }
+
+  .background {
+    width: 350px;
+    height: 400px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input {
+    height: 45px;
+    font-size: 13px;
+  }
+
+  .btn-reg {
+    font-size: 16px;
+    padding: 10px 0;
+  }
+
+  .social div {
+    font-size: 14px;
+  }
+
+  .terms-label {
+    font-size: 9px;
+  }
+}
+
+/* Mobile Screens (480px and below) */
+@media (max-width: 480px) {
+  .main-form {
+    width: 90%;
+    padding: 30px 15px;
+  }
+
+  .main-form h3 {
+    font-size: 22px;
+  }
+
+  label {
+    font-size: 12px;
+  }
+
+  input {
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .btn-reg {
+    font-size: 14px;
+    padding: 8px 0;
+  }
+
+  .social div {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .terms-label {
+    font-size: 9px;
+  }
+
+  input[type="checkbox"] {
+    width: 12px;
+  }
+
+  .shape:first-child, .shape:last-child {
+    display: none; /* Hide the shapes for small screens */
+  }
+
+  .background {
+    display: none; /* Hide the background for small screens */
+  }
+}

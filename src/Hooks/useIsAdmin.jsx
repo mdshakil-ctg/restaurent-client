@@ -4,7 +4,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 
 const useIsAdmin = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const axiosApi = useAxiosSecure();
 
   const { data: isAdmin = false, isPending } = useQuery({
@@ -17,7 +17,7 @@ const useIsAdmin = () => {
       const res = await axiosApi.get(`user/admin/${user?.email}`);
       return res.data.isAdmin;
     },
-    enabled: !!user?.email, // Only run query if email exists
+    enabled: !!user?.email && !loading // Only run query if email exists or loading is false
   });
 
   return { isAdmin, isPending };

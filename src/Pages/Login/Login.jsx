@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import SetTitle from "../../components/SetTitle";
 import { AuthContext } from "../../Providers/AuthProvider";
-// import { ModalContext } from "../../Providers/ModalProvider";
 import { Link, useLocation, useNavigate} from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { loadCaptchaEnginge, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
@@ -50,7 +49,7 @@ const Login = () => {
     
     
   };
-  console.log(loading);
+  // console.log(loading);
  
 
 const  ValidateCaptchaField = (e) =>{
@@ -71,11 +70,11 @@ const  ValidateCaptchaField = (e) =>{
   
 
   return (
-    <div className="bg-black h-screen">
+    <div className="bg-black  !min-h-screen !overflow-hidden">
       <SetTitle title={"Login"}></SetTitle>
 
-      <div className="signup-body">
-        <div className="background">
+      <div className="signup-body !overflow-hidden">
+        <div className="background ">
           <div className="shape"></div>
           <div className="shape"></div>
         </div>
