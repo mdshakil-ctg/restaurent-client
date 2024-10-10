@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const MenuCard = ({data, setMenuTitle, isLoading}) => {
+const MenuCard = ({data, setMenuTitle}) => {
     const {name, recipe, price, image, category} = data;
     // setMenuTitle && setMenuTitle(category);
     useEffect( () =>{
@@ -8,9 +8,6 @@ const MenuCard = ({data, setMenuTitle, isLoading}) => {
         setMenuTitle(category)
       }
     },[setMenuTitle,category])
-
-    console.log('isloading in the menucart', isLoading);
-
     
   return (
     <div className="flex items-center shadow-xl rounded-lg bg-black bg-opacity-90 text-white px-2 transition-transform duration-300 transform hover:scale-105 glass h-[140px]">
