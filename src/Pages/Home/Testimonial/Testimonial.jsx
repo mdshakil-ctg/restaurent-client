@@ -13,14 +13,14 @@ const Testimonial = () => {
   const { datas, isLoading } = useCardDataApi("reviews");
 
   return (
-    <section className="md:mb-20">
+    <section className="md:mb-20 px-6 lg:px-0">
       <SectionTitle title="testimonials" subTitle="What Our Client Say" />
       {isLoading ? (
         <div className="">
           <TestimonialSkeleton />
         </div>
       ) : (
-        <div className="my-10 mx-28">
+        <div className="my-10 md:mx-28">
           <Swiper
             autoplay={{ 
               delay: 3000, // Set autoplay delay to 3 seconds
@@ -35,7 +35,7 @@ const Testimonial = () => {
             {datas.map((data) => (
               <SwiperSlide key={data._id}>
                 <div className="text-center flex flex-col justify-center items-center space-y-4 mx-16">
-                  <FaQuoteLeft className="text-8xl" />
+                  <FaQuoteLeft className="text-4xl md:text-8xl" />
                   <Rating
                     className="rounded px-2 py-1"
                     style={{ maxWidth: 250 }}

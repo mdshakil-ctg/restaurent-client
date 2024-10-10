@@ -1,4 +1,4 @@
-/* Define the keyframes for the shake animation */
+
 @keyframes shake {
     0%, 100% {
       transform: translateX(0);
@@ -10,9 +10,11 @@
       transform: translateX(5px);
     }
   }
-  
-  /* Add the shake effect to the card on hover */
-  .hover\:shake:hover {
-    animation: shake .4s ease-in-out;
+
+  .vertical-bg{
+    background-image: url(../../../assets/card/verticalCard.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   
