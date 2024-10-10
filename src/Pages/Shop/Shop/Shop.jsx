@@ -77,10 +77,10 @@ const Shop = () => {
           {message && <p className="text-red-600">{message}</p>}
         </div>
       </div>
-      <div className="md:max-w-[80%] mx-auto">
+      <div className=" md:p-0 md:max-w-[80%] mx-auto">
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList
-            className="flex flex-row justify-center items-center bg-[#2B2A28] border-b-[12px] border-b-[#EB4E01] text-white font-semibold text-xl mb-16 "
+            className="w-full flex flex-row justify-center items-center bg-[#2B2A28] border-b-[12px] border-b-[#EB4E01] text-white font-semibold text-[10px] md:text-xl mb-16"
             onClick={(e) => {
               setActiveTabs(e.target.innerHTML);
             }}
@@ -88,89 +88,89 @@ const Shop = () => {
             <Tab
               className={`${
                 activeTabs == "salad"
-                  ? "bg-[#EB4E01] outline-none"
+                  ? "bg-[#EB4E01] outline-none text-black"
                   : "bg-[#2B2A28]"
-              } py-10 px-6  transition duration-500 ease-out cursor-pointer uppercase`}
+              } px-2 py-4 md:py-10 md:px-5  transition duration-500 ease-out cursor-pointer uppercase`}
             >
               salad
             </Tab>
             <Tab
               className={`${
                 activeTabs == "pizza"
-                  ? "bg-[#EB4E01] outline-none"
+                  ? "bg-[#EB4E01] outline-none text-black"
                   : "bg-[#2B2A28]"
-              } py-10 px-6  transition duration-500 ease-out cursor-pointer uppercase`}
+              } px-2 py-4 md:py-10 md:px-5 transition duration-500 ease-out cursor-pointer uppercase`}
             >
               pizza
             </Tab>
             <Tab
               className={`${
                 activeTabs == "soup"
-                  ? "bg-[#EB4E01] outline-none"
+                  ? "bg-[#EB4E01] outline-none text-black"
                   : "bg-[#2B2A28]"
-              } py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}
+              } px-2 py-4 md:py-10 md:px-5  transition duration-500 ease-out cursor-pointer uppercase`}
             >
               soup
             </Tab>
             <Tab
               className={`${
                 activeTabs == "dessert"
-                  ? "bg-[#EB4E01] outline-none"
+                  ? "bg-[#EB4E01] outline-none text-black"
                   : "bg-[#2B2A28]"
-              } py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}
+              } px-2 py-4 md:py-10 md:px-5  transition duration-500 ease-out cursor-pointer uppercase`}
             >
               dessert
             </Tab>
             <Tab
               className={`${
                 activeTabs == "drinks"
-                  ? "bg-[#EB4E01] outline-none"
+                  ? "bg-[#EB4E01] outline-none text-black"
                   : "bg-[#2B2A28]"
-              } py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}
+              } px-2 py-4 md:py-10 md:px-5  transition duration-500 ease-out cursor-pointer uppercase`}
             >
               drinks
             </Tab>
             <Tab
               className={`${
                 activeTabs == "all"
-                  ? "bg-[#EB4E01] outline-none"
+                  ? "bg-[#EB4E01] outline-none text-black"
                   : "bg-[#2B2A28]"
-              } py-10 px-6 transition duration-500 ease-out cursor-pointer uppercase`}
+              } px-3 py-4 md:py-10 md:px-5  transition duration-500 ease-out cursor-pointer uppercase`}
             >
               all
             </Tab>
           </TabList>
-          <TabPanel>
+          <TabPanel className='px-8 md:px-0'>
             <ShopTabData
               datas={saladsData.filterData}
               isLoading={saladsData.isLoading}
             ></ShopTabData>
           </TabPanel>
-          <TabPanel>
+          <TabPanel className='px-8 md:px-0'>
             <ShopTabData
               datas={pizzasData.filterData}
               isLoading={pizzasData.isLoading}
             ></ShopTabData>
           </TabPanel>
-          <TabPanel>
+          <TabPanel className='px-8 md:px-0'>
             <ShopTabData
               datas={soupsData.filterData}
               isLoading={soupsData.isLoading}
             ></ShopTabData>
           </TabPanel>
-          <TabPanel>
+          <TabPanel className='px-8 md:px-0'>
             <ShopTabData
               datas={dessertsData.filterData}
               isLoading={dessertsData.isLoading}
             ></ShopTabData>
           </TabPanel>
-          <TabPanel>
+          <TabPanel className='px-8 md:px-0'>
             <ShopTabData
               datas={drinksData.filterData}
               isLoading={drinksData.isLoading}
             ></ShopTabData>
           </TabPanel>
-          <TabPanel>
+          <TabPanel className='px-8 md:px-0'>
             <ShopTabData
               datas={searchData.length > 0 ? searchData : allData.datas}
               isLoading={allData.isLoading}

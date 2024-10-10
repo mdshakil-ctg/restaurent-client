@@ -40,21 +40,21 @@ const ShopCard = ({ data }) => {
   };
 
   return (
-    <div className=" shadow-xl text-white cursor-pointer overflow-hidden h-[400px] bg-black transition-transform duration-300 transform hover:scale-110 group">
-      <figure>
+    <div className=" shadow-xl text-gray-400 cursor-pointer overflow-hidden  h-[400px] bg-black transition-transform duration-300 transform hover:scale-110 ">
+      <figure className='h-1/2'>
         <img
-          className='w-full h-[200px] object-cover'
+          className='w-full h-full object-cover'
           src={image}
           alt="Shoes" />
       </figure>
-      <div className="card-body ">
+      <div className="card-body md:px-5 md:py-5 h-1/2">
         <h2 className="card-title font-satisfy">{name}</h2>
-        <div className="bg-slate-700 text-white p-1 rounded-lg absolute top-2 right-2 text-[10px] font-semibold ">$ {price}</div>
+        <div className="bg-green-400 text-black p-1 rounded-lg absolute top-2 right-2 text-[10px] font-semibold ">$ {price}</div>
         <p className='text-xs mb-3'>{recipe}...</p>
         <div className="card-actions justify-end ">
           <button 
             onClick={handleAddtoCart} 
-            className='bg-yellow-400 px-4 py-2 font-satisfy font-semibold rounded-lg text-xs hover:bg-red-400 text-black opacity-0 transition-opacity duration-300 group-hover:opacity-100'
+            className='bg-yellow-400 px-3 py-1 lg:px-4 lg:py-2 font-satisfy font-semibold rounded-lg text-xs hover:bg-red-400 text-black transition-opacity duration-300'
           >
             ORDER NOW
           </button>
