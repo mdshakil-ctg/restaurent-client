@@ -128,7 +128,7 @@ const  ValidateCaptchaField = (e) =>{
             )}
           </button>
           
-          <div className="mt-3 ml-2 text-sm">
+          <div className="mt-3 ml-2 text-sm login-text">
             <span>New to our site? <Link className="hover:text-pink-300" to='/signup'>Please SingUp First!</Link></span>
           </div>
          <SocialLogin></SocialLogin>

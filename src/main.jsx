@@ -19,7 +19,7 @@ createRoot(document.getElementById("root")).render(
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
           <ModalProvider>
-            <div className="max-w-screen-xl mx-auto bg-gray-400 font-sans">
+            <div className="max-w-screen-xl mx-auto bg-gray-300 font-sans">
               <RouterProvider router={router} />
             </div>
           </ModalProvider>

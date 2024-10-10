@@ -133,7 +133,7 @@ const SignUp = () => {
               "Register"
             )}
           </button>
-          <div className="mt-3 ml-2 text-sm">
+          <div className="mt-3 ml-2 text-sm login-text">
             <span>Already have an account? <Link className="hover:text-yellow-300" to='/login'>Log In Here!</Link></span>
           </div>
           <SocialLogin></SocialLogin>

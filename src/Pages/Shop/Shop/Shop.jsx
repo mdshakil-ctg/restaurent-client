@@ -51,11 +51,11 @@ const Shop = () => {
   return (
     <div className="mb-20 pt-16">
       <SetTitle title={"Shop"}></SetTitle>
-      <div className="mb-20">
+      <div className="mb-10 md:mb-20">
         <img src={shopBanner} alt="" />
       </div>
-      <div className="flex justify-end max-w-screen-lg mx-auto mb-20">
-        <div className="w-1/4">
+      <div className="flex justify-end mx-auto mb-10 md:mb-20 px-8 md:px-20 lg:px-32">
+        <div className="w-full mx-auto md:w-2/3 md:mx-auto  lg:w-1/2 lg:mx-0">
           <form onSubmit={handleSearch} className="w-full relative">
             {/* search bar content */}
             <input
