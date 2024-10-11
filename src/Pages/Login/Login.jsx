@@ -19,15 +19,12 @@ const Login = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-
- 
   
   useEffect(()=>{
     loadCaptchaEnginge(6);
   },[])
 
  
-  
   const {
     register,
     handleSubmit,

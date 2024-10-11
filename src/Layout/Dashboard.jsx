@@ -47,62 +47,62 @@ const Dashboard = () => {
           <div>
             {isAdmin ? <ul className="p-3">
               <NavLink to="/dashboard/adminHome">
-                <li className="flex items-center  mb-3 px-2 py-1">
+                <li className="flex items-center justify-center mb-3 px-1 py-1">
                   <AiFillDashboard className="text-4xl" />
                 </li>
               </NavLink>
               <NavLink to="/dashboard/addItem">
-                <li className="flex items-center mb-3 px-2 py-1">
+                <li className="flex items-center justify-center mb-3 px-2 py-1">
                   <MdLeakAdd className="text-4xl" />
                 </li>
               </NavLink>
               <NavLink to="/dashboard/manageItems">
-                <li className="flex items-center  mb-3 px-2 py-1">
+                <li className="flex items-center justify-center  mb-3 px-2 py-1">
                   <TbShoppingBagEdit className="text-4xl" />
                 </li>
               </NavLink>
               <NavLink to="/dashboard/manageBookings">
-                <li className="flex items-center  mb-3 px-2 py-1">
+                <li className="flex items-center justify-center  mb-3 px-2 py-1">
                   <GiSecretBook className="text-4xl" />
                 </li>
               </NavLink>
               <NavLink to="/dashboard/allUsers">
-                <li className="flex items-center mb-3 px-2 py-1">
+                <li className="flex items-center justify-center mb-3 px-2 py-1">
                   <FaUserShield className="text-4xl" />
                 </li>
               </NavLink>
             </ul> :
             <ul className="p-3">
               <NavLink to="/dashboard/user-home">
-                <li className="flex items-center  mb-3 px-2 py-1">
+                <li className="flex items-center justify-center mb-3 px-2 py-1">
                   <AiFillDashboard className="text-4xl" />
                 </li>
               </NavLink>
               <NavLink to="/dashboard/user-reservation">
-                <li className="flex items-center  mb-3 px-2 py-1">
+                <li className="flex items-center justify-center mb-3 px-2 py-1">
                   <FaCompress className="text-4xl" />
                 </li>
               </NavLink>
               <NavLink to="/dashboard/payment-history">
-                <li className="flex items-center  mb-3 px-2 py-1">
+                <li className="flex items-center justify-center mb-3 px-2 py-1">
                   <MdPayment className="text-4xl" />
                 </li>
               </NavLink>
               <NavLink to="/dashboard/myCart">
-                <li className="flex items-center  mb-3 px-2 py-1">
+                <li className="flex items-center justify-center mb-3 px-2 py-1">
                   <FaCartShopping className="text-4xl" />
                   <span className="ml-2">
                   </span>
                 </li>
               </NavLink>
               <NavLink to="/dashboard/addReview">
-                <li className="flex items-center mb-3 px-2 py-1">
+                <li className="flex items-center justify-center mb-3 px-2 py-1">
                   <MdReviews className="text-4xl" />
                 </li>
               </NavLink>
 
               <NavLink to="myBooking">
-                <li className="flex items-center mb-3 px-2 py-1">
+                <li className="flex items-center justify-center mb-3 px-2 py-1">
                   <FaBook className="text-4xl" />
                 </li>
               </NavLink>
@@ -112,22 +112,22 @@ const Dashboard = () => {
           <div>
             <ul className="p-3">
               <NavLink to="/">
-                <li className="flex items-center mb-3 px-2 py-1">
+                <li className="flex items-center justify-center mb-3 px-2 py-1">
                   <FaHome className="text-4xl" />
                 </li>
               </NavLink>
               <NavLink to="/menu">
-                <li className="flex items-center font-medium  mb-3 px-2 py-1">
+                <li className="flex items-center justify-center mb-3 px-2 py-1">
                   <HiMenuAlt1 className="text-4xl" />
                 </li>
               </NavLink>
               <NavLink to="/shop/soup">
-                <li className="flex items-center font-medium mb-3 px-2 py-1">
+                <li className="flex items-center justify-center mb-3 px-2 py-1">
                   <HiTemplate className="text-4xl" />
                 </li>
               </NavLink>
               <NavLink to="/contact">
-                <li className="flex items-center mb-3 px-2 py-1">
+                <li className="flex items-center justify-center mb-3 px-2 py-1">
                   <FaUserShield className="text-4xl" />
                 </li>
               </NavLink>
