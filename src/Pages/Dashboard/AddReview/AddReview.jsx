@@ -43,7 +43,7 @@ const AddReview = () => {
 
  
   return (
-    <div className="max-w-screen-lg p-20 pt-0">
+    <div className="max-w-screen-lg p-2  lg:p-20 pt-0">
       <SectionTitle
         title="give a review"
         subTitle="sharing is caring!!!"
@@ -53,29 +53,29 @@ const AddReview = () => {
         {errors && <span>{errors.message}</span>}
         <div
           
-          className="hover: text-yellow-500 flex justify-center space-x-3  "
+          className="hover: text-yellow-500 flex justify-center space-x-1 md:space-x-3 mb-6 md:mb-10 
+           "
         >
           {[1, 2, 3, 4, 5].map((value) => (
             <svg
-              key={value}
-              className="cursor-pointer"
-              onClick={() => setRating(value)}
-              width="48"
-              height="48"
-              viewBox="0 0 24 24"
-              fill={value <= rating ? "gold" : "gray"}
-            >
+            key={value}
+            className="cursor-pointer w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
+            onClick={() => setRating(value)}
+            viewBox="0 0 24 24"
+            fill={value <= rating ? "gold" : "gray"}
+          >
               <path d="M12 .587l3.668 7.568 8.432 1.214-6.093 5.897 1.434 8.452L12 18.897l-7.441 3.908 1.434-8.452-6.093-5.897 8.432-1.214z" />
             </svg>
           ))}
         </div>
       </div>
       {/* form section */}
-      <form className="m-20" onSubmit={handleSubmit(handleFormSubmit)}>
-            <div className="bg-[#1C1C1C] space-y-5 p-10">
+     
+      <form className="lg:m-20" onSubmit={handleSubmit(handleFormSubmit)}>  {/**responsive */}
+            <div className="bg-[#1C1C1C] space-y-5 p-5 md:p-10">
               {/* recipe section  */}
               <div className="flex flex-col">
-                <label htmlFor="recipe" className="text-gray-300 text-sm m-0 mb-1 ">
+                <label htmlFor="recipe" className="text-gray-300 text-sm m-0 mb-1 "> 
                   Which recipe you liked most?
                 </label>
                 <input
@@ -115,7 +115,7 @@ const AddReview = () => {
               </div>    
             </div>
 
-            <div className="flex justify-center mt-20">
+            <div className="flex justify-center mt-5 md:mt-10 lg:mt-20">
               <DashboardButton type='submit' text="Give Review" small></DashboardButton>
             </div>
           </form>
