@@ -10,7 +10,6 @@ import { useState } from "react";
 import OptionSection from "../../../components/OptionSection";
 import DashboardButton from "../../../components/DashboardButton/DashboardButton";
 
-
 const MyCart = () => {
   const { openModal, closeModal } = useModal();
   const { cart, refetch, isLoading } = useCart();
@@ -97,47 +96,49 @@ const MyCart = () => {
   }
 
   return (
-    <div className="max-w-screen-xl text-[#AFEEEE] pl-10">
+    <div className="max-w-screen-xl text-[#AFEEEE] pl-2 md:pl-10">
       <SetTitle title="My Cart"></SetTitle>
       <SectionTitle title="wanna add more?" subTitle="my cart"></SectionTitle>
-      <div className="grid grid-cols-3 mb-10 mr-10 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 mr-2 mb-10  md:mr-10 gap-5">
         <OptionSection text={`TOTAL ORDERS : ${cart?.length}`}></OptionSection>
-        <OptionSection text={`ESTIMATED SHIPPING FEE : ${cart?.length * 10}`}></OptionSection>
+        <OptionSection
+          text={`ESTIMATED SHIPPING FEE : ${cart?.length * 10}`}
+        ></OptionSection>
         <OptionSection
           text={`TOTAL PRICE OF CART : ${totalPriceNum}`}
         ></OptionSection>
       </div>
-      <div className="flex flex-col gap-5 mr-10">
+      <div className="flex flex-col gap-5 md:mr-10">
         {/* table content */}
         {cart?.length > 0 && (
           <div className="col-span-2 card rounded-none glass min-h-[320px]">
-            <div className="overflow-auto h-[330px] scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700">
+            <div className=" h-[330px] max-w-[calc(100vw-110px)] md:max-w-[calc(100vw-230px)]  !overflow-x-auto overflow-y-auto scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700 ml-[12px] md:p-5">
               <table className="table">
                 {/* head */}
                 <thead>
                   <tr className="text-[#FF7F50]">
-                    <th className="text-center"></th>
-                    <th className="text-center">ITEM IMAGE</th>
-                    <th className="text-center">ITEM NAME</th>
-                    <th className="text-center">PRICE</th>
-                    <th className="text-center">ACTION</th>
+                    <th className="text-center sm:p-2"></th>
+                    <th className="text-center sm:p-2">ITEM IMAGE</th>
+                    <th className="text-center sm:p-2">ITEM NAME</th>
+                    <th className="text-center sm:p-2">PRICE</th>
+                    <th className="text-center sm:p-2">ACTION</th>
                   </tr>
                 </thead>
                 <tbody>
                   {cart.map((item) => (
-                    <tr  key={item._id} className="border-none">
+                    <tr key={item._id} className="border-none">
                       {console.log(item._id)}
-                      <td>
+                      <td className="sm:p-2">
                         <div className="flex justify-center items-center">
                           <input
                             // checked={selectedItems.includes(item.menuId)}
                             onChange={() => handleCheckBoxChange(item.menuId)}
                             type="checkbox"
-                            className="checkbox bg-white"
+                            className="checkbox bg-gray-400"
                           />
                         </div>
                       </td>
-                      <td>
+                      <td className="sm:p-2">
                         <div className="flex justify-center items-center gap-3">
                           <div className="avatar">
                             <div className="mask mask-squircle h-12 w-12">
@@ -146,9 +147,9 @@ const MyCart = () => {
                           </div>
                         </div>
                       </td>
-                      <td className="text-center">{item.name}</td>
-                      <td className="text-center">{item.price}</td>
-                      <td className="text-center">
+                      <td className="text-center sm:p-2">{item.name}</td>
+                      <td className="text-center sm:p-2">{item.price}</td>
+                      <td className="text-center sm:p-2">
                         <button
                           onClick={() => handleCartDelete(item._id)}
                           className=" badge badge-error badge-md hover:bg-yellow-500"
@@ -164,11 +165,11 @@ const MyCart = () => {
           </div>
         )}
         {/* checkout content */}
-        <div className="col-span-1 bg-[#2D2D2D] flex flex-col mb-5 p-5 text-xs ">
+        <div className="col-span-1 bg-[#2D2D2D] flex flex-col mr-2 md:mr-0 p-5 text-xs ">
           <div className="mb-10">
             {/* <h4 className="text-center text-[#FF7F50] mb-4">Order Summary</h4> */}
-            <div className='mb-10'>
-            <OptionSection text={'Order Summary'} />
+            <div className="mb-10">
+              <OptionSection text={"Order Summary"} />
             </div>
             <h5 className="mb-2">Location :</h5>
             <p>
@@ -188,17 +189,22 @@ const MyCart = () => {
             <div className="flex justify-between">
               <span>In Total Amount </span>
               <span>
-                $ {(
+                ${" "}
+                {(
                   parseFloat(CheckOutPrice) +
                   selectedItems.length * 10
                 ).toFixed(2)}
               </span>
             </div>
-
           </div>
-            <div className="pt-5 flex justify-center">
-            <DashboardButton onClick={handleCheckOut} className="w-full" text="checkout" small></DashboardButton>
-            </div>
+          <div className="pt-5 xl:mb-10 flex justify-center">
+            <DashboardButton
+              onClick={handleCheckOut}
+              className="w-full"
+              text="checkout"
+              small
+            ></DashboardButton>
+          </div>
         </div>
       </div>
     </div>

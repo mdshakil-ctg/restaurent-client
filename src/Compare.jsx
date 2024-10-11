@@ -1,81 +1,99 @@
-import { useContext, useEffect, useState } from "react";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
-import { AuthContext } from "../../../Providers/AuthProvider";
-import OptionSection from "../../../components/OptionSection";
-
-const PaymentHistory = () => {
-  const { user, setError } = useContext(AuthContext);
-  const [payHistory, setPayHistory] = useState([]);
-  const axiosSecure = useAxiosSecure();
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (user?.email) {
-      setLoading(true);
-      axiosSecure
-        .get(`/payment-history/${user?.email}`)
-        .then((res) => {
-          console.log(res.data.progress);
-          setPayHistory(res.data);
-          setLoading(false);
-        })
-        .catch((err) => {
-          setError(err?.message);
-          setLoading(false);
-        });
-    }
-  }, [axiosSecure, setError, user?.email]);
-
-  if (loading) {
-    return (
-      <div className="h-[95vh] flex justify-center items-center">
-        <div className="flex justify-center flex-grow">
-          <span className="loading loading-ring w-24"></span>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="max-w-screen-lg px-10 mx-auto">
-      <SectionTitle title="payment history" subTitle="at a glance!" />
-      <div className="grid grid-cols-3 gap-5 mb-5">
-        <OptionSection text={`Total Payment : ${payHistory?.length}`} />
-        <OptionSection text={`Email : ${user?.email}`} />
-      </div>
-      {/* history table */}
-      <div>
-        <div className="bg-[#1C2A35] h-[100vh] overflow-auto scrollbar-thin scrollbar-thumb-teal-500 mb-5 scrollbar-track-gray-700 p-10">
-          <div className="overflow-x-auto overflow-y-auto md:overflow-hidden max-w-full">
-            <table className="table min-w-full">
-              {/* head */}
-              <thead>
-                <tr className="text-slate-300">
-                  <th>Category</th>
-                  <th>TotalAmount</th>
-                  <th>Trans Id</th>
-                  <th>Currency</th>
-                  <th>Payment Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                {payHistory.map((item) => (
-                  <tr key={item._id} className="hover border-none hover:text-black">
-                    <td>Food</td>
-                    <td className="text-red-200">$ {Number(item.totalAmount).toFixed(2)}</td>
-                    <td>{item.tran_id}</td>
-                    <td>{item.currency}</td>
-                    <td>{item.date}</td>
+<div className="flex flex-col gap-5 mr-10">
+        {/* table content */}
+        {cart?.length > 0 && (
+          <div className="col-span-2 card rounded-none glass min-h-[320px]">
+            <div className="overflow-auto h-[330px] scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700">
+              <table className="table">
+                {/* head */}
+                <thead>
+                  <tr className="text-[#FF7F50]">
+                    <th className="text-center"></th>
+                    <th className="text-center">ITEM IMAGE</th>
+                    <th className="text-center">ITEM NAME</th>
+                    <th className="text-center">PRICE</th>
+                    <th className="text-center">ACTION</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {cart.map((item) => (
+                    <tr key={item._id} className="border-none">
+                      {console.log(item._id)}
+                      <td>
+                        <div className="flex justify-center items-center">
+                          <input
+                            // checked={selectedItems.includes(item.menuId)}
+                            onChange={() => handleCheckBoxChange(item.menuId)}
+                            type="checkbox"
+                            className="checkbox bg-white"
+                          />
+                        </div>
+                      </td>
+                      <td>
+                        <div className="flex justify-center items-center gap-3">
+                          <div className="avatar">
+                            <div className="mask mask-squircle h-12 w-12">
+                              <img src={item.image} />
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="text-center">{item.name}</td>
+                      <td className="text-center">{item.price}</td>
+                      <td className="text-center">
+                        <button
+                          onClick={() => handleCartDelete(item._id)}
+                          className=" badge badge-error badge-md hover:bg-yellow-500"
+                        >
+                          <FaTrash></FaTrash>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+        {/* checkout content */}
+        <div className="col-span-1 bg-[#2D2D2D] flex flex-col mb-5 p-5 text-xs ">
+          <div className="mb-10">
+            {/* <h4 className="text-center text-[#FF7F50] mb-4">Order Summary</h4> */}
+            <div className="mb-10">
+              <OptionSection text={"Order Summary"} />
+            </div>
+            <h5 className="mb-2">Location :</h5>
+            <p>
+              <FaLocationArrow className="inline mr-2"></FaLocationArrow> Add
+              Shipping Address
+            </p>
+          </div>
+          <div className="space-y-3 flex-grow">
+            <div className="flex justify-between">
+              <span>Subtotal ({selectedItems.length} items)</span>
+              <span>$ {CheckOutPrice}</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Shipping fee (Estimated)</span>
+              <span>$ {(selectedItems.length * 10).toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between">
+              <span>In Total Amount </span>
+              <span>
+                ${" "}
+                {(
+                  parseFloat(CheckOutPrice) +
+                  selectedItems.length * 10
+                ).toFixed(2)}
+              </span>
+            </div>
+          </div>
+          <div className="pt-5 flex justify-center">
+            <DashboardButton
+              onClick={handleCheckOut}
+              className="w-full"
+              text="checkout"
+              small
+            ></DashboardButton>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
-
-export default PaymentHistory;
