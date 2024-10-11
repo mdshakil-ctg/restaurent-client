@@ -34,18 +34,19 @@ const PaymentHistory = () => {
   
 
   return (
-    <div className="max-w-screen-lg px-10  mx-auto">
+    <div className="max-w-screen-lg  lg:px-5  mx-auto">
+      <div className="px-5">
       <SectionTitle
         title="payment history"
         subTitle="at a glance!"
       ></SectionTitle>
-      <div className="grid grid-cols-3 gap-5 mb-5">
+      <div className="grid !w-full lg:grid-cols-3 gap-5 mb-5">
         <OptionSection text={`Total Payment : ${payHistory?.length}`}/>
         <OptionSection text={`Email : ${user?.email}`}/>
       </div>
-      {/* history table */}
+      </div>
       <div>
-        <div className="bg-[#1C2A35] h-[100vh] overflow-x-auto overflow-y-auto scrollbar-thin scrollbar-thumb-teal-500 mb-5 scrollbar-track-gray-700 p-10">
+        <div className="bg-[#1C2A35] max-w-[calc(100vw-110px)] md:max-w-[calc(100vw-230px)]  h-[100vh] !overflow-x-auto overflow-y-auto scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700 ml-[12px] md:p-10">
           <table className="table">
             {/* head */}
             <thead>

@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import useModal from "../../../Hooks/useModal";
 import DashboardButton from './../../../components/DashboardButton/DashboardButton';
+import Button from './../../Shared/Button/Button';
 
 const Reservation = () => {
   const { openModal = {} } = useModal();
@@ -45,7 +46,7 @@ const Reservation = () => {
   return (
     <div className="">
       <div className="flex">
-        <div className=" max-w-4xl mx-auto bg-black px-4 md:p-12 lg:p-16">
+        <div className=" max-w-4xl mx-auto bg-black px-4 md:p-6 lg:p-16">
           {/* Form Title */}
           {errors && <span>{errors.message}</span>}
           <div className="text-white">
@@ -56,7 +57,7 @@ const Reservation = () => {
           </div>
 
           <form onSubmit={handleSubmit(handleFormSubmit)}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-5 pb-10 md:p-10 md:pb-20 bg-[#1C1C1C] max-h-screen">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-5  md:p-5 md:pb-20 bg-[#1C1C1C]">
               {/* Date section  */}
               <div className="flex flex-col">
                 <label htmlFor="date" className="text-gray-300 text-sm  mb-2">
@@ -190,15 +191,17 @@ const Reservation = () => {
               </div>
             </div>
 
-            <div className="flex justify-center mt-20">
-              
+            <div className="hidden md:flex justify-center mt-20 ">
               <DashboardButton type='submit' small text="Confirm Bookings"/>
+            </div>
+            <div className="flex justify-center md:hidden">
+            <Button type='submit' info={'Confirm'}/>
             </div>
           </form>
         </div>
       </div>
       
-      <div className="px-8 md:px-12 lg:px-16">
+      <div className="px-3 text-center md:text-start md:px-5 lg:px-16">
       <OurLocation></OurLocation>
       </div>
     </div>

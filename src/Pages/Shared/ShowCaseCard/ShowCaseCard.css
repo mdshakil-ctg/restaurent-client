@@ -54,7 +54,7 @@
 /* For tablets */
 @media (max-width: 1024px) {
   .overlay {
-    padding: 4rem 6rem;
+    padding: 4rem 4rem;
     width: 60%;
   }
 
@@ -82,5 +82,17 @@
 
   .overlay p {
     font-size: 10px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 470px){
+  .overlay {
+    padding:2rem 0;
+    width: 90%;
+  }
+
+  .overlay h1 {
+    font-size: 30px;
+    line-height: 28px;
   }
 }
