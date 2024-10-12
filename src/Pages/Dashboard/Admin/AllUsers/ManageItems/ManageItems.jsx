@@ -50,22 +50,21 @@ const ManageItems = () => {
   };
 
   return (
-    <div className="pb-10 pl-16">
+    <div className="px-3 md:pb-8 md:px-8">
       <SectionTitle title="manage all items" subTitle="look up!"></SectionTitle>
       <div className="mb-6">
-        {/* <div ><p className="">TOTAL MENU ITEMS : {menu?.length}</p></div> */}
-        <div className="flex justify-around items-center">
-        <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-300 opacity-80 w-1/3">
-          <div className="text-sm font-semibold">
-            <span className="">TOTAL MENU ITEMS : {menu?.length}</span>
+       
+        <div className="flex flex-col-reverse md:flex-row gap-3 justify-around items-center mb-3 md:mb-10 ">
+        <div className="flex justify-between items-center px-2 md:px-4 py-2 bg-[#1C2A35] text-slate-300 opacity-80 w-full md:w-1/2 lg:w-1/3">
+          <div className="font-semibold">
+            <span className="text-xs md:text-sm">TOTAL MENU ITEMS : {menu?.length}</span>
           </div>
           <span className="cursor-pointer">
             <SlOptionsVertical className="text-yellow-400" />
           </span>
         </div>
-        <div className="relative">
-          {/* <input className="border bg-[#16212A] w-full " type="text" name="" id="" /> */}
-          <input className="w-[300px] h-[40px] pr-10 pl-4 m-0 bg-[#16212A] font-medium placeholder:text-sm focus:outline-none focus:border-b  focus:border-b-yellow-400 " type="text" name="" id="" placeholder="Search Menu"  />
+        <div className="relative w-full md:w-1/2 lg:w-1/3">
+          <input className="w-full h-[40px] pr-10 pl-2 md:pl-4 m-0 bg-[#16212A] font-medium placeholder:text-sm focus:outline-none focus:border-b  focus:border-b-yellow-400 " type="text" name="" id="" placeholder="Search Menu"  />
           <FaSearch className="absolute top-3 text-yellow-400 right-3 cursor-pointer "></FaSearch>
         </div>
         
@@ -75,7 +74,7 @@ const ManageItems = () => {
         }
         <div>
           {/* table content  */}
-          <div className="overflow-x-auto overflow-y-auto max-h-svh text-slate-400">
+          <div className="bg-[#1C2A35] max-w-[calc(100vw-100px)] md:max-w-[calc(100vw-230px)]  h-[100vh] !overflow-x-auto overflow-y-auto scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700  md:p-10">
             <table className="table mt-6">
               {/* head */}
               <thead className=" w-full">

@@ -86,7 +86,7 @@ const {
   
   return (
     <div className="flex ">
-      <div className="min-h-screen w-full h-[600px] mb-0 m-6 bg-[#1C1C1C] text-white p-16 pt-0">
+      <div className="min-h-screen w-full mb-0 m-1 md:m-6 bg-[#1C1C1C] text-white p-5 md:p-16 pt-0">
         {/* Form Title */}
         {errors && <span className="text-red-500">{errors.message}</span>}
         <div className="text-white">
@@ -95,20 +95,20 @@ const {
             subTitle="what's new"
           ></SectionTitle>
         </div>
-       <div className="flex justify-between gap-4 bg-black p-5">
-       <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80 w-1/3">
+       <div className="flex flex-col md:flex-row  justify-between gap-4 bg-black p-5">
+       <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80 md:w-1/3">
               <span className="text-sm font-semibold ">Statistics</span>
               <span className="cursor-pointer">
                 <SlOptionsVertical className="text-yellow-400"/>
               </span>
             </div>
-        <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80 w-1/3">
+        <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80 md:w-1/3">
               <span className="text-sm font-semibold ">Options</span>
               <span className="cursor-pointer">
                 <SlOptionsVertical className="text-yellow-400" />
               </span>
             </div>
-        <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80 w-1/3">
+        <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80 md:w-1/3">
               <span className="text-sm font-semibold ">Menulist</span>
               <span className="cursor-pointer">
                 <SlOptionsVertical className="text-yellow-400"/>
@@ -205,7 +205,7 @@ const {
             <div  className="flex items-center">
               <label
                 htmlFor="image"
-                className="cursor-pointer bg-slate-800 text-white py-2 px-6 rounded mr-6 shadow hover:bg-gray-900 transition-all"
+                className="cursor-pointer bg-slate-800 text-white py-2 px-4 md:px-6 rounded mr-2 md:mr-6 shadow hover:bg-gray-900 transition-all"
               >
                 Choose File
               </label>
@@ -215,10 +215,11 @@ const {
                type="file" 
                id="image" 
                className="hidden" ></input>
-              {selectedImage ? <div className="w-2/5 mt-6"> <img src={URL.createObjectURL(selectedImage)}></img> <span className="text-white ml-3">{nameImage}</span></div>: <span className="text-white pt-7">No file chosen</span>}
+              {selectedImage ? <div className="w-1/2 md:w-2/5 mt-6"> <img className="w-full h-auto object-cover" src={URL.createObjectURL(selectedImage)}></img> <div className="flex justify-center w-full overflow-hidden mx-auto mt-1"><span className="text-white  text-xs md:text-base text-center !overflow-hidden">{nameImage}</span></div> </div>: <span className="text-white pt-7">No file chosen</span>}
             </div>
           </div>
-          <div className="flex justify-end">
+          
+          <div className="flex justify-center md:justify-end">
           {
             loading ? 
             <button className="bg-[#1C1C1C] px-16 py-3 text-yellow-400 shadow-slate-300 shadow-lg"><span className="loading loading-bars loading-sm"></span></button> :

@@ -9,7 +9,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import profileImg from "../../src/assets/others/profile.png";
 import useIsAdmin from "../Hooks/useIsAdmin";
 import LoaderCup from "../components/LoaderCup/LoaderCup";
-import Footer from "../Pages/Shared/Footer/Footer";
+// import Footer from "../Pages/Shared/Footer/Footer";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import "./Dashboard.css";
@@ -136,7 +136,7 @@ const Dashboard = () => {
         </div>
         
         {/* //dashboard content */}
-        <div className="md:w-[230px] lg:w-[300px] min-h-screen  bg-[#1C2A35] text-white p-2 hidden md:block">
+        <div className="md:w-[230px] lg:w-[300px] min-h-screen   bg-[#1C2A35] text-white p-2 hidden md:block">
           <div>
             <div className="bg-yellow-400 w-16 h-16 mx-auto mt-8 mb-2 rounded-2xl flex">
               <img
@@ -264,7 +264,7 @@ const Dashboard = () => {
         </div>
       </div>
       {/* footer content */}
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </>
   );
 };

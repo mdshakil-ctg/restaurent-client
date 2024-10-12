@@ -1,99 +1,142 @@
-<div className="flex flex-col gap-5 mr-10">
-        {/* table content */}
-        {cart?.length > 0 && (
-          <div className="col-span-2 card rounded-none glass min-h-[320px]">
-            <div className="overflow-auto h-[330px] scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700">
-              <table className="table">
-                {/* head */}
-                <thead>
-                  <tr className="text-[#FF7F50]">
-                    <th className="text-center"></th>
-                    <th className="text-center">ITEM IMAGE</th>
-                    <th className="text-center">ITEM NAME</th>
-                    <th className="text-center">PRICE</th>
-                    <th className="text-center">ACTION</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cart.map((item) => (
-                    <tr key={item._id} className="border-none">
-                      {console.log(item._id)}
-                      <td>
-                        <div className="flex justify-center items-center">
-                          <input
-                            // checked={selectedItems.includes(item.menuId)}
-                            onChange={() => handleCheckBoxChange(item.menuId)}
-                            type="checkbox"
-                            className="checkbox bg-white"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="flex justify-center items-center gap-3">
-                          <div className="avatar">
-                            <div className="mask mask-squircle h-12 w-12">
-                              <img src={item.image} />
-                            </div>
+import { MdOutlineDelete } from "react-icons/md";
+import { SlOptionsVertical } from "react-icons/sl";
+import useMenu from "../../../../../Hooks/useMenu";
+import SectionTitle from "../../../../Shared/SectionTitle/SectionTitle";
+import { TiEdit } from "react-icons/ti";
+import { Link } from "react-router-dom";
+import useAxiosSecure from "../../../../../Hooks/useAxiosSecure";
+import useModal from "../../../../../Hooks/useModal";
+import "../../../../../../src/components/TableScrollbar.css";
+import { FaSearch } from "react-icons/fa";
+import LoaderCup from "../../../../../components/LoaderCup/LoaderCup";
+const ManageItems = () => {
+  const { menu, refetch, isLoading, isFetching } = useMenu();
+
+  console.log({isLoading}, {isFetching});
+
+  const axiosSecure = useAxiosSecure();
+  const { openModal = {}, closeModal } = useModal();
+  
+
+  const handleItemDelete = (id, name) => {
+    openModal({
+      title: "Warning!!!",
+      message: `Are you sure you want to delete ${name} from the database?`,
+      type: "confirm",
+      onConfirm: () => handleConfirmItemDelete(id, name),
+    });
+    const handleConfirmItemDelete = (id, name) => {
+      closeModal();
+      axiosSecure.delete(`/deleteItem/${id}`).then((res) => {
+        console.log({ res });
+        if (res.data.deletedCount > 0) {
+          openModal({
+            title: "success!",
+            message: `${name} has been deleted from the database.`,
+            autoCloseTime: 2000,
+          });
+          refetch();
+        } else if (res.data.deletedCount === 0) {
+          {
+            openModal({
+              title: "sorry",
+              message: `${name} has been not deleted from the database.`,
+              autoCloseTime: 2000,
+            });
+          }
+        }
+      });
+    };
+  };
+
+  return (
+    <div className="px-3 md:pb-10 md:pl-16">
+      <SectionTitle title="manage all items" subTitle="look up!"></SectionTitle>
+      <div className="mb-6">
+       
+        <div className="flex flex-row gap-3 justify-around items-center">
+        <div className="flex justify-between items-center px-1 md:px-4 py-2 bg-[#1C2A35] text-slate-300 opacity-80 w-1/2 md:w-1/3">
+          <div className="font-semibold">
+            <span className="text-xs md:text-sm">TOTAL MENU ITEMS : {menu?.length}</span>
+          </div>
+          <span className="cursor-pointer">
+            <SlOptionsVertical className="text-yellow-400" />
+          </span>
+        </div>
+        <div className="relative w-1/2 md:w-1/3">
+          <input className="w-full h-[40px] pr-10 pl-4 m-0 bg-[#16212A] font-medium placeholder:text-sm focus:outline-none focus:border-b  focus:border-b-yellow-400 " type="text" name="" id="" placeholder="Search Menu"  />
+          <FaSearch className="absolute top-3 text-yellow-400 right-3 cursor-pointer "></FaSearch>
+        </div>
+        
+        </div>
+        {
+          (isLoading || isFetching) && <LoaderCup></LoaderCup> 
+        }
+        <div>
+          {/* table content  */}
+          <div className="overflow-x-auto overflow-y-auto max-h-svh text-slate-400">
+            <table className="table mt-6">
+              {/* head */}
+              <thead className=" w-full">
+                <tr className="text-slate-400 capitalize text-base">
+                  <th>Item Image</th>
+                  <th>Item Name & category</th>
+                  <th>Price</th>
+                  <th>Edit Item</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {menu.map((item) => (
+                  <tr key={item._id} className="border-none">
+                    <td className="border-none">
+                      <div className="flex items-center gap-3">
+                        <div className="avatar">
+                          <div className="mask mask-squircle h-12 w-12">
+                            <img
+                              src={item?.image}
+                              alt="Avatar Tailwind CSS Component"
+                            />
                           </div>
                         </div>
-                      </td>
-                      <td className="text-center">{item.name}</td>
-                      <td className="text-center">{item.price}</td>
-                      <td className="text-center">
-                        <button
-                          onClick={() => handleCartDelete(item._id)}
-                          className=" badge badge-error badge-md hover:bg-yellow-500"
-                        >
-                          <FaTrash></FaTrash>
+                      </div>
+                    </td>
+                    <td>
+                      {item?.name}
+                      <br />
+                      <span className="badge badge-neutral badge-xs ">
+                        {item?.category}
+                      </span>
+                    </td>
+                    <td>
+                      $ {item.price ? Number(item.price).toFixed(2) : "0.00"}
+                    </td>
+                    <td>
+                      <Link to={`/dashboard/updateItems/${item._id}`}>
+                        <button className="btn btn-ghost btn-xs ">
+                          <TiEdit className="text-2xl badge badge-info hover:bg-yellow-400 hover:text-slate-900 rounded" />
                         </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-        {/* checkout content */}
-        <div className="col-span-1 bg-[#2D2D2D] flex flex-col mb-5 p-5 text-xs ">
-          <div className="mb-10">
-            {/* <h4 className="text-center text-[#FF7F50] mb-4">Order Summary</h4> */}
-            <div className="mb-10">
-              <OptionSection text={"Order Summary"} />
-            </div>
-            <h5 className="mb-2">Location :</h5>
-            <p>
-              <FaLocationArrow className="inline mr-2"></FaLocationArrow> Add
-              Shipping Address
-            </p>
-          </div>
-          <div className="space-y-3 flex-grow">
-            <div className="flex justify-between">
-              <span>Subtotal ({selectedItems.length} items)</span>
-              <span>$ {CheckOutPrice}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Shipping fee (Estimated)</span>
-              <span>$ {(selectedItems.length * 10).toFixed(2)}</span>
-            </div>
-            <div className="flex justify-between">
-              <span>In Total Amount </span>
-              <span>
-                ${" "}
-                {(
-                  parseFloat(CheckOutPrice) +
-                  selectedItems.length * 10
-                ).toFixed(2)}
-              </span>
-            </div>
-          </div>
-          <div className="pt-5 flex justify-center">
-            <DashboardButton
-              onClick={handleCheckOut}
-              className="w-full"
-              text="checkout"
-              small
-            ></DashboardButton>
+                      </Link>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          handleItemDelete(item._id, item.name);
+                        }}
+                        className="btn btn-ghost btn-xs"
+                      >
+                        <MdOutlineDelete className="text-2xl badge badge-error hover:bg-yellow-400 hover:text-slate-900 rounded" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
+    </div>
+  );
+};
+
+export default ManageItems;

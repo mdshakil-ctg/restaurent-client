@@ -83,7 +83,7 @@ const AddReview = () => {
                   type="text"
                   id="recipe"
                   className="px-4 py-2 mb-2 bg-gray-700 text-white border border-gray-600 rounded-none rounded-tr-lg rounded-bl-lg  focus:outline-none focus:border-yellow-500"
-                  placeholder="Ricpe you liked most"
+                  placeholder="Recipe you liked most"
                 />
               </div>
               {/* suggestion section  */}

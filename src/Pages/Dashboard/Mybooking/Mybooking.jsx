@@ -51,17 +51,17 @@ const Mybooking = () => {
   }
 
   return (
-    <div className="p-20 pt-5">
-      <div>
+    <div className="md:p-20 pb-6 pt-5">
+      <div className="ml-3">
         <SectionTitle title={'my bookings'} subTitle={'are you ready'}/>
       </div>
-      <div className="grid grid-cols-3 gap-5 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 mx-3 md:mx-0  lg:grid-cols-3 gap-5 mb-10">
         <OptionSection text={`My Total Bookings: ${data?.length} `}></OptionSection>
         <OptionSection text={'Options'}></OptionSection>
         <OptionSection text={'Cancle Bookings'}></OptionSection>
       </div>
       <div>
-        <div className="overflow-x-auto overflow-y-auto max-h-screen bg-[#1C1C1C] px-10 py-5">
+        <div className="overflow-x-auto overflow-y-auto h-full max-w-[calc(100vw-110px)] md:max-w-[calc(100vw-230px)] bg-[#1C1C1C] ml-3 md:ml-0 md:px-10 md:py-5">
           <table className="table">
             {/* head */}
             <thead className="text-blue-400">

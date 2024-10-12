@@ -135,12 +135,12 @@ const colors = {
   };
 
   return (
-    <div className="mr-5">
+    <div className="md:mr-5">
      <div>
       
      </div>
-      <div className="grid grid-cols-2 ">
-        <div className="grid grid-cols-2 gap-5 p-4">
+      <div className="grid md:grid-cols-2 ">
+        <div className="grid md:grid-cols-2 gap-5 p-4">
           <div className="bg-[#1C1C1C] text-slate-400">
             <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">
               <span className="text-sm font-semibold ">Revenue</span>
@@ -214,7 +214,7 @@ const colors = {
             </div>
           </div>
         </div>
-        <div className=" bg-[#1C1C1C] my-4">
+        <div className=" bg-[#1C1C1C] ml-4 my-4">
           <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80">
             <span className="text-sm font-semibold ">
               Weekly sales in restaurant
@@ -238,7 +238,7 @@ const colors = {
 			<div className="w-12 bg-[#1C1C1C] absolute right-0 top-0 z-10"><IoSettings className="text-4xl text-white p-2"></IoSettings></div>
 			<div className="w-20 h-4 bg-[#1C1C1C] absolute right-0 bottom-12 z-10"></div>
           <CanvasJSChart options={option}/>
-		  <div className="text-yellow-400 text-center bg-[#1C1C1C] pt-2 pb-5">Percentage sales of menu</div>
+		  <div className="text-yellow-400 text-center bg-[#1C1C1C] pt-2 pb-5 text-sm md:text-xl">Percentage sales of menu</div>
         </div>
       </div>
     </div>
