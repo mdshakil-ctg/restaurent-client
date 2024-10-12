@@ -22,14 +22,16 @@ const ManageBookings = () => {
   };
 
   return (
-    <div className="min-h-svh max-w-screen-lg p-12">
+    <div className="min-h-svh max-w-screen-lg p-4 pt-0 md:p-12 ">
+      <div className="text-center md:text-start">
       <SectionTitle
         title="manage all bookings"
         subTitle="at a glance!"
       ></SectionTitle>
+      </div>
       <div>
-        <div className="flex justify-between gap-6 bg-black p-5">
-          <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400  w-1/3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 bg-black mb-4 md:mb-12">
+          <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400 ">
             <div className="text-sm font-semibold ">
               Total Bookings : <span>{bookings?.length}</span>
             </div>
@@ -37,21 +39,21 @@ const ManageBookings = () => {
               <SlOptionsVertical className="text-yellow-400" />
             </span>
           </div>
-          <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35]  text-slate-400 w-1/3">
+          <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35]  text-slate-400 ">
             <span className="text-sm font-semibold ">Options</span>
             <span className="cursor-pointer">
               <SlOptionsVertical className="text-yellow-400" />
             </span>
           </div>
-          <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35]  text-slate-400 w-1/3">
+          <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35]  text-slate-400">
             <span className="text-sm font-semibold ">Menulist</span>
             <span className="cursor-pointer">
               <SlOptionsVertical className="text-yellow-400" />
             </span>
           </div>
         </div>
-
-        <div className="overflow-x-auto">
+        {/* table content */}
+        <div className="bg-[#1C2A35] max-w-[calc(100vw-110px)] md:max-w-[calc(100vw-230px)]  min-h-[500px] !overflow-x-auto overflow-y-auto scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700 md:p-10">
           <table className="table">
             {/* head */}
             <thead className="text-slate-400">

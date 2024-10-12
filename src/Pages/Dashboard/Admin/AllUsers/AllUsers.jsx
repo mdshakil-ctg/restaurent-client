@@ -70,13 +70,15 @@ const AllUsers = () => {
   };
 
   return (
-    <div className="min-h-svh max-w-screen-lg px-12">
+    <div className="min-h-svh max-w-screen-lg px-3 md:px-12">
+      <div className="text-center md:text-start">
       <SectionTitle
         title="manage all users"
         subTitle="how many??"
       ></SectionTitle>
+      </div>
 
-<div className="grid grid-cols-3 gap-8 p-4 mb-10 max-w-screen-sm mx-auto">
+<div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-8 md:p-4 mb-10 max-w-screen-sm mx-auto">
           <div className="bg-[#1C1C1C]">
             <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400 ">
               <span className="text-sm font-semibold ">Total Customers</span>
@@ -138,7 +140,7 @@ const AllUsers = () => {
         <div>
           {/* table content */}
           <div>
-            <div className="overflow-x-auto">
+            <div className="bg-[#1C2A35] max-w-[calc(100vw-100px)] md:max-w-[calc(100vw-230px)]  h-[100vh] !overflow-x-auto overflow-y-auto scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700  md:p-10">
               <table className="table">
                 {/* head */}
                 <thead className="text-slate-400">
