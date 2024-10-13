@@ -131,7 +131,7 @@ const {
             {...register("name", { required: 'Name is required' })}
               type="text"
               id="name"
-              className="px-4 py-2 bg-slate-800 text-white placeholder:text-white   rounded-md focus:outline-none focus:border-yellow-500"
+              className="px-4 py-2 bg-slate-800 text-white placeholder:text-slate-400   rounded-md focus:outline-none focus:border-yellow-500"
               placeholder="Food title here"
             />
           </div>
@@ -144,7 +144,7 @@ const {
               <select
               {...register("category", { required: "Category is required" })}
                 id="category"
-                className="px-4 pt-[12px] pb-[11px] bg-slate-800 text-white  rounded-t-md focus:outline-none focus:rounded-t-md focus:text-black focus:border-yellow-500"
+                className="px-4 pt-[12px] pb-[11px] bg-slate-800 text-white  rounded-t-md focus:outline-none focus:rounded-t-md focus:text-white focus:border-yellow-500"
               >
                 <option  value="salad">
                   Salad
@@ -177,7 +177,7 @@ const {
               {...register("price", { required: "Price is required" })}
                 type="text"
                 id="price"
-                className="px-4 py-2 bg-slate-800 text-white  placeholder:text-white  rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
+                className="px-4 py-2 bg-slate-800 text-white  placeholder:text-slate-400  rounded-t-md rounded-b-none focus:outline-none focus:border-yellow-500"
                 placeholder="food price in usd"
               />
             </div>
@@ -205,7 +205,7 @@ const {
             <div  className="flex items-center">
               <label
                 htmlFor="image"
-                className="cursor-pointer bg-slate-800 text-white py-2 px-4 md:px-6 rounded mr-2 md:mr-6 shadow hover:bg-gray-900 transition-all"
+                className="cursor-pointer bg-slate-800 text-white py-2 px- md:px-6 rounded mr-2 md:mr-6 shadow hover:bg-gray-900 transition-all"
               >
                 Choose File
               </label>
@@ -215,7 +215,7 @@ const {
                type="file" 
                id="image" 
                className="hidden" ></input>
-              {selectedImage ? <div className="w-1/2 md:w-2/5 mt-6"> <img className="w-full h-auto object-cover" src={URL.createObjectURL(selectedImage)}></img> <div className="flex justify-center w-full overflow-hidden mx-auto mt-1"><span className="text-white  text-xs md:text-base text-center !overflow-hidden">{nameImage}</span></div> </div>: <span className="text-white pt-7">No file chosen</span>}
+              {selectedImage ? <div className="w-1/2 md:w-2/5 mt-6"> <img className="w-full h-auto object-cover" src={URL.createObjectURL(selectedImage)}></img> <div className="flex justify-center w-full overflow-hidden mx-auto mt-1"><span className="text-white  text-xs md:text-base text-center !overflow-hidden">{nameImage}</span></div> </div>: <span className="text-white text-xs md:text-base pt-7">No file chosen</span>}
             </div>
           </div>
           

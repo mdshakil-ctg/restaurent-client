@@ -2,6 +2,7 @@
 import  { useEffect } from 'react';
 import { TiTick } from 'react-icons/ti';
 import { RxCross2 } from "react-icons/rx";
+// import { ImCross } from "react-icons/im";
 import './Modal.css';
 
 const Modal = ({ isOpen, title, message, onClose, onConfirm, type, autoCloseTime }) => {
@@ -24,18 +25,15 @@ const Modal = ({ isOpen, title, message, onClose, onConfirm, type, autoCloseTime
   return (
 
     <div className={`modal-overlay`}>
-      <div className={`modal-content ${type==='confirm' ? 'warning' : 'success'}`}>
-      <div className="flex flex-col items-center justify-around relative ">
+      <div className={`modal-content w-1/2 sm:w-[70%] md:w-1/2 lg:w-1/3  flex-col  ${type==='confirm' ? 'border-b-8 border-b-red-500' : 'border-b-8 border-b-green-500'}`}>
+      <div className="flex flex-col items-center justify-around relative  w-full">
                 {
                   type === 'confirm' ? 
-                  <RxCross2 className="text-sm w-12 h-12 text-white bg-[#FE4B60] rounded-full warning-animation absolute -inset-y-12 "/>  :
+                  <RxCross2 className="text-xl w-12 h-12 text-white bg-[#FE4B60] rounded-full warning-animation absolute -inset-y-12 "/>  :
                   <TiTick className="text-2xl w-12 h-12 text-white bg-green-500 rounded-full succes-animation absolute -inset-y-12 "/>
                 }
-                
-                
-                
-                <h2 className=" mt-10 mb-3 text-xl uppercase">{title}</h2>
-                <p className=" text-2xl mb-10 capitalize">{message}</p>
+                <h2 className=" mt-10 mb-3 text-base md:text-2xl  font-semibold capitalize">{title}</h2>
+                <p className=" md:text-xl mb-10 capitalize">{message}</p>
                 </div>
       <div className="modal-actions">
           {type === 'confirm' && (<>
