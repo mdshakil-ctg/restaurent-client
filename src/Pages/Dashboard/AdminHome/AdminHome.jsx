@@ -1,257 +1,285 @@
-// import { FaHandHoldingDollar } from "react-icons/fa6";
-// import { FaTelegramPlane } from "react-icons/fa";
-// import { HiUsers } from "react-icons/hi2";
-// import { SiElement } from "react-icons/si";
-// import { SlOptionsVertical } from "react-icons/sl";
-// import {  IoSettings } from "react-icons/io5";
-// import CanvasJSReact from "@canvasjs/react-charts";
-// import { useRef } from "react";
-// // import { PiChartBar } from "react-icons/pi";
-// const CanvasJSChart = CanvasJSReact.CanvasJSChart;
-// const AdminHome = () => {
-//   // Original sales data in units
-//   const totalSalesData = [
-//     { label: "Dessert", value: 250 },
-//     { label: "Pizza", value: 300 },
-//     { label: "Salad", value: 150 },
-//     { label: "Soup", value: 100 },
-//     { label: "Drinks", value: 200 },
-//     { label: "Others", value: 50 },
-//   ];
-  
-// const colors = {
-//     Salad: "#003f5c",
-//     Pizza: "#ffa600",
-//     Soup: "#dc9094 ",
-//     Dessert: "#ff6361",
-//     Drinks: "#58508d",
-//     Others: "#bc5090",
-//   };
-//   const totalSales = totalSalesData.reduce((acc, item) => acc + item.value, 0);
-
-//   const dataPoints = totalSalesData.map((item) => ({
-//     y: Math.round((item.value / totalSales) * 100),
-//     label: item.label,
-//     color: colors[item.label]
-//   }));
-
-//   console.log(dataPoints);
-
-//   const option = {
-//     animationEnabled: true,
-//     exportEnabled: true,
-// 	backgroundColor: "#1C1C1C",
-//     theme: "dark1", // "light1", "dark1", "dark2"
-//     title: {
-//       text: "",
-//     },
-//     data: [
-//       {
-//         type: "pie",
-//         indexLabel: "{label}: {y}%",
-//         startAngle: 180,
-//         dataPoints: dataPoints,
-//       },
-//     ],
-//   };
-
-//   //weekly sales chart code
-
-//   const chartRef = useRef(null);
-//   // Common date points for all categories
-//   const dates = [
-//     new Date(2024, 5, 25),
-//     new Date(2024, 5, 26),
-//     new Date(2024, 5, 27),
-//     new Date(2024, 5, 28),
-//     new Date(2024, 5, 29),
-//     new Date(2024, 5, 30),
-//     new Date(2024, 6, 1),
-//   ];
-
-//   // Y-values for each category
-//   const salesData = {
-//     Salad: [56, 45, 71, 41, 60, 75, 98],
-//     Pizza: [86, 95, 71, 58, 60, 65, 89],
-//     Soup: [48, 45, 41, 55, 80, 85, 83],
-//     Dessert: [61, 55, 61, 75, 80, 85, 105],
-//     Drinks: [52, 55, 20, 35, 30, 45, 25],
-//     Others: [52, 55, 20, 35, 30, 45, 25],
-//   };
-
-//   // Define colors for each data series
-
-//   // Construct dataPoints array for each category
-//   const createDataSeries = (name, yValues) => {
-//     return {
-//       type: "stackedBar",
-//       name: name,
-//       showInLegend: true,
-//       color: colors[name],
-//       xValueFormatString: "DD, MMM",
-//       yValueFormatString: "$#,##0",
-//       dataPoints: dates.map((date, index) => ({ x: date, y: yValues[index] })),
-//     };
-//   };
-
-//   // Construct all the data series
-//   const dataSeries = Object.keys(salesData).map((category) =>
-//     createDataSeries(category, salesData[category])
-//   );
-
-//   //weekly Chart options
-//   const options = {
-//     animationEnabled: true,
-//     theme: "dark1",
-// 	backgroundColor: "#1C1C1C",
-//     title: {
-//       text: "",
-//     },
-//     axisX: {
-//       valueFormatString: "DDD",
-//     },
-//     axisY: {
-// 		prefix: "$",
-// 		gridThickness: 0,
-//     },
-//     toolTip: {
-//       shared: true,
-//     },
-//     legend: {
-//       cursor: "pointer",
-//       itemclick: (e) => {
-//         if (
-//           typeof e.dataSeries.visible === "undefined" ||
-//           e.dataSeries.visible
-//         ) {
-//           e.dataSeries.visible = false;
-//         } else {
-//           e.dataSeries.visible = true;
-//         }
-//         chartRef.current.render();
-//       },
-//     },
-//     data: dataSeries,
-//   };
-
-//   return (
-//     <div className="md:mr-5">
-//      <div>
-      
-//      </div>
-//       <div className="grid md:grid-cols-2 ">
-//         <div className="grid md:grid-cols-2 gap-5 p-4">
-//           <div className="bg-[#1C1C1C] text-slate-400">
-//             <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">
-//               <span className="text-sm font-semibold ">Revenue</span>
-//               <span className="cursor-pointer">
-//                 <SlOptionsVertical />
-//               </span>
-//             </div>
-//             <div className="flex justify-center my-6 ">
-//               <p>
-//                 <FaHandHoldingDollar className="text-6xl text-yellow-400" />
-//               </p>
-//             </div>
-//             <div className="mb-6">
-//               <p className="font-raleway text-3xl font-bold text-center">
-//                 $ 18654
-//               </p>
-//             </div>
-//           </div>
-//           <div className="bg-[#1C1C1C]">
-//             <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400 ">
-//               <span className="text-sm font-semibold ">Customers</span>
-//               <span className="cursor-pointer">
-//                 <SlOptionsVertical />
-//               </span>
-//             </div>
-//             <div className="flex justify-center my-6 ">
-//               <p>
-//                 <HiUsers className="text-6xl text-yellow-400" />
-//               </p>
-//             </div>
-//             <div className="mb-6">
-//               <p className="font-raleway text-3xl font-bold text-slate-400 text-center">
-//                 63
-//               </p>
-//             </div>
-//           </div>
-//           <div className="bg-[#1C1C1C]">
-//             <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400 ">
-//               <span className="text-sm font-semibold ">Products</span>
-//               <span className="cursor-pointer">
-//                 <SlOptionsVertical />
-//               </span>
-//             </div>
-//             <div className="flex justify-center my-6 ">
-//               <p>
-//                 <SiElement className="text-6xl text-yellow-400" />
-//               </p>
-//             </div>
-//             <div className="mb-6">
-//               <p className="font-raleway text-3xl font-bold text-slate-400 text-center">
-//                 107
-//               </p>
-//             </div>
-//           </div>
-//           <div className="bg-[#1C1C1C]">
-//             <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400 ">
-//               <span className="text-sm font-semibold ">Orders</span>
-//               <span className="cursor-pointer">
-//                 <SlOptionsVertical />
-//               </span>
-//             </div>
-//             <div className="flex justify-center my-6 ">
-//               <p>
-//                 <FaTelegramPlane className="text-6xl text-yellow-400" />
-//               </p>
-//             </div>
-//             <div className="mb-6">
-//               <p className="font-raleway text-3xl font-bold text-slate-400 text-center">
-//                 249
-//               </p>
-//             </div>
-//           </div>
-//         </div>
-//         <div className=" bg-[#1C1C1C] ml-4 my-4">
-//           <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-white opacity-80">
-//             <span className="text-sm font-semibold ">
-//               Weekly sales in restaurant
-//             </span>
-//             <span className="cursor-pointer">
-//               <SlOptionsVertical />
-//             </span>
-//           </div>
-// 		  <div className="m-5">
-// 		  <CanvasJSChart
-//               options={options}
-//               onRef={(ref) => (chartRef.current = ref)}
-//             />
-// 		  </div>
-//         </div>
-//       </div>
-
-//       <div className="grid grid-cols-1 mb-5">
-        
-//         <div className="ml-4 relative">
-// 			<div className="w-12 bg-[#1C1C1C] absolute right-0 top-0 z-10"><IoSettings className="text-4xl text-white p-2"></IoSettings></div>
-// 			<div className="w-20 h-4 bg-[#1C1C1C] absolute right-0 bottom-12 z-10"></div>
-//           <CanvasJSChart options={option}/>
-// 		  <div className="text-yellow-400 text-center bg-[#1C1C1C] pt-2 pb-5 text-sm md:text-xl">Percentage sales of menu</div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default AdminHome;
-
-
+import { FaHandHoldingDollar } from "react-icons/fa6";
+import { FaTelegramPlane } from "react-icons/fa";
+import { HiUsers } from "react-icons/hi2";
+import { SiElement } from "react-icons/si";
+import { SlOptionsVertical } from "react-icons/sl";
+import { IoSettings } from "react-icons/io5";
+import {
+  PieChart,
+  Pie,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  Cell
+} from "recharts";
 const AdminHome = () => {
+  const data = [
+    {
+      name: "Monday",
+      salad: 120,
+      pizza: 300,
+      soup: 200,
+      dessert: 150,
+      drinks: 220,
+      others: 100,
+    },
+    {
+      name: "Tuesday",
+      salad: 90,
+      pizza: 270,
+      soup: 180,
+      dessert: 140,
+      drinks: 210,
+      others: 80,
+    },
+    {
+      name: "Wednesday",
+      salad: 140,
+      pizza: 320,
+      soup: 240,
+      dessert: 160,
+      drinks: 230,
+      others: 110,
+    },
+    {
+      name: "Thursday",
+      salad: 130,
+      pizza: 310,
+      soup: 210,
+      dessert: 150,
+      drinks: 220,
+      others: 100,
+    },
+    {
+      name: "Friday",
+      salad: 150,
+      pizza: 350,
+      soup: 250,
+      dessert: 170,
+      drinks: 240,
+      others: 120,
+    },
+    {
+      name: "Saturday",
+      salad: 160,
+      pizza: 360,
+      soup: 260,
+      dessert: 180,
+      drinks: 250,
+      others: 130,
+    },
+    {
+      name: "Sunday",
+      salad: 110,
+      pizza: 280,
+      soup: 190,
+      dessert: 130,
+      drinks: 200,
+      others: 90,
+    },
+  ];
+  // Sample data for total sale amount in USD
+  const totalAmountData = [
+    { name: "Salad", value: 1200 },
+    { name: "Pizza", value: 3000 },
+    { name: "Soup", value: 2000 },
+    { name: "Dessert", value: 1500 },
+    { name: "Drinks", value: 1800 },
+    { name: "Others", value: 1000 },
+  ];
+
+  // Sample data for total number of pieces sold
+  const totalPiecesData = [
+    { name: "Salad", value: 150 },
+    { name: "Pizza", value: 250 },
+    { name: "Soup", value: 180 },
+    { name: "Dessert", value: 200 },
+    { name: "Drinks", value: 220 },
+    { name: "Others", value: 90 },
+  ];
+
+  const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff6f61', '#00bcd4', '#a4de6c'];
+  // Custom tooltip to show the sales details
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-black p-3 ">
+          <p className="label">{`${label}`}</p>
+          {payload.map((entry, index) => (
+            <p key={`item-${index}`} style={{ color: entry.color }}>
+              {`${entry.name}: ${entry.value}`}
+            </p>
+          ))}
+        </div>
+      );
+    }
+    return null;
+  };
+
+  
+
   return (
-    <div>
-      <h1>admin home component here</h1>
+    <div className="md:mr-5">
+      <div></div>
+      <div className="grid lg:grid-cols-2 ">
+        <div className="grid md:grid-cols-2 gap-5 p-4">
+          <div className="bg-[#1C1C1C] text-slate-400">
+            <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">
+              <span className="text-sm font-semibold ">Revenue</span>
+              <span className="cursor-pointer">
+                <SlOptionsVertical className="text-yellow-400" />
+              </span>
+            </div>
+            <div className="flex justify-center my-6 ">
+              <p>
+                <FaHandHoldingDollar className="text-6xl text-yellow-400" />
+              </p>
+            </div>
+            <div className="mb-6">
+              <p className="font-raleway text-3xl font-bold text-center">
+                $ 18654
+              </p>
+            </div>
+          </div>
+          <div className="bg-[#1C1C1C]">
+            <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400 ">
+              <span className="text-sm font-semibold ">Customers</span>
+              <span className="cursor-pointer">
+                <SlOptionsVertical className="text-yellow-400" />
+              </span>
+            </div>
+            <div className="flex justify-center my-6 ">
+              <p>
+                <HiUsers className="text-6xl text-yellow-400" />
+              </p>
+            </div>
+            <div className="mb-6">
+              <p className="font-raleway text-3xl font-bold text-slate-400 text-center">
+                63
+              </p>
+            </div>
+          </div>
+          <div className="bg-[#1C1C1C]">
+            <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400 ">
+              <span className="text-sm font-semibold ">Products</span>
+              <span className="cursor-pointer">
+                <SlOptionsVertical className="text-yellow-400" />
+              </span>
+            </div>
+            <div className="flex justify-center my-6 ">
+              <p>
+                <SiElement className="text-6xl text-yellow-400" />
+              </p>
+            </div>
+            <div className="mb-6">
+              <p className="font-raleway text-3xl font-bold text-slate-400 text-center">
+                107
+              </p>
+            </div>
+          </div>
+          <div className="bg-[#1C1C1C]">
+            <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400 ">
+              <span className="text-sm font-semibold ">Orders</span>
+              <span className="cursor-pointer">
+                <SlOptionsVertical className="text-yellow-400" />
+              </span>
+            </div>
+            <div className="flex justify-center my-6 ">
+              <p>
+                <FaTelegramPlane className="text-6xl text-yellow-400" />
+              </p>
+            </div>
+            <div className="mb-6">
+              <p className="font-raleway text-3xl font-bold text-slate-400 text-center">
+                249
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className=" bg-[#1C1C1C] ml-4 my-4">
+          <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400 opacity-80">
+            <span className="text-sm font-semibold ">
+              Percentage sales of menu
+            </span>
+            <span className="cursor-pointer">
+              <SlOptionsVertical className="text-yellow-400" />
+            </span>
+          </div>
+          <div className="m-5">
+          <ResponsiveContainer width="100%" height={400}>
+      <PieChart>
+        {/* Pie for total sales amount */}
+        <Pie
+          dataKey="value"
+          data={totalAmountData}
+          cx="30%"
+          cy="65%"
+          outerRadius={80}
+          label={({ name, value }) => `${name}: $${value}`}
+        >
+          {totalAmountData.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+
+        {/* Pie for total number of pieces sold */}
+        <Pie
+          dataKey="value"
+          data={totalPiecesData}
+          cx="70%"
+          cy="40%"
+          innerRadius={40}
+          outerRadius={80}
+          label={({ name, value }) => `${name}: ${value}p`}
+        >
+          {totalPiecesData.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+
+        {/* Tooltip and unique legend */}
+        <Tooltip />
+        {/* <Legend  layout="horizontal" align="center" verticalAlign="bottom" /> */}
+      </PieChart>
+
+    </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 mb-5">
+        <div className="ml-4">
+          <div className="text-slate-400 text-center bg-[#1C2A35] p-5 text-sm md:text-xl flex justify-between items-center">
+            <p>Weekly sales in restaurant</p>
+            <div>
+              <IoSettings className="text-yellow-400" />
+            </div>
+          </div>
+          <div>
+            <ResponsiveContainer width="100%" height={400}>
+              <BarChart
+                data={data}
+                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+              >
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip content={<CustomTooltip />} />
+                <Legend />
+                <Bar dataKey="salad" fill="#82ca9d" />
+                <Bar dataKey="pizza" fill="#8884d8" />
+                <Bar dataKey="soup" fill="#ffc658" />
+                <Bar dataKey="dessert" fill="#ff6f61" />
+                <Bar dataKey="drinks" fill="#00bcd4" />
+                <Bar dataKey="others" fill="#a4de6c" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
