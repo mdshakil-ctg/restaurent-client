@@ -126,9 +126,9 @@ const Navbar = ({ hideHeaderFooterRoutes }) => {
               </ul>
             )}
           </div>
-          <div>
+          <div className="">
           <Link to="/" className="">
-            <img className="ml-1 w-[100px] h-[60px] object-cover " src={logo}></img>
+            <img className="ml-1 w-[100px] h-[60px] object-cover" src={logo}></img>
           </Link>
           </div>
         </div>

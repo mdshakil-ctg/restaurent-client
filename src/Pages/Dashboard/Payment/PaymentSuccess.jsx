@@ -6,11 +6,10 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 const PaymentSuccess = () => {
   const { user } = useContext(AuthContext);
   const location = useLocation();
-  // const queryParams = new URLSearchParams(location)
   const queryParams = new URLSearchParams(location.search);
   const tranId = queryParams.get("tranId");
   const amount = queryParams.get("amount");
-  console.log(user);
+  
   return (
     <div className="border-6 h-screen bg-gradient-to-b from-[#4F5AD3] to-[#9294F2]">
       <img className="w-full h-auto" src={paySucImg} alt="" />

@@ -2,7 +2,6 @@ import { useEffect } from "react";
 
 const MenuCard = ({data, setMenuTitle}) => {
     const {name, recipe, price, image, category} = data;
-    // setMenuTitle && setMenuTitle(category);
     useEffect( () =>{
       if(setMenuTitle){
         setMenuTitle(category)

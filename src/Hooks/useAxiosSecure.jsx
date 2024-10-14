@@ -6,8 +6,8 @@ import useModal from './useModal';
 
 
 export const axiosSecure = axios.create({
-    // baseURL: 'https://bistro-boss-server-rho-six.vercel.app',
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://bistro-boss-server-rho-six.vercel.app',
+    // baseURL: 'http://localhost:5000',
     withCredentials: true,
 })
 
@@ -20,6 +20,11 @@ const useAxiosSecure = () => {
     }, async(error) =>{
         const status = error.response.status;
         if(status === 401 || status === 403){
+            openModal({
+                title:'OOPS',
+                message:'Session expired! Please login again',
+                autoCloseTime: 3000
+            })
            await LogoutUser()
             navigate('/login', replace)
             setLoading(false)

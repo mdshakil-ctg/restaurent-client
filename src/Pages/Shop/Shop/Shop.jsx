@@ -8,7 +8,6 @@ import { useParams } from "react-router-dom";
 import SetTitle from "../../../components/SetTitle";
 
 const Shop = () => {
-  // const [serchText, setSerchText] = useState('')
   const [searchData, setSearchData] = useState([]);
   const [message, setMessage] = useState([]);
 
@@ -26,15 +25,14 @@ const Shop = () => {
   const dessertsData = useMenuFilterData("dessert");
   const drinksData = useMenuFilterData("drinks");
   const allData = useMenuFilterData();
-  // console.log({allData}, {searchData}, {serchText});
 
   const handleSearch = (event) => {
     event.preventDefault();
-    console.log("hitting", event.target.search.value);
     const searchText = event.target.search.value.trim();
+    console.log("hitting", event.target.search.value, allData, searchText);
     const searchResult = allData?.datas?.filter((item) =>
-      item.name.toLowerCase().includes(searchText.toLowerCase())
-    );
+      item?.name?.toLowerCase().includes(searchText?.toLowerCase())
+  );
     console.log({ searchResult });
     if (!searchResult.length) {
       console.log("if hitting");
@@ -46,6 +44,7 @@ const Shop = () => {
       setTabIndex(items.indexOf("all"));
       setMessage("");
     }
+    event.target.reset();
   };
 
   return (
@@ -59,22 +58,20 @@ const Shop = () => {
           <form onSubmit={handleSearch} className="w-full relative">
             {/* search bar content */}
             <input
-              // onBlurCapture={(e)=>setSerchText(e.target.value)}
               name="search"
-              className="border-2 border-slate-600 placeholder-black placeholder:text-sm placeholder:font-satisfy font-semibold focus:outline-none"
+              className="h-10 border-2 border-slate-600 placeholder-black placeholder:text-sm placeholder:font-satisfy font-semibold focus:outline-none"
               type="text"
               placeholder="Search your favourite food"
             />
             <button
               type="submit"
               className="btn btn-ghost rounded-none
-           text-4xl mt-6 absolute right-0 bottom-0"
+           text-4xl absolute right-0 bottom-0"
             >
-              {" "}
-              <MdManageSearch />
+              <MdManageSearch/>
             </button>
           </form>
-          {message && <p className="text-red-600">{message}</p>}
+          {message && <p className="text-base mt-2 font-semibold text-red-400 ">{message}</p>}
         </div>
       </div>
       <div className=" md:p-0 md:max-w-[80%] mx-auto">

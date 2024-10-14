@@ -46,7 +46,6 @@ const Login = () => {
     
     
   };
-  // console.log(loading);
  
 
 const  ValidateCaptchaField = (e) =>{
@@ -91,12 +90,12 @@ const  ValidateCaptchaField = (e) =>{
             <span className="!text-red-400 text-xs">Email required</span>
           )}
 
-          <label htmlFor="password">Password</label>
+          <label htmlFor="login-password">Password</label>
           <input
             {...register("password", { minLength: 6 })}
             type="password"
             placeholder="Your Password"
-            id="password"
+            id="login-password"
             className="placeholder:text-gray-200 focus:bg-black text-white"
           />
           {errors?.password && (
@@ -114,7 +113,7 @@ const  ValidateCaptchaField = (e) =>{
             className="placeholder:text-gray-200 mb-4 focus:bg-black text-white"
             type="text"
             placeholder="Enter captcha code here"
-            id="password"
+            id=""
           />
 
           <button disabled={!isDisable} className="btn-reg">

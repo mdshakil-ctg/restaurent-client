@@ -15,7 +15,7 @@ const useIsAdmin = () => {
         return false; 
       }
       const res = await axiosApi.get(`user/admin/${user?.email}`);
-      return res.data.isAdmin;
+      return res.data.isAdmin ?? false;
     },
     enabled: !!user?.email && !loading // Only run query if email exists or loading is false
   });

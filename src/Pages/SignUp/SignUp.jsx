@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import SetTitle from "../../components/SetTitle";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
-// import { ModalContext } from "../../Providers/ModalProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import "./SignUp.css";
@@ -100,12 +99,12 @@ const SignUp = () => {
             <span className="!text-red-400 text-xs">Email required</span>
           )}
 
-          <label htmlFor="password">Password</label>
+          <label htmlFor="signup-password">Password</label>
           <input
             {...register("password", { minLength: 6 })}
             type="password"
             placeholder="Your Password"
-            id="password"
+            id="signup-password"
             className="placeholder:text-gray-200 focus:bg-black !text-white"
           />
           {errors?.password && (

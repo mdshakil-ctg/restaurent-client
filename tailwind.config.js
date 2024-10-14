@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+import daisyui from 'daisyui';
+import tailwindScrollbar from 'tailwind-scrollbar';
+
 export default {
   content: [
     "./index.html",
@@ -13,8 +16,5 @@ export default {
       },
     },
   },
-  // eslint-disable-next-line no-undef
-  plugins: [ require('daisyui'),  require('tailwind-scrollbar'),],
-
+  plugins: [daisyui, tailwindScrollbar],
 }
-

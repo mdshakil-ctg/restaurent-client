@@ -59,7 +59,7 @@ const PaymentHistory = () => {
               </tr>
             </thead>
             <tbody>
-              {payHistory.map((item) => (
+              {PaymentHistory.length > 0 ? payHistory.map((item) => (
                 <tr key={item._id} className="hover border-none hover:text-black">
                   <td>Food</td>
                   <td className="text-red-200">$ {Number(item.totalAmount).toFixed(2)}</td>
@@ -67,7 +67,7 @@ const PaymentHistory = () => {
                   <td>{item.currency}</td>
                   <td>{item.date}</td>
                 </tr>
-              ))}
+              )) : <tr><td>You have not made any payments yet. Start shopping to see your payment history here!</td></tr>}
             </tbody>
           </table>
         </div>

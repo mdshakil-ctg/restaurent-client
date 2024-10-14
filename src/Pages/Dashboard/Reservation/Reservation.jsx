@@ -32,7 +32,7 @@ const Reservation = () => {
       guest: data.guest,
     };
     const res = await axiosSecure.post("/booking", { bookingData });
-    console.log(res);
+
     if (res.data.insertedId) {
       openModal({
         title: "success!",

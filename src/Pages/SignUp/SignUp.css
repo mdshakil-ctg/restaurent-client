@@ -151,7 +151,7 @@ input[type="checkbox"] {
   border-radius: 5px; /* Optional: Add rounded corners */
   padding: 10px; /* Optional: Add padding */
 }
-
+/* for tab screen */
 @media (max-width: 768px) {
   
   .main-form {
@@ -167,20 +167,19 @@ input[type="checkbox"] {
     height: 100px;
     width: 100px;
     top: -50px;
-    left: -50px;
+    left: -100px;
   }
 
   .shape:last-child {
     height: 100px;
     width: 100px;
     bottom: -50px;
-    right: -50px;
+    right: -100px;
   }
 }
-
+/* for medium phone screen */
 @media (max-width: 480px) {
   .background {
-  
   width: 100%;
   height: 420px;
   position: absolute;
@@ -199,8 +198,8 @@ input[type="checkbox"] {
 .shape:last-child {
   height: 90px;
   width: 90px;
-  bottom: -70px;
-  right: -65px;
+  bottom: -60px;
+  right: -40px;
 }
   
 .main-form {
@@ -309,11 +308,12 @@ input[type="checkbox"] {
     right: -320px;
   }
 }
-@media (max-width: 429px) and (min-width: 320px) {
+@media (min-width: 320px) and (max-width: 389px) {
   .main-form {
-    width: 85%;
+    width: 80%;
     height: 450px;
     padding:0 px; /* Adjust the padding as needed */
+    margin-top: 30px;
   }
 
   .main-form h3 {
@@ -357,13 +357,13 @@ input[type="checkbox"] {
     height: 50px;
     width: 50px;
     top: 70px;
-    left: 90px;
+    left: 95px;
   }
 
   .shape:last-child {
     height: 50px;
     width: 50px;
-    bottom: 50px;
+    bottom: 20px;
     right: -30px;
   }
 

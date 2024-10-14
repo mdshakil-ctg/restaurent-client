@@ -45,11 +45,10 @@ const Mybooking = () => {
   };
 
   if(isLoading){
-    return <div className="flex items-center h-screen">
-      <progress className="progress w-3/4 mx-auto h-3"></progress>
+    return <div className=" h-[95vh] flex justify-center items-center ">
+      <div className=" flex justify-center flex-grow"><span className="loading loading-ring w-24"></span></div>
     </div>
   }
-
   return (
     <div className="md:p-20 pb-6 pt-5">
       <div className="ml-3">

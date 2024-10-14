@@ -71,7 +71,7 @@ const AddReview = () => {
       </div>
       {/* form section */}
      
-      <form className="lg:m-20" onSubmit={handleSubmit(handleFormSubmit)}>  {/**responsive */}
+      <form className="lg:m-20"   onSubmit={handleSubmit(handleFormSubmit)}>  {/**responsive */}
             <div className="bg-[#1C1C1C] space-y-5 p-5 md:p-10">
               {/* recipe section  */}
               <div className="flex flex-col">

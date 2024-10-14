@@ -9,7 +9,6 @@ import { FaCartShopping } from "react-icons/fa6";
 import profileImg from "../../src/assets/others/profile.png";
 import useIsAdmin from "../Hooks/useIsAdmin";
 import LoaderCup from "../components/LoaderCup/LoaderCup";
-// import Footer from "../Pages/Shared/Footer/Footer";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import "./Dashboard.css";
@@ -20,7 +19,6 @@ const Dashboard = () => {
   const location = useLocation();
   const hideNavbar = location.pathname.includes("/user-");
   console.log(hideNavbar);
-  //todo: hide the footer for admin routes
 
   const { isAdmin, isPending } = useIsAdmin();
   const { user } = useContext(AuthContext);
@@ -263,8 +261,6 @@ const Dashboard = () => {
           <Outlet></Outlet>
         </div>
       </div>
-      {/* footer content */}
-      {/* <Footer></Footer> */}
     </>
   );
 };

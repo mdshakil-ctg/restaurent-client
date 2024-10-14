@@ -7,7 +7,6 @@ import LoaderCup from "../../../components/LoaderCup/LoaderCup";
 import DashboardButton from "../../../components/DashboardButton/DashboardButton";
 
 const Payment = () => {
-  // const { openModal = {} } = useModal();
   const { user } = useContext(AuthContext);
 
   const axiosSecure = useAxiosSecure();
@@ -16,12 +15,10 @@ const Payment = () => {
   const queryParams = new URLSearchParams(location.search);
   const itemsParam = queryParams?.get("items");
   const itemsId = itemsParam ? itemsParam.split(",") : [];
-  // console.log(itemsId);
 
   const {
     register,
     handleSubmit,
-    // reset,
     formState: { errors },
   } = useForm();
   const handlePaymentSubmit = async (data) => {
