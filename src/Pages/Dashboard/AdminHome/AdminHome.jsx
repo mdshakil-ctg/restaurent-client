@@ -16,7 +16,9 @@ import {
   ResponsiveContainer,
   Cell
 } from "recharts";
+import { useEffect, useState } from "react";
 const AdminHome = () => {
+  const [showLabels, setShowLabels] = useState(true);
   const data = [
     {
       name: "Monday",
@@ -120,7 +122,26 @@ const AdminHome = () => {
     return null;
   };
 
-  
+  const getLabelFontSize = () => {
+    if (window.innerWidth <= 768) { // Check for mobile or tablet size
+      return 12; // Smaller font for smaller screens
+    }
+    return 16; // Default font size
+  };
+
+
+  // Adjust label visibility based on screen width
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setShowLabels(width > 768); // Show labels only on screens wider than 768px
+    };
+
+    handleResize(); // Set initial label visibility
+    window.addEventListener('resize', handleResize); // Listen for resize events
+
+    return () => window.removeEventListener('resize', handleResize); // Cleanup on unmount
+  }, []);
 
   return (
     <div className="md:mr-5">
@@ -200,10 +221,10 @@ const AdminHome = () => {
             </div>
           </div>
         </div>
-        <div className=" bg-[#1C1C1C] ml-4 my-4">
+        <div className=" bg-[#1C1C1C] my-4">
           <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400 opacity-80">
             <span className="text-sm font-semibold ">
-              Percentage sales of menu
+              Percentage & total sales of menu 
             </span>
             <span className="cursor-pointer">
               <SlOptionsVertical className="text-yellow-400" />
@@ -214,12 +235,13 @@ const AdminHome = () => {
       <PieChart>
         {/* Pie for total sales amount */}
         <Pie
-          dataKey="value"
           data={totalAmountData}
-          cx="30%"
-          cy="65%"
-          outerRadius={80}
-          label={({ name, value }) => `${name}: $${value}`}
+          dataKey="value"
+          cx="50%"
+          cy="50%"
+          outerRadius={60}
+          fill="#8884d8"
+          // label={({ name, value }) => `${name}: $${value}`}  // Add $ sign to amount
         >
           {totalAmountData.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -228,24 +250,27 @@ const AdminHome = () => {
 
         {/* Pie for total number of pieces sold */}
         <Pie
-          dataKey="value"
           data={totalPiecesData}
-          cx="70%"
-          cy="40%"
-          innerRadius={40}
-          outerRadius={80}
-          label={({ name, value }) => `${name}: ${value}p`}
+          dataKey="value"
+          cx="50%"
+          cy="50%"
+          innerRadius={70}
+          outerRadius={90}
+          fill="#82ca9d"
+          // label={({ name, value }) => `${name}: ${value}p`} 
+          label={showLabels ? ({ name, value }) => `${name}: ${value}p` : false} 
+          labelStyle={{ fontSize: getLabelFontSize() }}
+          legendType="none"
         >
           {totalPiecesData.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
 
-        {/* Tooltip and unique legend */}
+        {/* Tooltip for both pies */}
         <Tooltip />
-        {/* <Legend  layout="horizontal" align="center" verticalAlign="bottom" /> */}
+        <Legend />
       </PieChart>
-
     </ResponsiveContainer>
           </div>
         </div>
