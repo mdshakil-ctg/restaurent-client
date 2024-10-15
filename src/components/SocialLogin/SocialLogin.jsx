@@ -28,7 +28,7 @@ const SocialLogin = () => {
             if (res.data.insertedId) {
               navigate(location?.state?.from || "/");
               openModal({
-                title: `Welcome ${result.user.displayName} to Bistro Boss!!!`,
+                title: `Welcome ${result.user.displayName} to Crave Station!!!`,
                 message: "Please check your email for exclusive offers!",
                 autoCloseTime: 6000,
               });
@@ -38,7 +38,7 @@ const SocialLogin = () => {
           console.log("in the else state");
           navigate(location?.state?.from || "/");
           openModal({
-            title: `Welcome Back ${result.user.displayName} to Bistro Boss!!!`,
+            title: `Welcome Back ${result.user.displayName} to Crave Station!!!`,
             autoCloseTime: 4000,
           });
         }
@@ -61,7 +61,7 @@ const SocialLogin = () => {
             if (res.data.insertedId) {
               navigate(location?.state?.from || "/");
               openModal({
-                title: `Welcome ${result.user.displayName} to Bistro Boss!!!`,
+                title: `Welcome ${result.user.displayName} to Crave Station!!!`,
                 message: "Please check your email for exclusive offers!",
                 autoCloseTime: 6000,
               });
@@ -70,7 +70,7 @@ const SocialLogin = () => {
         } else {
           navigate(location?.state?.from || "/");
           openModal({
-            title: `Welcome Back ${result.user.displayName} to Bistro Boss!!!`,
+            title: `Welcome Back ${result.user.displayName} to Crave Station!!!`,
             autoCloseTime: 3000,
           });
         }

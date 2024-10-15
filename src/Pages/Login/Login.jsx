@@ -118,7 +118,7 @@ const  ValidateCaptchaField = (e) =>{
 
           <button disabled={!isDisable} className="btn-reg">
             {loading ? (
-              <span className="loading loading-bars loading-md"></span>
+              <span className="loading loading-bars loading-xs"></span>
             ) : (
               "Login"
             )}

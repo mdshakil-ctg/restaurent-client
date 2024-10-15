@@ -25,7 +25,7 @@ const Footer = () => {
         </div>
         <p className="text-xs text-gray-300">
           Copyright © {new Date().getFullYear()} - All rights reserved by
-          Pothiks restaurant
+          Crave Station
         </p>
         {/* social media section */}
         <div className="flex space-x-3 mt-2 text-red-400 text-2xl">

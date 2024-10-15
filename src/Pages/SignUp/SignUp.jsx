@@ -127,7 +127,7 @@ const SignUp = () => {
 
           <button disabled={!isChecked} className="btn-reg">
             {loading ? (
-              <progress className="progress w-56"></progress>
+              <span className="loading loading-bars loading-xs"></span>
             ) : (
               "Register"
             )}

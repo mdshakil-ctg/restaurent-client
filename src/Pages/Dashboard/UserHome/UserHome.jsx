@@ -30,7 +30,7 @@ const UserHome = () => {
     handleResize(); // Set initial label visibility
     window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize)
   }, []);
 
   if (loading || isLoading) {
@@ -70,7 +70,7 @@ const UserHome = () => {
         </div>
         {/* Total Shop */}
         <div className="bg-[#1C1C1C]">
-          <div className="flex justify-between items-center px-4 py-2 bg-[#277dbe] text-slate-400">
+          <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">
             <span className="text-sm font-semibold">Total Shop</span>
             <span className="cursor-pointer">
               <SlOptionsVertical className="text-yellow-400" />

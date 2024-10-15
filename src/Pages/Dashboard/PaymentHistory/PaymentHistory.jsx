@@ -47,7 +47,8 @@ const PaymentHistory = () => {
       </div>
       <div>
         <div className="bg-[#1C2A35] max-w-[calc(100vw-110px)] md:max-w-[calc(100vw-230px)]  h-[100vh] !overflow-x-auto overflow-y-auto scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700 ml-[12px] md:p-10">
-          <table className="table">
+          {
+            PaymentHistory.length > 0 ? <table className="table">
             {/* head */}
             <thead>
               <tr className="text-slate-300 ">
@@ -59,7 +60,7 @@ const PaymentHistory = () => {
               </tr>
             </thead>
             <tbody>
-              {PaymentHistory.length > 0 ? payHistory.map((item) => (
+              {payHistory.map((item) => (
                 <tr key={item._id} className="hover border-none hover:text-black">
                   <td>Food</td>
                   <td className="text-red-200">$ {Number(item.totalAmount).toFixed(2)}</td>
@@ -67,9 +68,11 @@ const PaymentHistory = () => {
                   <td>{item.currency}</td>
                   <td>{item.date}</td>
                 </tr>
-              )) : <tr><td>You have not made any payments yet. Start shopping to see your payment history here!</td></tr>}
+              ))}
             </tbody>
-          </table>
+          </table> :
+          <div className="py-6 text-center text-xl font-serif"><p>You have not made any payments yet. Start shopping to see your payment history here!</p></div>
+          }
         </div>
       </div>
     </div>

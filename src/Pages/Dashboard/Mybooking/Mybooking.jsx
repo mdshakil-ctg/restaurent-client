@@ -61,7 +61,8 @@ const Mybooking = () => {
       </div>
       <div>
         <div className="overflow-x-auto overflow-y-auto h-full max-w-[calc(100vw-110px)] md:max-w-[calc(100vw-230px)] bg-[#1C1C1C] ml-3 md:ml-0 md:px-10 md:py-5">
-          <table className="table">
+          {
+            data.length > 0 ? <table className="table">
             {/* head */}
             <thead className="text-blue-400">
               <tr> 
@@ -91,7 +92,9 @@ const Mybooking = () => {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table> :
+          <div className="py-6 text-center text-xl font-serif"><p>Currently, there are no bookings recorded. If you need assistance or would like to make a reservation, feel free to reach out!</p></div>
+          }
         </div>
       </div>
     </div>
