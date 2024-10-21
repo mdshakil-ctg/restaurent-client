@@ -30,7 +30,7 @@ const SocialLogin = () => {
               openModal({
                 title: `Welcome ${result.user.displayName} to Crave Station!!!`,
                 message: "Please check your email for exclusive offers!",
-                autoCloseTime: 6000,
+                autoCloseTime: 3000,
               });
             }
           });
@@ -39,7 +39,7 @@ const SocialLogin = () => {
           navigate(location?.state?.from || "/");
           openModal({
             title: `Welcome Back ${result.user.displayName} to Crave Station!!!`,
-            autoCloseTime: 4000,
+            autoCloseTime: 3000,
           });
         }
       })
