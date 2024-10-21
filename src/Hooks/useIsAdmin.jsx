@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 const useIsAdmin = () => {
   const { user, loading } = useContext(AuthContext);
   const axiosApi = useAxiosSecure();
+  console.log('before',loading)
 
   const { data: isAdmin = false, isPending } = useQuery({
     queryKey: ['user', user?.email], // Adjust query key for uniqueness
@@ -14,11 +15,14 @@ const useIsAdmin = () => {
         // Return a fallback value if the email is undefined
         return false; 
       }
-      const res = await axiosApi.get(`user/admin/${user?.email}`);
+      if(!loading){
+        const res = await axiosApi.get(`user/admin/${user?.email}`);
       return res.data.isAdmin ?? false;
+      }
     },
-    enabled: !!user?.email && !loading // Only run query if email exists or loading is false
+    enabled: !!user?.email // Only run query if email exists or loading is false
   });
+  console.log('after',loading);
 
   return { isAdmin, isPending };
 };

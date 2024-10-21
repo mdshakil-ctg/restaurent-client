@@ -7,7 +7,7 @@ const OurLocation = () => {
     return (
         <div className="max-w-screen-md  mx-auto">
         <SectionTitle title="our location" subTitle="visit us"></SectionTitle>
-        <ShowCaseCard name={'Office Address'} details={'4143 Urkirchar, Raozan Chittagong'} imgUrl={imgbg}/>
+        <ShowCaseCard name={'Our office'} details={'4143 Urkirchar, Raozan Chittagong'} imgUrl={imgbg}/>
     </div>
     );
 };
