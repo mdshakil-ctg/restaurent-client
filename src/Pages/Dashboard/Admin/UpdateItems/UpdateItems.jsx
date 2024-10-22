@@ -30,6 +30,8 @@ const UpdateItems = () => {
     enabled: !!id, // Enable query only if id exists
   });
 
+  console.log({item})
+
   // Form setup
   const { register, handleSubmit, reset } = useForm();
 

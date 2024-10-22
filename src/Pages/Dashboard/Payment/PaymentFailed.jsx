@@ -7,9 +7,9 @@ const PaymentFailed = () => {
   const { user } = useContext(AuthContext);
   const {tranId} = useParams()
   return (
-    <div className="border-6 h-screen bg-gradient-to-r from-[#FFFFFF] to-[#E9FCFF]">
-    <img className="w-full h-auto" src={payFailImg} alt="" />
-    <div className="flex justify-center items-start gap-10 pt-10 mt-10">
+    <div className="border-6 bg-gradient-to-r from-[#FFFFFF] to-[#E9FCFF]">
+    <img className="w-full h-auto object-cover" src={payFailImg} alt="" />
+    <div className="flex justify-center items-start gap-10 pt-10 mt-10 bg-black">
       <div className="border-b-2 border-b-slate-500 flex flex-col items-center  ">
         <div>
           {user?.photoURL && (
@@ -28,6 +28,9 @@ const PaymentFailed = () => {
       <div>
         <p className="text-center text-sm">Payment Details</p>
         <div className="shadow-lg p-6 flex justify-between mb-6">
+      <Link to="/dashboard/myCart">
+        <button className="bg-yellow-400 px-8 py-1 text-black hover:bg-yellow-700">OK</button>
+      </Link>
           <p>Total Amount : Tk. 0.00</p>
           <p>Delivery Cost : Tk. 0.00</p>
         </div>
@@ -36,9 +39,6 @@ const PaymentFailed = () => {
           for any query.
         </p>
       </div>
-      <Link to="/dashboard/myCart">
-        <button className="btn btn-warning">OK</button>
-      </Link>
       </div>
     </div>
   </div>

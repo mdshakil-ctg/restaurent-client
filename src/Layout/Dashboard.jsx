@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import { FaBook, FaHome, FaCompress, FaUserShield } from "react-icons/fa";
 import { AiFillDashboard } from "react-icons/ai";
 import { GiSecretBook } from "react-icons/gi";
@@ -16,9 +16,9 @@ import DashboardNavbar from "../components/DashboardNavbar";
 import useCart from "../Hooks/useCart";
 
 const Dashboard = () => {
-  const location = useLocation();
-  const hideNavbar = location.pathname.includes("/user-");
-  console.log(hideNavbar);
+  // const location = useLocation();
+  // const hideNavbar = location.pathname.includes("/user-");
+  
 
   const { isAdmin, isPending } = useIsAdmin();
   const { user } = useContext(AuthContext);
@@ -43,7 +43,7 @@ const Dashboard = () => {
           </div>
           {/* dashboard navigation */}
           <div>
-            {isAdmin ? <ul className="p-3">
+            {isAdmin && <ul className="p-3">
               <NavLink to="/dashboard/adminHome">
                 <li className="flex items-center justify-center mb-3 px-1 py-1">
                   <AiFillDashboard className="text-4xl" />
@@ -69,7 +69,8 @@ const Dashboard = () => {
                   <FaUserShield className="text-4xl" />
                 </li>
               </NavLink>
-            </ul> :
+            </ul> }
+            {!isAdmin && !isPending && 
             <ul className="p-3">
               <NavLink to="/dashboard/user-home">
                 <li className="flex items-center justify-center mb-3 px-2 py-1">

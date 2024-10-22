@@ -51,16 +51,19 @@ const Navbar = ({ hideHeaderFooterRoutes }) => {
       <li className="lg:text-gray-400 mr-1">
         <NavLink to="/contact">Contact Us</NavLink>
       </li>
-      <li className="lg:text-gray-400 mr-1">
+      
+
+      {user ? (
+       <>
+       <li className="lg:text-gray-400 mr-1">
         <NavLink to={isAdmin ? "/dashboard/adminHome" : "/dashboard/user-home"}>
           Dashboard
         </NavLink>
       </li>
-
-      {user ? (
         <li className="lg:text-gray-400 mr-1">
           <button onClick={handleLogout}>Logout</button>
         </li>
+        </>
       ) : (
         <>
           <li className="lg:text-gray-400 mr-1">

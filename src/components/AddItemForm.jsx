@@ -34,7 +34,9 @@ const {
   } = useForm()
 
   const handleFormSubmit = async(data) => {
-    setLoading(true)
+    const {name, recipe, category, price} = data;
+    console.log(name, recipe, category, price)
+     setLoading(true)
    
     if(!selectedImage){
         setLoading(false);
@@ -64,9 +66,9 @@ const {
         console.log('image upload result',result.data);
         if(result.data.success){
             //make api call to save item in the database
-            const result = await axiosSecure.post('/add-item', itemInfo)
-            console.log(result.data.insertedId);
-            if(result?.data?.insertedId){
+            const response = await axiosSecure.post('/add-item', itemInfo)
+            console.log(response.data.insertedId);
+            if(response?.data?.insertedId){
               openModal({
                 title: "Success",
                 message: "Item has been added successfully",
@@ -223,7 +225,7 @@ const {
           {
             loading ? 
             <button className="bg-[#1C1C1C] px-16 py-3 text-yellow-400 shadow-slate-300 shadow-lg"><span className="loading loading-bars loading-sm"></span></button> :
-            <DashboardButton text="Add Item" small loading onClick={handleFormSubmit}></DashboardButton>
+            <DashboardButton type="submit" text="Add Item" small loading ></DashboardButton>
           }
           </div>
         </form>

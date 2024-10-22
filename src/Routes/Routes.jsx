@@ -68,19 +68,19 @@ import AdminRoute from "./AdminRoute/AdminRoute";
         //general user routes
         {
           path: 'user-home',
-          element: <UserHome></UserHome>
+          element: <PrivateRoute><UserHome></UserHome></PrivateRoute>
         },
         {
           path:'user-reservation',
-          element:<Reservation></Reservation>
+          element:<PrivateRoute><Reservation></Reservation></PrivateRoute>
         },
         {
           path:'payment',
-          element: <Payment></Payment>
+          element: <PrivateRoute><Payment></Payment></PrivateRoute>
         },
         {
           path:'payment-history',
-          element: <PaymentHistory></PaymentHistory>
+          element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
         },
         {
           path:'payment/success',
@@ -92,15 +92,15 @@ import AdminRoute from "./AdminRoute/AdminRoute";
         },
         {
           path:'myCart',
-          element:<MyCart></MyCart>
+          element:<PrivateRoute><MyCart></MyCart></PrivateRoute>
         },
         {
           path:'addReview',
-          element:<AddReview></AddReview>
+          element:<PrivateRoute><AddReview></AddReview></PrivateRoute>
         },
         {
           path: 'myBooking',
-          element: <Mybooking></Mybooking>
+          element: <PrivateRoute><Mybooking></Mybooking></PrivateRoute>
         },
         //admin route
         {
