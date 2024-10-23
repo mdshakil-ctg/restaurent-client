@@ -9,7 +9,7 @@ import contactImg from "../../../src/assets/contact/contact-banner.jpg"
 const ContactUs = () => {
 
     return (
-        <div className="mb-20 pt-16">
+        <div className="mb-20 pt-16 ">
             <SetTitle title={'Contact us'}></SetTitle>
             <div className="h-[700px]"><img className="w-full h-full object-cover" src={contactImg} alt="" /></div>
            <ContactForm></ContactForm>

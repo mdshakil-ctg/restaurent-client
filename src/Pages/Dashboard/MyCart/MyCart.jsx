@@ -95,7 +95,7 @@ const MyCart = () => {
   }
 
   return (
-    <div className="max-w-screen-xl text-[#AFEEEE] pl-2 md:pl-10">
+    <div className="max-w-screen-xl min-h-screen text-[#AFEEEE] pl-2 md:pl-10">
       <SetTitle title="My Cart"></SetTitle>
       <SectionTitle title="wanna add more?" subTitle="my cart"></SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-3 mr-2 mb-10  md:mr-10 gap-5">

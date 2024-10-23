@@ -19,7 +19,7 @@ const useAxiosSecure = () => {
         return response;
     }, async(error) =>{
         const status = error.response.status;
-        if(status === 401 || status === 403){
+        if(status === 501 || status === 503){
             openModal({
                 title:'OOPS',
                 message:'Session expired! Please login again',

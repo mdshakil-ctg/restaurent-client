@@ -34,7 +34,7 @@ const PaymentHistory = () => {
   
 
   return (
-    <div className="max-w-screen-lg  lg:px-5  mx-auto">
+    <div className="max-w-screen-lg  lg:px-5  mx-auto h-screen">
       <div className="px-5">
       <SectionTitle
         title="payment history"
@@ -46,7 +46,7 @@ const PaymentHistory = () => {
       </div>
       </div>
       <div>
-        <div className="bg-[#1C2A35] max-w-[calc(100vw-110px)] md:max-w-[calc(100vw-230px)]  h-[100vh] !overflow-x-auto overflow-y-auto scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700 ml-[12px] md:p-10">
+        <div className="bg-[#1C2A35] max-w-[calc(100vw-110px)] md:max-w-[calc(100vw-230px)] !overflow-x-auto overflow-y-auto scrollbar-thin scrollbar-thumb-teal-500 scrollbar-track-gray-700 ml-[12px] md:p-10">
           {
             PaymentHistory.length > 0 ? <table className="table">
             {/* head */}
@@ -71,7 +71,7 @@ const PaymentHistory = () => {
               ))}
             </tbody>
           </table> :
-          <div className="py-6 text-center text-xl font-serif"><p>You have not made any payments yet. Start shopping to see your payment history here!</p></div>
+          <div className="py-6 text-center text-sm font-serif"><p>You have not made any payments yet. Start shopping to see your payment history here!</p></div>
           }
         </div>
       </div>

@@ -50,7 +50,7 @@ const Mybooking = () => {
     </div>
   }
   return (
-    <div className="md:p-20 pb-6 pt-5">
+    <div className="md:p-20 pb-6 pt-5 min-h-screen">
       <div className="ml-3">
         <SectionTitle title={'my bookings'} subTitle={'are you ready'}/>
       </div>

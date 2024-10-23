@@ -13,7 +13,7 @@ import OptionSection from "../../../components/OptionSection";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import { FaShareFromSquare } from "react-icons/fa6";
 import { FaCalendarTimes } from "react-icons/fa";
-import proImg from "../../../assets/others/profile.png";
+import proImg from "../../../../src/assets/others/profile.png";
 
 const UserHome = () => {
   const [showLabels, setShowLabels] = useState(true);
@@ -34,7 +34,9 @@ const UserHome = () => {
   }, []);
 
   if (loading || isLoading) {
-    return <span className="loading loading-ring loading-lg"></span>;
+    return <div className=" h-[95vh] flex justify-center items-center ">
+    <div className=" flex justify-center flex-grow"><span className="loading loading-ring w-24"></span></div>
+  </div>;
   }
 
   const userData = [
@@ -52,7 +54,7 @@ const UserHome = () => {
 
   return (
     <div className=" flex flex-col">
-      <div className="grid md:grid-cols-2 gap-5 p-4 flex-grow-0">
+      <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-5 p-4 flex-grow-0">
         {/* Menus */}
         <div className="bg-[#1C1C1C] text-slate-400">
           <div className="flex justify-between items-center px-4 py-2 bg-[#1C2A35] text-slate-400">
@@ -107,7 +109,7 @@ const UserHome = () => {
         {/* chartjs option */}
         <div className="">
           <OptionSection text={"Monthly Activities"}></OptionSection>
-          <div>
+          <div className="bg-[#1C1C1C]">
             <ResponsiveContainer width="100%" height={500}>
               <PieChart>
                 <Pie

@@ -78,7 +78,7 @@ const Navbar = ({ hideHeaderFooterRoutes }) => {
       <li className="mt-1">
         <NavLink to={isAdmin ? "/dashboard/adminHome" : "/dashboard/myCart"}>
           <span className="absolute z-10">
-            {" "}
+           
             <FaCartArrowDown className="text-xl sm:text-black md:text-2xl  lg:text-gray-400 " />
           </span>
           <div className="badge badge-xs leading-3 badge-warning relative -top-2 -right-4 z-10">
@@ -102,7 +102,7 @@ const Navbar = ({ hideHeaderFooterRoutes }) => {
               onClick={handleDropdown}
               tabIndex={0}
               role="button"
-              className=" ml-2 bg-yellow-400 bg-opacity-70 p-1 text-red-700  lg:hidden"
+              className=" ml-2 p-1 text-white  lg:hidden"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

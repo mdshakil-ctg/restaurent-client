@@ -32,7 +32,7 @@ const Dashboard = () => {
     <>
       <div className="flex bg-black">
         {/* dashboard for mini screen */}
-        <div className="bg-[#1C2A35] text-white block md:hidden min-h-screen">
+        <div className="bg-[#1C2A35] text-white block md:hidden min-h-screen fixed w-[70px]">
           {/* profile display */}
           <div className="bg-yellow-400 w-12 h-12 mx-auto my-6 rounded-2xl flex">
             <img
@@ -46,7 +46,7 @@ const Dashboard = () => {
             {isAdmin && <ul className="p-3">
               <NavLink to="/dashboard/adminHome">
                 <li className="flex items-center justify-center mb-3 px-1 py-1">
-                  <AiFillDashboard className="text-4xl" />
+                  <AiFillDashboard className="text-2xl" />
                 </li>
               </NavLink>
               <NavLink to="/dashboard/addItem">
@@ -74,35 +74,35 @@ const Dashboard = () => {
             <ul className="p-3">
               <NavLink to="/dashboard/user-home">
                 <li className="flex items-center justify-center mb-3 px-2 py-1">
-                  <AiFillDashboard className="text-4xl" />
+                  <AiFillDashboard className="text-2xl" />
                 </li>
               </NavLink>
               <NavLink to="/dashboard/user-reservation">
                 <li className="flex items-center justify-center mb-3 px-2 py-1">
-                  <FaCompress className="text-4xl" />
+                  <FaCompress className="text-2xl" />
                 </li>
               </NavLink>
               <NavLink to="/dashboard/payment-history">
                 <li className="flex items-center justify-center mb-3 px-2 py-1">
-                  <MdPayment className="text-4xl" />
+                  <MdPayment className="text-2xl" />
                 </li>
               </NavLink>
               <NavLink to="/dashboard/myCart">
                 <li className="flex items-center justify-center mb-3 px-2 py-1">
-                  <FaCartShopping className="text-4xl" />
-                  <span className="ml-2">
+                  <FaCartShopping className="text-2xl" />
+                  <span className="">
                   </span>
                 </li>
               </NavLink>
               <NavLink to="/dashboard/addReview">
                 <li className="flex items-center justify-center mb-3 px-2 py-1">
-                  <MdReviews className="text-4xl" />
+                  <MdReviews className="text-2xl" />
                 </li>
               </NavLink>
 
               <NavLink to="myBooking">
                 <li className="flex items-center justify-center mb-3 px-2 py-1">
-                  <FaBook className="text-4xl" />
+                  <FaBook className="text-2xl" />
                 </li>
               </NavLink>
             </ul>}
@@ -112,22 +112,22 @@ const Dashboard = () => {
             <ul className="p-3">
               <NavLink to="/">
                 <li className="flex items-center justify-center mb-3 px-2 py-1">
-                  <FaHome className="text-4xl" />
+                  <FaHome className="text-2xl" />
                 </li>
               </NavLink>
               <NavLink to="/menu">
                 <li className="flex items-center justify-center mb-3 px-2 py-1">
-                  <HiMenuAlt1 className="text-4xl" />
+                  <HiMenuAlt1 className="text-2xl" />
                 </li>
               </NavLink>
               <NavLink to="/shop/soup">
                 <li className="flex items-center justify-center mb-3 px-2 py-1">
-                  <HiTemplate className="text-4xl" />
+                  <HiTemplate className="text-2xl" />
                 </li>
               </NavLink>
               <NavLink to="/contact">
                 <li className="flex items-center justify-center mb-3 px-2 py-1">
-                  <FaUserShield className="text-4xl" />
+                  <FaUserShield className="text-2xl" />
                 </li>
               </NavLink>
             </ul>
@@ -135,7 +135,7 @@ const Dashboard = () => {
         </div>
         
         {/* //dashboard content */}
-        <div className="md:w-[230px] lg:w-[300px] min-h-screen   bg-[#1C2A35] text-white p-2 hidden md:block">
+        <div className="md:w-[230px] lg:w-[300px] min-h-screen fixed  bg-[#1C2A35] text-white p-2 hidden md:block">
           <div>
             <div className="bg-yellow-400 w-16 h-16 mx-auto mt-8 mb-2 rounded-2xl flex">
               <img
@@ -257,7 +257,7 @@ const Dashboard = () => {
           </div>
         </div>
         {/* outlet content */}
-        <div className="flex-1 bg-black text-slate-200 ">
+        <div className="flex-1 bg-black text-slate-200 ml-[70px] md:ml-[230px] lg:ml-[300px]">
           <DashboardNavbar />
           <Outlet></Outlet>
         </div>
