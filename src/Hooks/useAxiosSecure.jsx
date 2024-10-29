@@ -28,16 +28,11 @@ const useAxiosSecure = () => {
                     await LogoutUser();
                     navigate('/login', { replace: true });
                     setLoading(false);
-                } else if (status >= 500) {
+                }
+                if (status >= 500) {
                     openModal({
                         title: 'OOPS',
                         message: 'A server-side error occurred! Please try again later.',
-                        autoCloseTime: 3000,
-                    });
-                } else {
-                    openModal({
-                        title: 'OOPS',
-                        message: 'Something went wrong.',
                         autoCloseTime: 3000,
                     });
                 }
