@@ -13,3 +13,7 @@ input:-moz-autofill {
     background-color: #000000 !important; /* Adjust the background color */
     color: white !important; /* Adjust the text color */
 }
+
+.dark{
+    background-color: black;
+}

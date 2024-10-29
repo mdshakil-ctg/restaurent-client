@@ -6,7 +6,7 @@ const ErrorElement = () => {
   const navigate = useNavigate();
   const error = useRouteError();
   return (
-    <div className="flex flex-col items-center justify-center text-center min-h-screen bg-white py-10 md:p-20">
+    <div className="flex flex-col items-center justify-center text-center min-h-screen py-10 md:p-20">
       <h2 className="text-3xl lg:text-5xl font-semibold text-red-600 mb-4">
         Oops! The page you are looking for is missing from the menu!
       </h2>

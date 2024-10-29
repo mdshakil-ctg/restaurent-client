@@ -257,7 +257,7 @@ const Dashboard = () => {
           </div>
         </div>
         {/* outlet content */}
-        <div className="flex-1 bg-black text-slate-200 ml-[70px] md:ml-[230px] lg:ml-[300px]">
+        <div className="flex-1 bg-black min-h-screen text-slate-200 ml-[70px] md:ml-[230px] lg:ml-[300px]">
           <DashboardNavbar />
           <Outlet></Outlet>
         </div>

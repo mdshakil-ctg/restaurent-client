@@ -6,7 +6,7 @@ const Main = () => {
     const location = useLocation();
     const hideHeaderFooterRoutes = ['/login', '/signup', '/dashboard'];
     const shouldHideHeaderFooter = hideHeaderFooterRoutes.includes(location.pathname) || location.pathname.startsWith('dashboard');
-    console.log({shouldHideHeaderFooter});
+    
     return (
         <div>
             <Navbar hideHeaderFooterRoutes={hideHeaderFooterRoutes}></Navbar>
