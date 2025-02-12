@@ -9,7 +9,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import profileImg from "../../src/assets/others/profile.png";
 import useIsAdmin from "../Hooks/useIsAdmin";
 import LoaderCup from "../components/LoaderCup/LoaderCup";
-import { useContext, useEffect } from "react";
+import { Suspense, useContext, useEffect } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import "./Dashboard.css";
 import DashboardNavbar from "../components/DashboardNavbar";
@@ -259,7 +259,9 @@ const Dashboard = () => {
         {/* outlet content */}
         <div className="flex-1 bg-black min-h-screen text-slate-200 ml-[70px] md:ml-[230px] lg:ml-[300px]">
           <DashboardNavbar />
+          <Suspense fallback={<LoaderCup/>}>
           <Outlet></Outlet>
+          </Suspense>
         </div>
       </div>
     </>
