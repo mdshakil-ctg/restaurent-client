@@ -29,16 +29,13 @@ const Shop = () => {
   const handleSearch = (event) => {
     event.preventDefault();
     const searchText = event.target.search.value.trim();
-    console.log("hitting", event.target.search.value, allData, searchText);
     const searchResult = allData?.datas?.filter((item) =>
       item?.name?.toLowerCase().includes(searchText?.toLowerCase())
   );
     console.log({ searchResult });
     if (!searchResult.length) {
-      console.log("if hitting");
       setMessage("There is no data match for your query!");
     } else {
-      console.log("else hitting");
       setActiveTabs("all");
       setSearchData(searchResult);
       setTabIndex(items.indexOf("all"));
@@ -54,21 +51,21 @@ const Shop = () => {
         <img src={shopBanner} alt="" />
       </div>
       <div className="flex justify-end mx-auto mb-10 md:mb-20 px-8 md:px-20 lg:px-32">
-        <div className="w-full mx-auto md:w-2/3 md:mx-auto  lg:w-1/2 lg:mx-0">
-          <form onSubmit={handleSearch} className="w-full relative">
+        <div >
+          <form onSubmit={handleSearch} className="relative">
             {/* search bar content */}
             <input
               name="search"
-              className="h-10 border-2 border-slate-600 placeholder-black placeholder:text-sm placeholder:font-satisfy font-semibold focus:outline-none"
+              className="w-full h-10 pl-2 border-2 border-slate-600 placeholder-black placeholder:text-sm placeholder:font-satisfy font-semibold focus:outline-none"
               type="text"
               placeholder="Search your favourite food"
             />
             <button
               type="submit"
-              className="btn btn-ghost rounded-none
-           text-4xl absolute right-0 bottom-0"
+              className="rounded-none
+           text-2xl absolute right-1 bottom-0"
             >
-              <MdManageSearch/>
+              <MdManageSearch className="h-10"/>
             </button>
           </form>
           {message && <p className="text-base mt-2 font-semibold text-red-400 ">{message}</p>}
